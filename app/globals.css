@@ -36,6 +36,12 @@ main {
   flex: 1;
 }
 
+/* Override any problematic generated classes */
+[class*="__className_"] {
+  scroll-behavior: smooth !important;
+  overflow-x: hidden !important;
+}
+
 a {
   color: inherit;
   text-decoration: none;
