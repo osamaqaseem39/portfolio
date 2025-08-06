@@ -13,6 +13,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  height: 100%;
 }
 
 body {
@@ -21,6 +22,18 @@ body {
   font-family: 'Inter', sans-serif;
   color: rgb(var(--foreground-rgb));
   background: #ffffff;
+  min-height: 100vh;
+  position: relative;
+}
+
+#__next {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 a {
@@ -44,11 +57,6 @@ a {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #333333;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
 }
 
 /* Minimal animations */
