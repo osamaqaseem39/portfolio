@@ -51,7 +51,7 @@ const Footer = () => {
               <Github size={24} />
             </motion.a>
             <motion.a
-              href="https://linkedin.com/in/osamaqaseem"
+              href="https://linkedin.com/in/muhammadosamaqaseem"
               target="_blank"
               rel="noopener noreferrer"
               className="text-black hover:text-gray-600 transition-colors duration-200"
