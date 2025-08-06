@@ -11,7 +11,13 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'skills', 'experience', 'projects', 'contact']
-      const scrollPosition = window.scrollY + 100
+      const scrollPosition = window.scrollY + 200 // Increased offset for better detection
+
+      // Check if we're at the top of the page
+      if (scrollPosition < 300) {
+        setActiveSection('home')
+        return
+      }
 
       for (const section of sections) {
         const element = document.getElementById(section)
@@ -26,6 +32,8 @@ const Header = () => {
     }
 
     window.addEventListener('scroll', handleScroll)
+    // Set initial active section
+    handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 

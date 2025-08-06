@@ -18,7 +18,7 @@ const Footer = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto text-center py-12"
+          className="max-w-4xl mx-auto text-center py-8"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}

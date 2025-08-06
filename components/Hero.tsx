@@ -18,7 +18,7 @@ const Hero = () => {
   }
 
   return (
-    <section className="section-minimal bg-white min-h-screen flex items-center justify-center">
+    <section id="home" className="section-minimal bg-white min-h-screen flex items-center justify-center">
       <div className="container-minimal">
         <motion.div
           ref={ref}
