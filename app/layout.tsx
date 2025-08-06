@@ -9,9 +9,6 @@ export const metadata: Metadata = {
   description: 'Professional portfolio showcasing my work as a full stack developer',
   keywords: ['portfolio', 'developer', 'full stack', 'web development', 'react', 'next.js'],
   authors: [{ name: 'Your Name' }],
-  icons: {
-    icon: '/favicon.ico',
-  },
 }
 
 export const viewport: Viewport = {
@@ -26,9 +23,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-      </head>
       <body className={inter.className}>
         {children}
       </body>

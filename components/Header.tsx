@@ -6,11 +6,11 @@ import { motion } from 'framer-motion'
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('about')
+  const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['about', 'skills', 'experience', 'projects', 'contact']
+      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -25,19 +25,12 @@ const Header = () => {
       }
     }
 
-    // Add a small delay to ensure DOM is ready
-    const timeoutId = setTimeout(() => {
-      window.addEventListener('scroll', handleScroll)
-      handleScroll() // Initial check
-    }, 100)
-
-    return () => {
-      clearTimeout(timeoutId)
-      window.removeEventListener('scroll', handleScroll)
-    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const navItems = [
+    { name: 'Home', href: '#home', id: 'home' },
     { name: 'About', href: '#about', id: 'about' },
     { name: 'Skills', href: '#skills', id: 'skills' },
     { name: 'Experience', href: '#experience', id: 'experience' },
