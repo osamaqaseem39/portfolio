@@ -16,7 +16,7 @@ export default function Home() {
   }, [])
 
   return (
-    <>
+    <div className="min-h-screen overflow-x-hidden">
       <Header />
       <main>
         <Hero />
@@ -27,6 +27,6 @@ export default function Home() {
         <Contact />
         <Footer />
       </main>
-    </>
+    </div>
   )
 } 
