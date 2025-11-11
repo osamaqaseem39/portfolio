@@ -1,31 +1,20 @@
-import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import type { Metadata } from "next";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: 'Portfolio - Full Stack Developer',
-  description: 'Professional portfolio showcasing my work as a full stack developer',
-  keywords: ['portfolio', 'developer', 'full stack', 'web development', 'react', 'next.js'],
-  authors: [{ name: 'Your Name' }],
-}
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-}
+  title: "Muhammad Osama Qaseem - Full Stack Developer",
+  description: "Full Stack Developer specializing in React, Next.js, Node.js, and Web3 technologies",
+};
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="en" className="overflow-x-hidden">
-      <body className={inter.className}>
-        {children}
-      </body>
+    <html lang="en">
+      <body className="antialiased">{children}</body>
     </html>
-  )
-} 
+  );
+}
+

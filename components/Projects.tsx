@@ -1,321 +1,196 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import { ExternalLink, Github } from 'lucide-react'
-import { useState } from 'react'
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { HiExternalLink } from "react-icons/hi";
 
-const Projects = () => {
+const projects = [
+  {
+    name: "BestVersion1",
+    url: "https://bestversion1.com",
+    description: "Football Training & Coaching Platform",
+    features: [
+      "Built with Next.js 14 and TypeScript",
+      "Video analysis and training programs",
+      "Coach profiles and player outcomes",
+      "Team showcase and testimonials",
+    ],
+  },
+  {
+    name: "Wings Impex",
+    url: "https://wingsimpex.com",
+    description: "Food Company - E-commerce & Admin Management System",
+    features: [
+      "Complete e-commerce platform with Next.js",
+      "Payment processing with Stripe API",
+      "Inventory management and analytics",
+      "Admin dashboard with order management",
+    ],
+  },
+  {
+    name: "Payday Website",
+    url: "https://paydayexpress.ca",
+    description: "Financial Services Platform",
+    features: [
+      "Loan calculator and application forms",
+      "Multi-step application process",
+      "Interactive loan calculator with real-time updates",
+      "Professional financial services UI/UX",
+    ],
+  },
+  {
+    name: "Dispatching Company Website",
+    url: "https://freightslogistic.com",
+    description: "Truck Dispatching Services Website",
+    features: [
+      "Built with Next.js 15 and TypeScript",
+      "24/7 dispatch support and load booking",
+      "Carrier setup and compliance support",
+      "Pricing page and testimonials",
+    ],
+  },
+  {
+    name: "EverXNode",
+    url: "https://everxnode.com",
+    description: "Node.js Development and Deployment Platform",
+    features: [
+      "Code editor and project templates",
+      "Cloud deployment and container support",
+      "Monitoring and logging tools",
+      "CLI tools and API testing",
+    ],
+  },
+  {
+    name: "Arena SOL",
+    url: "https://arenastudio.fun",
+    description: "Gaming Platform Website",
+    features: [
+      "3D elements using Three.js",
+      "Tournament system and leaderboards",
+      "3D character models and gaming environments",
+      "Interactive gaming elements and power-up features",
+    ],
+  },
+  {
+    name: "Punjab AC",
+    url: "https://punjabac.com",
+    description: "Content Management System",
+    features: [
+      "Admin dashboard and public website",
+      "Rich text editor and media management",
+      "SEO optimization and content scheduling",
+      "Version control and bulk operations",
+    ],
+  },
+  {
+    name: "Hypelet",
+    url: "https://hypelet.pro",
+    description: "Influencer Marketing Platform",
+    features: [
+      "Animated components with Framer Motion",
+      "Dark theme design and smooth animations",
+      "QR code generation for influencer profiles",
+      "Redux Toolkit for state management",
+    ],
+  },
+  {
+    name: "A.K. Traders",
+    url: "https://aktraders.pk",
+    description: "Freight Forwarding & Customs Clearance Platform",
+    features: [
+      "Built with Next.js 15 and PostgreSQL",
+      "Shipment tracking and quote management",
+      "Multi-role dashboard system",
+      "Real-time shipment status updates",
+    ],
+  },
+  {
+    name: "DEGN Website",
+    url: "https://degn.app",
+    description: "Blockchain & Web3 Platform",
+    features: [
+      "Built with Next.js 15 and Web3 integration",
+      "Wallet connection and smart contract interaction",
+      "Ethereum blockchain support with MetaMask",
+      "NFT integration and cross-chain support",
+    ],
+  },
+  {
+    name: "Tekvers Website",
+    url: "https://tekvers.com",
+    description: "Software Company - Professional Services Website",
+    features: [
+      "E-commerce platform for stationary",
+      "Product catalog and shopping cart",
+      "Admin dashboard and order processing",
+      "Payment processing and inventory tracking",
+    ],
+  },
+  {
+    name: "Synovo Labs",
+    url: "https://slabs-eight.vercel.app",
+    description: "Web Development Agency Website",
+    features: [
+      "Built with Next.js 15, GSAP, and Framer Motion",
+      "Smooth scrolling animations",
+      "Portfolio showcase and technology stack",
+      "Advanced animations with GSAP timelines",
+    ],
+  },
+];
+
+export default function Projects() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
-
-  const [activeFilter, setActiveFilter] = useState('All')
-
-  const projects = [
-    {
-      title: 'Wings Impex - Food Company E-commerce',
-      description: 'Complete e-commerce platform with customer website (Next.js) and admin dashboard (React). Integrated payment processing, inventory management, and comprehensive analytics.',
-      technologies: ['Next.js', 'React', 'Node.js', 'Express.js', 'MongoDB', 'Stripe API'],
-      github: 'https://github.com/osamaqaseem/wings-impex',
-      live: 'https://wingsimpex.com',
-      featured: true,
-      category: 'React'
-    },
-    {
-      title: 'Payday Website - Financial Services',
-      description: 'Professional financial services website with loan calculator and application forms. Implemented multi-step application process with validation and progress tracking.',
-      technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
-      github: 'https://github.com/osamaqaseem/payday-website',
-      live: 'https://paydayexpress.ca',
-      featured: true,
-      category: 'React'
-    },
-    {
-      title: 'Arena SOL - Gaming Platform',
-      description: 'Gaming platform with 3D elements using Three.js and interactive components. Implemented tournament system, leaderboards, and community features.',
-      technologies: ['Next.js', 'React', 'TypeScript', 'Three.js', 'Styled Components'],
-      github: 'https://github.com/osamaqaseem/arena-sol',
-      live: 'https://arenasol.fun',
-      featured: true,
-      category: 'React'
-    },
-    {
-      title: 'Punjab AC - Content Management System',
-      description: 'CMS with admin dashboard and public website for content management. Implemented rich text editor, media management, and SEO optimization.',
-      technologies: ['React', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Multer'],
-      github: 'https://github.com/osamaqaseem/punjab-ac',
-      live: 'https://punjabac.com',
-      featured: false,
-      category: 'React'
-    },
-    {
-      title: 'Hypelet - Influencer Marketing Platform',
-      description: 'Modern influencer marketing website with animated components and QR code generation. Implemented dark theme design and smooth animations.',
-      technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-      github: 'https://github.com/osamaqaseem/hypelet',
-      live: 'https://hypelet.pro',
-      featured: false,
-      category: 'React'
-    },
-    {
-      title: 'Taxi Application Platform',
-      description: 'Comprehensive taxi booking and management platform with real-time tracking and secure payments. Built React 18 frontend with TypeScript and Ant Design.',
-      technologies: ['React', 'TypeScript', 'Ant Design', 'Tailwind CSS', 'Google Maps API'],
-      github: 'https://github.com/osamaqaseem/taxi-app',
-      live: 'https://taxi-app-demo.com',
-      featured: false,
-      category: 'React'
-    },
-    {
-      title: 'Car Maintenance Tracker',
-      description: 'Comprehensive car maintenance tracking system with Flutter mobile app and React web dashboard. Implemented offline functionality and real-time data synchronization.',
-      technologies: ['Flutter', 'React', 'TypeScript', 'NestJS', 'MongoDB', 'SQLite'],
-      github: 'https://github.com/osamaqaseem/car-maintenance-tracker',
-      live: 'https://car-maintenance-tracker.com',
-      featured: true,
-      category: 'Mobile'
-    },
-    {
-      title: 'Backend Generator - Code Generation Tool',
-      description: 'CLI tool for generating NestJS code with RBAC integration and GraphQL support. Automated creation of controllers, services, and GraphQL resolvers.',
-      technologies: ['TypeScript', 'NestJS', 'GraphQL', 'MongoDB', 'Apollo Server'],
-      github: 'https://github.com/osamaqaseem/backend-generator',
-      live: null,
-      featured: false,
-      category: 'Backend'
-    },
-    {
-      title: 'Amazon Chat Assistant - Discord Bot',
-      description: 'AI-powered Discord bot for Amazon FBA education using OpenAI API. Implemented conversational AI with context management and educational features.',
-      technologies: ['Python', 'Discord.py', 'OpenAI API', 'SQLite', 'Async Programming'],
-      github: 'https://github.com/osamaqaseem/amazon-chat-assistant',
-      live: null,
-      featured: false,
-      category: 'Backend'
-    },
-    {
-      title: 'Discord Verify Bot',
-      description: 'Sophisticated verification bot with multi-step questionnaire and webhook integration. Implemented modal forms, role management, and automated verification.',
-      technologies: ['Python', 'Discord.py', 'JWT', 'Webhook Integration', 'Modal Forms'],
-      github: 'https://github.com/osamaqaseem/discord-verify-bot',
-      live: null,
-      featured: false,
-      category: 'Backend'
-    },
-    {
-      title: 'PerkUP - Multi-Platform Loyalty System',
-      description: 'Comprehensive loyalty management system with web admin and mobile app. Implemented real-time data synchronization between web and mobile platforms.',
-      technologies: ['React', 'TypeScript', 'ASP.NET Core', 'Flutter', 'SQL Server', 'JWT'],
-      github: 'https://github.com/osamaqaseem/perkup',
-      live: 'https://perkup.com',
-      featured: false,
-      category: 'Mobile'
-    },
-    {
-      title: 'NoblePOS - Point of Sale System',
-      description: 'Comprehensive POS system for retail operations with inventory management. Implemented clean architecture with Entity Framework Core and Vue.js frontend.',
-      technologies: ['ASP.NET Core', 'Vue.js', 'Entity Framework', 'SQL Server', 'JWT'],
-      github: 'https://github.com/osamaqaseem/noblepos',
-      live: 'https://noblepos.com',
-      featured: false,
-      category: 'Vue.js'
-    },
-    {
-      title: 'AgentFusion.com - Real Estate',
-      description: 'Custom real estate theme with property listings, agent profiles, and Google Maps integration. Built with WordPress and custom plugins.',
-      technologies: ['WordPress', 'PHP', 'MySQL', 'Custom Themes', 'Google Maps API'],
-      github: 'https://github.com/osamaqaseem/agentfusion',
-      live: 'https://agentfusion.com',
-      featured: false,
-      category: 'WordPress'
-    },
-    {
-      title: 'TwoTrackProperties.com',
-      description: 'Property management system with advanced search filters and virtual tour features. Multi-vendor system with local payment gateways.',
-      technologies: ['WordPress', 'PHP', 'MySQL', 'WooCommerce', 'Payment Gateways'],
-      github: 'https://github.com/osamaqaseem/twotrack-properties',
-      live: 'https://twotrackproperties.com',
-      featured: false,
-      category: 'WordPress'
-    },
-    {
-      title: 'SKFramers.com',
-      description: 'Construction company website with portfolio gallery and testimonials system. Custom theme development with advanced features.',
-      technologies: ['WordPress', 'PHP', 'MySQL', 'Custom Themes', 'Portfolio Gallery'],
-      github: 'https://github.com/osamaqaseem/skframers',
-      live: 'https://skframers.com',
-      featured: false,
-      category: 'WordPress'
-    },
-    {
-      title: 'Evoo.pk & Shop.Evoo.pk',
-      description: 'E-commerce platform with multi-vendor system, local payment gateways, and mobile app integration. Complete online store solution.',
-      technologies: ['WordPress', 'PHP', 'MySQL', 'WooCommerce', 'Mobile App Integration'],
-      github: 'https://github.com/osamaqaseem/evoo',
-      live: 'https://evoo.pk',
-      featured: false,
-      category: 'WordPress'
-    }
-  ]
-
-  const categories = ['All', 'React', 'Vue.js', 'WordPress', 'Web3', 'Mobile', 'Backend']
-
-  const filteredProjects = activeFilter === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter)
+  });
 
   return (
-    <section id="projects" className="section-minimal bg-white">
-      <div className="container-minimal">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
+    <section id="projects" className="py-20 px-4">
+      <div className="container mx-auto">
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
+          className="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent"
         >
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-section font-bold text-black mb-4"
-          >
-            Projects.
-          </motion.h2>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-body text-gray-600 mb-8"
-          >
-            A collection of my recent work showcasing full-stack development, modern web technologies, and innovative solutions.
-          </motion.p>
+          Projects
+        </motion.h2>
 
-          {/* Filter Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-wrap gap-2 mb-8"
-          >
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveFilter(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
-                  activeFilter === category
-                    ? 'bg-black text-white'
-                    : 'bg-gray-100 text-black hover:bg-gray-200'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </motion.div>
-
-          {/* Projects Grid */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="card-minimal p-6"
-              >
-                <div className="mb-4">
-                  {project.featured && (
-                    <span className="inline-block px-3 py-1 bg-black text-white text-xs font-medium rounded-full mb-3">
-                      Featured
-                    </span>
-                  )}
-                  <h3 className="text-lg font-semibold text-black mb-3">
-                    {project.title}
-                  </h3>
-                  <p className="text-body mb-4 text-sm">
-                    {project.description}
-                  </p>
-                </div>
-
-                <div className="mb-6">
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 bg-gray-100 text-black rounded-full text-xs font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="flex space-x-4">
-                  {project.live && (
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link-minimal text-sm font-medium flex items-center"
-                    >
-                      <ExternalLink size={16} className="mr-2" />
-                      Live Demo
-                    </a>
-                  )}
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-minimal text-sm font-medium flex items-center"
-                  >
-                    <Github size={16} className="mr-2" />
-                    View Code
-                  </a>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {filteredProjects.length === 0 && (
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project, index) => (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-center py-12"
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="bg-gray-800/50 rounded-lg p-6 border border-gray-700 hover:border-purple-500 transition-all hover:shadow-lg hover:shadow-purple-500/20"
             >
-              <p className="text-body text-gray-600">
-                No projects found for the selected category.
-              </p>
-            </motion.div>
-          )}
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-white">{project.name}</h3>
+                <motion.a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.2, rotate: 15 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <HiExternalLink className="text-purple-400" size={20} />
+                </motion.a>
+              </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-center mt-12"
-          >
-            <a
-              href="https://github.com/osamaqaseem39"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline inline-flex items-center px-8 py-3 text-lg font-semibold"
-            >
-              <Github size={20} className="mr-2" />
-              View More Projects
-            </a>
-          </motion.div>
-        </motion.div>
+              <p className="text-gray-400 mb-4 text-sm">{project.description}</p>
+
+              <ul className="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                {project.features.slice(0, 3).map((feature, i) => (
+                  <li key={i}>{feature}</li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default Projects 
