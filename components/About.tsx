@@ -18,9 +18,16 @@ export default function About() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-            About Me
-          </h2>
+          <div className="relative overflow-hidden mb-12">
+            <motion.h2
+              initial={{ x: "-100%" }}
+              animate={inView ? { x: 0 } : {}}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent"
+            >
+              About Me
+            </motion.h2>
+          </div>
 
           <div className="max-w-4xl mx-auto">
             <motion.p
@@ -61,4 +68,3 @@ export default function About() {
     </section>
   );
 }
-

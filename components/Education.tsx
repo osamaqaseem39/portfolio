@@ -30,36 +30,43 @@ export default function Education() {
   return (
     <section id="education" className="py-20 px-4">
       <div className="container mx-auto">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent"
         >
-          Education
-        </motion.h2>
-
-        <div ref={ref} className="max-w-4xl mx-auto space-y-6">
-          {education.map((edu, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -50 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="bg-gray-800/50 rounded-lg p-6 border border-gray-700 hover:border-purple-500 transition-colors"
+          <div className="relative overflow-hidden mb-12">
+            <motion.h2
+              initial={{ x: "-100%" }}
+              animate={inView ? { x: 0 } : {}}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent"
             >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-1">{edu.degree}</h3>
-                  <p className="text-xl text-purple-400">{edu.institution}</p>
+              Education
+            </motion.h2>
+          </div>
+
+          <div ref={ref} className="max-w-4xl mx-auto space-y-6">
+            {education.map((edu, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -50 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                className="bg-gray-800/50 rounded-lg p-6 border border-gray-700 hover:border-purple-500 transition-colors"
+              >
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-1">{edu.degree}</h3>
+                    <p className="text-xl text-purple-400">{edu.institution}</p>
+                  </div>
+                  <p className="text-gray-300 mt-2 md:mt-0">{edu.period}</p>
                 </div>
-                <p className="text-gray-300 mt-2 md:mt-0">{edu.period}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 }
-

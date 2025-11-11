@@ -1,10 +1,28 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import { HiDownload, HiMail } from "react-icons/hi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
+const roles = [
+  "Full Stack Developer",
+  "Web3 Developer",
+  "React Specialist",
+  "Node.js Expert",
+  "Blockchain Enthusiast",
+];
+
 export default function Hero() {
+  const [currentRole, setCurrentRole] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentRole((prev) => (prev + 1) % roles.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-black" />
@@ -20,14 +38,20 @@ export default function Hero() {
             Muhammad Osama Qaseem
           </motion.h1>
           
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-2xl md:text-3xl text-gray-300 mb-8"
-          >
-            Full Stack Developer
-          </motion.p>
+          <div className="h-16 md:h-20 flex items-center justify-center mb-8 overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentRole}
+                initial={{ opacity: 0, y: 50, rotateX: -90 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                exit={{ opacity: 0, y: -50, rotateX: 90 }}
+                transition={{ duration: 0.6 }}
+                className="text-2xl md:text-3xl text-gray-300 font-semibold absolute"
+              >
+                {roles[currentRole]}
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -122,4 +146,3 @@ export default function Hero() {
     </section>
   );
 }
-

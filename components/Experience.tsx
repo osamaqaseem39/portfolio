@@ -84,54 +84,61 @@ export default function Experience() {
   return (
     <section id="experience" className="py-20 px-4 bg-gray-900/50">
       <div className="container mx-auto">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent"
         >
-          Experience
-        </motion.h2>
-
-        <div ref={ref} className="max-w-5xl mx-auto space-y-8">
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -50 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="bg-gray-800/50 rounded-lg p-6 border border-gray-700 hover:border-purple-500 transition-colors"
+          <div className="relative overflow-hidden mb-12">
+            <motion.h2
+              initial={{ x: "-100%" }}
+              animate={inView ? { x: 0 } : {}}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent"
             >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-1">{exp.position}</h3>
-                  <p className="text-xl text-purple-400 mb-1">{exp.company}</p>
-                  <p className="text-gray-400 text-sm">{exp.location}</p>
+              Experience
+            </motion.h2>
+          </div>
+
+          <div ref={ref} className="max-w-5xl mx-auto space-y-8">
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -50 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                className="bg-gray-800/50 rounded-lg p-6 border border-gray-700 hover:border-purple-500 transition-colors"
+              >
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-1">{exp.position}</h3>
+                    <p className="text-xl text-purple-400 mb-1">{exp.company}</p>
+                    <p className="text-gray-400 text-sm">{exp.location}</p>
+                  </div>
+                  <p className="text-gray-300 mt-2 md:mt-0">{exp.period}</p>
                 </div>
-                <p className="text-gray-300 mt-2 md:mt-0">{exp.period}</p>
-              </div>
 
-              <ul className="list-disc list-inside text-gray-300 space-y-2 mb-4">
-                {exp.description.map((item, i) => (
-                  <li key={i} className="text-sm md:text-base">{item}</li>
-                ))}
-              </ul>
+                <ul className="list-disc list-inside text-gray-300 space-y-2 mb-4">
+                  {exp.description.map((item, i) => (
+                    <li key={i} className="text-sm md:text-base">{item}</li>
+                  ))}
+                </ul>
 
-              <div className="flex flex-wrap gap-2 mt-4">
-                {exp.technologies.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-xs md:text-sm"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {exp.technologies.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-xs md:text-sm"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 }
-
