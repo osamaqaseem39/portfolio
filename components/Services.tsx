@@ -32,7 +32,7 @@ export default function Services() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [viewRef, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.5,
   });
   // This hook tracks the scroll progress relative to the Services section.
   // It returns a value between 0 and 1 based on how much the section has entered the viewport.
@@ -41,7 +41,7 @@ export default function Services() {
   //   - "start 130vh": animation ends when the top of the section reaches the top of the viewport
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 100vh", "start -20vh"]
+    offset: ["start 50vh", "start -20vh"]
   });
 
   // Scale up animation for content
@@ -68,8 +68,8 @@ export default function Services() {
   // Image width: goes from 120% to 70%, then 70% to 90%
   const imageWidth = useTransform(
     scrollYProgress,
-    [0, 0.7, 1],
-    ["100%", "60%", "90%"]
+    [0, 0.5, 1],
+    ["100%", "40%", "95%"]
   );
 
   // White div width/height: starts at 500px, expands to 100%
