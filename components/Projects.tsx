@@ -4,8 +4,69 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useState } from "react";
 import { HiExternalLink, HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { useClickSound } from "@/hooks/useAudio";
 
 const projects = [
+  {
+    name: "Softlogix",
+    url: "https://softlogixconsultancy.com/",
+    description: "Professional Tax Consultancy & General Trading Solutions",
+    features: [
+      "Professional tax consultancy platform",
+      "General trading solutions and services",
+      "Client management and consultation booking",
+      "Tax filing and compliance services",
+    ],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+  },
+  {
+    name: "Voxity",
+    url: "https://voxity.io",
+    description: "Web3 Marketing Agency",
+    features: [
+      "Web3 marketing agency platform",
+      "Blockchain-based marketing solutions",
+      "Client portfolio and case studies",
+      "Services showcase and contact management",
+    ],
+    technologies: ["Next.js", "Web3", "Blockchain"],
+  },
+  {
+    name: "ShesTrends",
+    url: "https://shestrends.com",
+    description: "Ecommerce Store",
+    features: [
+      "Complete e-commerce platform",
+      "Product catalog and shopping cart",
+      "Payment processing and order management",
+      "User accounts and order tracking",
+    ],
+    technologies: ["Next.js", "E-commerce", "Stripe"],
+  },
+  {
+    name: "HB Sub Noor",
+    url: "https://hubsubnoor.com",
+    description: "A global leader in comprehensive packaging and strap solutions",
+    features: [
+      "Packaging and strap solutions showcase",
+      "Product catalog and specifications",
+      "Contact and inquiry management",
+      "Global shipping information",
+    ],
+    technologies: ["Next.js", "React", "Tailwind CSS"],
+  },
+  {
+    name: "Exalted",
+    url: "https://exalted-lovat.vercel.app/",
+    description: "Coding & Packing Solutions",
+    features: [
+      "Coding and packing solutions platform",
+      "Service offerings and solutions",
+      "Client management and contact forms",
+      "Portfolio and case studies",
+    ],
+    technologies: ["Next.js", "Vercel", "Tailwind CSS"],
+  },
   {
     name: "BestVersion1",
     url: "https://bestversion1.com",
@@ -268,6 +329,7 @@ export default function Projects() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
   const itemsPerPage = 6;
+  const playClickSound = useClickSound();
 
   const totalPages = Math.ceil(projects.length / itemsPerPage);
   const currentProjects = projects.slice(
@@ -276,10 +338,12 @@ export default function Projects() {
   );
 
   const nextPage = () => {
+    playClickSound();
     setCurrentIndex((prev) => (prev + 1) % totalPages);
   };
 
   const prevPage = () => {
+    playClickSound();
     setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
   };
 
@@ -339,7 +403,10 @@ export default function Projects() {
                               rel="noopener noreferrer"
                               whileHover={{ scale: 1.2, rotate: 15 }}
                               whileTap={{ scale: 0.9 }}
-                              onClick={(e) => e.stopPropagation()}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                playClickSound();
+                              }}
                             >
                               <HiExternalLink className="text-purple-400" size={20} />
                             </motion.a>

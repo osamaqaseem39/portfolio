@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useState } from "react";
+import { useClickSound } from "@/hooks/useAudio";
 
 const skillCategories = [
   {
@@ -13,7 +14,9 @@ const skillCategories = [
       "Tailwind CSS", "Material UI", "GSAP", "Lenis", "Swiper", "Bootstrap",
       "Styled Components", "Framer Motion", "Redux", "React Query", "Three.js",
       "Responsive Design", "Progressive Web Apps", "Component Architecture",
-      "State Management", "UI/UX Design", "Performance Optimization"
+      "State Management", "UI/UX Design", "Cross-browser Compatibility",
+      "Performance Optimization", "Code Splitting", "Lazy Loading", "Animation Libraries",
+      "Form Handling", "Validation", "Accessibility", "SEO Optimization"
     ],
   },
   {
@@ -24,7 +27,8 @@ const skillCategories = [
       "REST APIs", "JWT Authentication", "Session Management", "File Upload",
       "Multer", "Cron Jobs", "Background Tasks", "API Documentation", "Swagger",
       "Error Handling", "Middleware", "Dependency Injection", "Clean Architecture",
-      "Microservices", "Service-oriented Architecture", "Rate Limiting", "Caching"
+      "Microservices", "Service-oriented Architecture", "Rate Limiting", "Caching",
+      "Security Implementation", "Input Validation", "Data Processing"
     ],
   },
   {
@@ -34,16 +38,9 @@ const skillCategories = [
       "MongoDB", "SQL Server", "SQLite", "MySQL", "Entity Framework Core",
       "Mongoose", "Dapper", "Database Design", "Query Optimization",
       "Stored Procedures", "Database Migrations", "Data Modeling", "Indexing",
-      "Transaction Management", "Backup and Recovery", "Data Validation"
-    ],
-  },
-  {
-    category: "Web3",
-    icon: "⛓️",
-    skills: [
-      "Ethers.js", "Web3.js", "MetaMask", "WalletConnect", "Solana Web3.js",
-      "Solana SPL Token", "Jupiter DEX", "Smart Contracts", "NFT", "DeFi",
-      "Blockchain Integration", "Token Economics", "DApp Development"
+      "Transaction Management", "Backup and Recovery", "Data Validation",
+      "Relational Database Design", "NoSQL Database Design", "Database Security",
+      "Performance Tuning", "Data Synchronization"
     ],
   },
   {
@@ -52,18 +49,20 @@ const skillCategories = [
     skills: [
       "Docker", "Git", "GitHub", "CI/CD", "Cloud Deployment", "Containerization",
       "Build Automation", "Monitoring", "Logging", "Performance Monitoring",
-      "Security Scanning", "Cloud Services", "Server Management"
+      "Security Scanning", "Cloud Services", "Server Management", "Configuration Management",
+      "Version Control", "Branching Strategies"
     ],
   },
   {
-    category: "Tools",
-    icon: "🛠️",
+    category: "Soft Skills",
+    icon: "💼",
     skills: [
-      "VS Code", "Visual Studio", "Android Studio", "Postman", "Swagger",
-      "Git", "GitHub", "GitLab", "phpMyAdmin", "SQL Server Management Studio",
-      "MongoDB Compass", "Figma", "Canva", "Trello", "Slack", "Discord",
-      "Jest", "Browser Developer Tools", "Docker Desktop", "AWS Console",
-      "Chrome DevTools", "Firebase Console", "Vercel", "Netlify"
+      "Team Collaboration", "Technical Documentation", "Client Communication", "Debugging",
+      "Root Cause Analysis", "Complex Problem Solving", "Analytical Thinking", "Project Ownership",
+      "Code Review", "Mentoring", "Technical Leadership", "Learning New Technologies",
+      "Fast-paced Environment", "Remote Work", "Requirements Analysis", "Stakeholder Management",
+      "Business Logic Implementation", "User Experience Focus", "Problem Solving",
+      "Critical Thinking", "Time Management", "Adaptability", "Innovation", "Continuous Learning"
     ],
   },
 ];
@@ -74,8 +73,10 @@ export default function Skills() {
     threshold: 0.1,
   });
   const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
+  const playClickSound = useClickSound();
 
   const toggleFlip = (index: number) => {
+    playClickSound();
     setFlippedCards((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(index)) {

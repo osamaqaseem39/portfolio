@@ -1,70 +1,160 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useRef } from "react";
+import { useClickSound } from "@/hooks/useAudio";
+import { HiArrowUpRight } from "react-icons/hi2";
 
 export default function About() {
-  const [ref, inView] = useInView({
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [viewRef, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+  const playClickSound = useClickSound();
+
+  // Scroll-based border radius animation
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 100vh", "start start"]
+  });
+
+  // Border radius increases from 0 to 40% as user scrolls (top corners only)
+  const topBorderRadius = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["0px", "40%"]
+  );
+
+  const handleScrollToExperience = () => {
+    playClickSound();
+    const experienceSection = document.getElementById("experience");
+    if (experienceSection) {
+      experienceSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Combined ref callback
+  const combinedRef = (node: HTMLElement | null) => {
+    if (node) {
+      (sectionRef as React.MutableRefObject<HTMLElement | null>).current = node;
+      viewRef(node);
+    }
+  };
 
   return (
-    <section id="about" className="py-20 px-4">
-      <div className="container mx-auto">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="relative overflow-hidden mb-12">
+    <motion.section 
+      ref={combinedRef}
+      id="about" 
+      className="relative min-h-screen flex items-center justify-center bg-gray-900 mt-0"
+      style={{
+        borderTopLeftRadius: topBorderRadius,
+        borderTopRightRadius: topBorderRadius,
+        overflow: "hidden",
+      }}
+    >
+      {/* Main Content */}
+      <div className="w-full relative z-10 px-4 md:px-8 lg:px-16 py-20">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            {/* Main headline */}
             <motion.h2
-              initial={{ x: "-100%" }}
-              animate={inView ? { x: 0 } : {}}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent"
-            >
-              About Me
-            </motion.h2>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg text-gray-300 leading-relaxed mb-6"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
+              style={{ fontFamily: "var(--font-absans), sans-serif" }}
             >
-              I'm a passionate Full Stack Developer with expertise in building scalable web applications
-              and Web3 solutions. Currently working at Voxity as a Full Stack Developer, where I contribute
-              to multiple Web3 projects including admin dashboards, token exchange platforms, and blockchain-based games.
-            </motion.p>
+              I'm Muhammad Osama Qaseem – a Full Stack Developer crafting fast, scalable digital experiences that merge creativity with engineering precision.
+            </motion.h2>
 
+            {/* Specialization text */}
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg text-gray-300 leading-relaxed mb-6"
+              className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 max-w-4xl mx-auto"
             >
-              My experience spans across various technologies including React, Next.js, Node.js, NestJS,
-              MongoDB, SQL Server, and Web3 technologies like Ethers.js, Web3.js, and Solana Web3.js.
-              I have a strong background in developing ERP systems, e-commerce platforms, and decentralized
-              applications.
+              I specialize in developing SaaS platforms, Web3 solutions, and scalable web applications using technologies like Next.js, Node.js, React, and blockchain technologies. Currently working at Voxity as a Full Stack Developer, where I contribute to multiple Web3 projects including admin dashboards, token exchange platforms, and blockchain-based games.
             </motion.p>
 
+            {/* Additional details */}
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-lg text-gray-300 leading-relaxed"
+              className="text-base md:text-lg text-gray-400 leading-relaxed mb-12 max-w-3xl mx-auto"
             >
-              I'm always eager to learn new technologies and tackle challenging problems. I believe in writing
-              clean, maintainable code and following best practices to deliver high-quality solutions.
+              My experience spans across various technologies including React, Next.js, Node.js, NestJS, MongoDB, SQL Server, and Web3 technologies like Ethers.js, Web3.js, and Solana Web3.js. I have a strong background in developing ERP systems, e-commerce platforms, and decentralized applications.
             </motion.p>
-          </div>
-        </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex items-center justify-center gap-4"
+            >
+              <motion.button
+                onClick={handleScrollToExperience}
+                className="px-8 py-3 bg-lime-400 text-black font-medium rounded-lg flex items-center gap-2 hover:bg-lime-300 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                About Me
+              </motion.button>
+              
+              <motion.button
+                onClick={handleScrollToExperience}
+                className="w-12 h-12 rounded-full bg-lime-400 text-black flex items-center justify-center hover:bg-lime-300 transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <HiArrowUpRight size={20} />
+              </motion.button>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Bottom Left - Scroll Indicator */}
+        <motion.p
+          className="absolute bottom-8 left-8 text-sm text-gray-400 font-medium hidden md:block"
+          initial={{ opacity: 0, y: -20 }}
+          animate={inView ? { opacity: [0.5, 1, 0.5], y: 0 } : {}}
+          transition={{ 
+            opacity: { duration: 2, repeat: Infinity, delay: 1 },
+            y: { duration: 0.8, delay: 1 }
+          }}
+        >
+          ↓ Scroll to Explore
+        </motion.p>
+
+        {/* Bottom Right - My Short Story */}
+        <motion.p
+          className="absolute bottom-8 right-8 text-sm text-gray-400 font-medium hidden md:block"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 1 }}
+        >
+          My Short Story
+        </motion.p>
+
+        {/* Right Edge - Vertical Text */}
+        <motion.p
+          className="absolute right-8 top-1/2 -translate-y-1/2 text-sm text-gray-500 font-medium writing-vertical hidden lg:block"
+          initial={{ opacity: 0, x: 20 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.8, delay: 1.2 }}
+        >
+          Experience
+        </motion.p>
       </div>
-    </section>
+    </motion.section>
   );
 }

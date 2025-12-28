@@ -2,21 +2,20 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { HiMenu, HiX } from "react-icons/hi";
+import { HiMenu } from "react-icons/hi";
+import { useClickSound } from "@/hooks/useAudio";
+import SideMenu from "./SideMenu";
 
 const navItems = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Skills", href: "#skills" },
-  { name: "Education", href: "#education" },
-  { name: "Contact", href: "#contact" },
+  { name: "Works", href: "#projects" },
 ];
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const playClickSound = useClickSound();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,77 +26,90 @@ export default function Header() {
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-black/80 backdrop-blur-md shadow-lg" : "bg-transparent"
-      }`}
-    >
-      <nav className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <motion.a
-            href="#home"
-            className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+    <>
+      <AnimatePresence>
+        {!isScrolled && (
+          <motion.header
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            exit={{ y: -100 }}
+            transition={{ duration: 0.3 }}
+            className="fixed top-0 left-0 right-0 z-50 bg-transparent"
           >
-            Osama Qaseem
-          </motion.a>
-
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, index) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                className="text-gray-300 hover:text-white transition-colors relative"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.1 }}
-              >
-                {item.name}
-                <motion.span
-                  className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-600"
-                  whileHover={{ width: "100%" }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.a>
-            ))}
-          </div>
-
-          <button
-            className="md:hidden text-white"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <HiX size={28} /> : <HiMenu size={28} />}
-          </button>
-        </div>
-
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden mt-4 space-y-4"
-            >
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="block text-gray-300 hover:text-white transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
+            <nav className="container mx-auto px-4 py-4">
+              <div className="flex items-center justify-between">
+                <motion.a
+                  href="#home"
+                  className="text-2xl font-bold text-black"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={playClickSound}
                 >
-                  {item.name}
-                </a>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
-    </motion.header>
+                  Osama Qaseem
+                </motion.a>
+
+                {/* Default Header Menu - Shows when not scrolled */}
+                <div className="hidden md:flex items-center space-x-8">
+                  {navItems.map((item, index) => (
+                    <motion.a
+                      key={item.name}
+                      href={item.href}
+                      className="text-gray-600 hover:text-black transition-colors relative"
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      whileHover={{ scale: 1.1 }}
+                      onClick={playClickSound}
+                    >
+                      {item.name}
+                      <motion.span
+                        className="absolute bottom-0 left-0 w-0 h-0.5 bg-black"
+                        whileHover={{ width: "100%" }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </motion.a>
+                  ))}
+                  <motion.button
+                    className="px-6 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: navItems.length * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={(e) => {
+                      playClickSound();
+                      e.preventDefault();
+                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
+                    Contact
+                  </motion.button>
+                </div>
+              </div>
+            </nav>
+          </motion.header>
+        )}
+      </AnimatePresence>
+
+      {/* Hamburger Button - Only shows when scrolled */}
+      {isScrolled && (
+        <motion.button
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          className="fixed top-6 right-6 z-50 w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 text-white flex items-center justify-center transition-colors shadow-lg"
+          onClick={() => {
+            playClickSound();
+            setIsMenuOpen(true);
+          }}
+        >
+          <HiMenu size={24} />
+        </motion.button>
+      )}
+
+      {/* Side Menu - Overlay when opened from hamburger */}
+      <SideMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} isOverlay={true} />
+    </>
   );
 }
 

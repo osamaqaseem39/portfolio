@@ -4,12 +4,14 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { useClickSound } from "@/hooks/useAudio";
 
 export default function Contact() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+  const playClickSound = useClickSound();
 
   return (
     <section id="contact" className="py-20 px-4">
@@ -39,6 +41,7 @@ export default function Contact() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="bg-gray-800/50 rounded-lg p-6 border border-gray-700 hover:border-purple-500 transition-all text-center"
                 whileHover={{ scale: 1.05 }}
+                onClick={playClickSound}
               >
                 <HiMail className="text-purple-400 mx-auto mb-4" size={32} />
                 <p className="text-white font-semibold mb-2">Email</p>
@@ -52,6 +55,7 @@ export default function Contact() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="bg-gray-800/50 rounded-lg p-6 border border-gray-700 hover:border-purple-500 transition-all text-center"
                 whileHover={{ scale: 1.05 }}
+                onClick={playClickSound}
               >
                 <HiPhone className="text-purple-400 mx-auto mb-4" size={32} />
                 <p className="text-white font-semibold mb-2">Phone</p>
@@ -83,17 +87,19 @@ export default function Contact() {
                 className="text-gray-400 hover:text-white transition-colors"
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
+                onClick={playClickSound}
               >
                 <FaGithub size={40} />
               </motion.a>
               
               <motion.a
-                href="https://github.com/osamaqaseem39"
+                href="https://www.linkedin.com/in/osamaqaseem39"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors"
                 whileHover={{ scale: 1.2, rotate: -5 }}
                 whileTap={{ scale: 0.9 }}
+                onClick={playClickSound}
               >
                 <FaLinkedin size={40} />
               </motion.a>
