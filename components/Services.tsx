@@ -41,7 +41,7 @@ export default function Services() {
   //   - "start 130vh": animation ends when the top of the section reaches the top of the viewport
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 50vh", "start -70vh"]
+    offset: ["start 100vh", "start -20vh"]
   });
 
   // Scale up animation for content
