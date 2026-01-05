@@ -111,9 +111,9 @@ export default function Services() {
       id="services" 
       className="relative min-h-[200vh] flex flex-col justify-center overflow-hidden bg-[#F5F5F5]"
     >
-      <div className="w-full px-6 md:px-12 lg:px-20 py-16 md:py-24">
+      <div className="w-full px-6 md:px-12 lg:px-20 pt-0 pb-16 md:pb-24">
         {/* Wavy Line at Top */}
-        <div className="relative mb-16 h-3 md:h-4 overflow-visible">
+        <div className="relative mb-8 h-3 md:h-4 overflow-visible">
           <svg 
             className="absolute top-0 left-0 w-full"
             viewBox="0 0 1200 40" 
@@ -131,8 +131,6 @@ export default function Services() {
           </svg>
         </div>
 
-        {/* Horizontal Line above numbers */}
-        <div className="border-t border-blue-500 mb-8" />
 
         {/* Section Heading */}
         <div className="mb-12 md:mb-16">
@@ -142,7 +140,7 @@ export default function Services() {
         </div>
 
         {/* Services Container with Marquee Effect */}
-        <div className="overflow-hidden border-t border-b border-blue-500">
+        <div className="overflow-hidden">
           <motion.div
             className="flex"
             style={{
@@ -156,7 +154,7 @@ export default function Services() {
               return (
                 <div
                   key={`${service.number}-${index}`}
-                  className={`flex-shrink-0 w-[90vw] md:w-[45vw] lg:w-[23vw] px-6 md:px-8 lg:px-10 ${!isFirstInGroup ? 'border-l border-blue-500' : ''}`}
+                  className="flex-shrink-0 w-[90vw] md:w-[45vw] lg:w-[23vw] px-6 md:px-8 lg:px-10"
                 >
                   <div className="relative h-full pb-8">
                     {/* Number */}
@@ -171,10 +169,6 @@ export default function Services() {
                       </div>
                     </div>
 
-                    {/* Vertical Line Separator - only between services, not on last */}
-                    {!isLastInGroup && (
-                      <div className="absolute right-0 top-0 bottom-0 w-px bg-blue-500 hidden lg:block" />
-                    )}
 
                   {/* Title */}
                   <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 leading-tight" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
