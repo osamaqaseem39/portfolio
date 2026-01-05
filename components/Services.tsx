@@ -94,7 +94,7 @@ export default function Services() {
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"]
+    offset: ["start start", "end end"]
   });
 
   // Marquee movement: moves from right to left as scroll progresses
