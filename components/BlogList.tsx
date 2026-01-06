@@ -6,7 +6,7 @@ import { HiExternalLink, HiCalendar } from "react-icons/hi";
 import { useClickSound } from "@/hooks/useAudio";
 import Link from "next/link";
 import Image from "next/image";
-import { getAllBlogPosts, BlogPost } from "@/lib/blogData";
+import { getAllBlogPosts } from "@/lib/blogData";
 import { useState, useEffect } from "react";
 
 export default function BlogList() {
@@ -14,27 +14,29 @@ export default function BlogList() {
     triggerOnce: true,
     threshold: 0.1,
   });
+  const [isMounted, setIsMounted] = useState(false);
   const playClickSound = useClickSound();
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [blogPosts, setBlogPosts] = useState<ReturnType<typeof getAllBlogPosts>>([]);
   
   useEffect(() => {
+    setIsMounted(true);
     try {
       const posts = getAllBlogPosts();
-      console.log("Blog posts loaded:", posts.length);
+      console.log("BlogList: Loaded", posts.length, "posts");
       setBlogPosts(posts);
-      setIsLoading(false);
     } catch (error) {
-      console.error("Error loading blog posts:", error);
-      setIsLoading(false);
+      console.error("BlogList: Error loading posts", error);
     }
   }, []);
 
+  // Always show content, animate when in view or mounted
+  const shouldAnimate = inView || isMounted;
+
   return (
-    <section ref={ref} id="blog" className="py-20 md:py-32 px-4 md:px-8 bg-white min-h-screen">
-      <div className="container mx-auto max-w-7xl">
+    <section ref={ref} id="blog" className="py-20 md:py-32 px-4 md:px-8 bg-white min-h-screen" style={{ display: 'block', visibility: 'visible' }}>
+      <div className="container mx-auto max-w-7xl" style={{ display: 'block', visibility: 'visible' }}>
         {/* Heading */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16" style={{ display: 'block', visibility: 'visible' }}>
           <h1
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
             style={{ 
@@ -53,25 +55,19 @@ export default function BlogList() {
         </div>
 
         {/* Blog Posts Grid */}
-        {isLoading ? (
-          <div className="text-center py-12">
-            <p className="text-gray-500" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
-              Loading blog posts...
-            </p>
-          </div>
-        ) : blogPosts.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-gray-500" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
-              No blog posts available at the moment.
+        {blogPosts.length === 0 ? (
+          <div className="text-center py-12" style={{ display: 'block', visibility: 'visible' }}>
+            <p className="text-gray-500" style={{ fontFamily: "var(--font-absans), sans-serif", color: '#6b7280' }}>
+              No blog posts available at the moment. (Count: {blogPosts.length})
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" style={{ display: 'grid', visibility: 'visible' }}>
             {blogPosts.map((post, index) => (
               <motion.article
                 key={post.slug}
                 initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-white rounded-lg border-2 border-gray-200 overflow-hidden hover:border-[#C9FF00] transition-all shadow-sm hover:shadow-md group"
                 whileHover={{ y: -5 }}

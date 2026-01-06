@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { BlogPost } from "@/lib/blogData";
 import ReactMarkdown from "react-markdown";
+import React from "react";
 
 interface BlogPostContentProps {
   post: BlogPost;
@@ -18,23 +19,31 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
     triggerOnce: true,
     threshold: 0.1,
   });
+  const [isMounted, setIsMounted] = React.useState(false);
   const playClickSound = useClickSound();
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Ensure content is a string
   const content = typeof post.content === 'string' ? post.content.trim() : '';
+
+  // Always show content, animate when in view or mounted
+  const shouldAnimate = inView || isMounted;
 
   return (
     <article ref={ref} className="py-20 md:py-32 px-4 md:px-8 bg-white">
       <div className="container mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           {/* Back Button */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            animate={shouldAnimate ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-8"
           >
@@ -51,7 +60,7 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
           {/* Header Image */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mb-8"
           >
@@ -78,7 +87,7 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
           {/* Post Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mb-8"
           >
@@ -132,7 +141,7 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             className="prose prose-lg max-w-none prose-gray"
             style={{ fontFamily: "var(--font-absans), sans-serif", color: "#374151" }}
@@ -242,7 +251,7 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
           {/* Author Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
             className="mt-12 pt-8 border-t border-gray-200"
           >
