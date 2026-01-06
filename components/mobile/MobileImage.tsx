@@ -23,11 +23,11 @@ export default function MobileImage() {
     <motion.section 
       ref={viewRef}
       id="services" 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-900 py-12"
+      className="relative flex items-center justify-center overflow-hidden bg-gray-900 py-6"
     >
       <div className="w-full px-4">
         {/* Marquee Text */}
-        <div className="relative w-full py-8 overflow-hidden mb-6">
+        <div className="relative w-full py-4 overflow-hidden mb-4">
           <motion.div
             className="flex whitespace-nowrap"
             animate={{

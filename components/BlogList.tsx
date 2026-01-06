@@ -73,7 +73,7 @@ export default function BlogList() {
                 whileHover={{ y: -5 }}
               >
                 <Link href={`/blog/${post.slug}`} onClick={playClickSound}>
-                  <div className="h-48 relative overflow-hidden bg-gray-100">
+                  <div className="h-48 relative overflow-hidden bg-gray-100 rounded-t-lg">
                     {post.image ? (
                       <Image
                         src={post.image}
@@ -81,6 +81,9 @@ export default function BlogList() {
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        quality={90}
+                        priority={index < 3}
+                        loading={index < 3 ? "eager" : "lazy"}
                       />
                     ) : (
                       <div className="h-full w-full bg-gradient-to-br from-[#C9FF00] to-[#B8E600] flex items-center justify-center">

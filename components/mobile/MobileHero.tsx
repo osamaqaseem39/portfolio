@@ -36,7 +36,7 @@ export default function MobileHero() {
           muted
           playsInline
           loop
-          className="w-full h-full object-cover opacity-30"
+          className="w-[45%] h-[45%] max-w-[280px] max-h-[280px] object-cover opacity-30"
           style={{
             filter: 'grayscale(1)',
           }}

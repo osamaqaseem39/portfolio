@@ -20,10 +20,7 @@ import MobileImage from "@/components/mobile/MobileImage";
 import MobileServices from "@/components/mobile/MobileServices";
 import MobileProjects from "@/components/mobile/MobileProjects";
 import MobileExperience from "@/components/mobile/MobileExperience";
-import MobileBlog from "@/components/mobile/MobileBlog";
-import MobileContact from "@/components/mobile/MobileContact";
 import MobileFooter from "@/components/mobile/MobileFooter";
-import MobileAbout from "@/components/mobile/MobileAbout";
 import Contact from "@/components/Contact";
 
 export default function Home() {
@@ -81,9 +78,6 @@ export default function Home() {
         <MobileServices />
         <MobileProjects />
         <MobileExperience />
-        <MobileAbout />
-        <MobileBlog />
-        <MobileContact />
         <MobileFooter />
       </main>
     );

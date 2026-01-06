@@ -50,16 +50,14 @@ export default function MobileHeader() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-white shadow-md" : "bg-transparent"
+          isScrolled ? "bg-white shadow-md" : "bg-white/90 backdrop-blur-sm"
         }`}
       >
         <nav className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <motion.a
               href="/"
-              className={`text-xl font-bold transition-colors ${
-                isScrolled ? "text-black" : "text-white"
-              }`}
+              className="text-xl font-bold text-black transition-colors hover:text-gray-700"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={playClickSound}
@@ -72,9 +70,7 @@ export default function MobileHeader() {
                 playClickSound();
                 setIsMenuOpen(true);
               }}
-              className={`p-2 rounded-lg transition-colors ${
-                isScrolled ? "text-black" : "text-white"
-              }`}
+              className="p-2 rounded-lg text-black hover:text-gray-700 transition-colors"
               whileTap={{ scale: 0.9 }}
             >
               <HiMenu size={24} />

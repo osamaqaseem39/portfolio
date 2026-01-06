@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useClickSound } from "@/hooks/useAudio";
+import Link from "next/link";
 
 interface ExperienceItem {
   title: string;
@@ -58,7 +59,7 @@ export default function MobileExperience() {
           className="mb-12"
         >
           <motion.p
-            className="text-xl font-bold leading-tight mb-6 text-black"
+            className="text-lg font-bold leading-tight mb-6 text-black"
             style={{ 
               fontFamily: "var(--font-absans), sans-serif",
             }}
@@ -68,27 +69,27 @@ export default function MobileExperience() {
 
           <div className="w-full h-px bg-gray-300 mb-6" />
 
-          <div className="flex gap-8 mb-6">
+          <div className="flex gap-6 mb-6">
             <div>
-              <div className="text-4xl font-bold mb-2 text-[#C9FF00]" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+              <div className="text-3xl font-bold mb-1.5 text-[#C9FF00]" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
                 4+
               </div>
-              <div className="text-sm uppercase tracking-wider text-black">
+              <div className="text-xs uppercase tracking-wider text-black">
                 Years of Experience
               </div>
             </div>
 
             <div>
-              <div className="text-4xl font-bold mb-2 text-[#C9FF00]" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+              <div className="text-3xl font-bold mb-1.5 text-[#C9FF00]" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
                 30+
               </div>
-              <div className="text-sm uppercase tracking-wider text-black">
+              <div className="text-xs uppercase tracking-wider text-black">
                 Projects Completed
               </div>
             </div>
           </div>
 
-          <p className="text-base leading-relaxed text-black">
+          <p className="text-sm leading-relaxed text-black">
             Every product I build starts with understanding user goals and translating them into intuitive, high-performance experiences. From concept to launch, I focus on meaningful results—boosting user engagement, retention, and overall business impact.
           </p>
         </motion.div>
@@ -100,7 +101,7 @@ export default function MobileExperience() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mb-8"
         >
-          <h2 className="text-3xl font-bold text-black" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+          <h2 className="text-2xl font-bold text-black" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
             Experience
           </h2>
         </motion.div>
@@ -108,36 +109,36 @@ export default function MobileExperience() {
         {/* Timeline - Vertical */}
         <div className="relative">
           {/* Vertical Line */}
-          <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-300" />
+          <div className="absolute left-[14px] top-0 bottom-0 w-0.5 bg-gray-300" />
 
           {/* Timeline Items */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: -20 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.6 + index * 0.15 }}
-                className="relative pl-12"
+                transition={{ duration: 0.6, delay: 0.6 + index * 0.15 }}
+                className="relative pl-10"
               >
                 {/* Dot */}
-                <div className="absolute left-0 top-2 w-3 h-3 rounded-full bg-[#C9FF00] border-2 border-white" />
+                <div className="absolute left-[6px] top-1.5 w-4 h-4 rounded-full bg-[#C9FF00] border-2 border-white shadow-md z-10" />
 
                 <div className="mb-2">
-                  <h3 className="text-lg font-bold mb-1 text-black" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                  <h3 className="text-base font-bold mb-1 text-black" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
                     {exp.title}
                   </h3>
-                  <p className="text-base font-semibold text-[#C9FF00]">
+                  <p className="text-sm font-semibold text-[#C9FF00]">
                     {exp.company}
                   </p>
                 </div>
                 
-                <div className="flex flex-col gap-1 mb-3 text-sm text-gray-600">
+                <div className="flex flex-col gap-0.5 mb-2 text-xs text-gray-600">
                   <span>{exp.period}</span>
-                  <span>{exp.location}</span>
+                  <span className="text-xs">{exp.location}</span>
                 </div>
                 
-                <p className="leading-relaxed text-sm text-black">
+                <p className="leading-relaxed text-xs text-black">
                   {exp.description}
                 </p>
               </motion.div>
@@ -152,24 +153,23 @@ export default function MobileExperience() {
           transition={{ duration: 0.8, delay: 1.2 }}
           className="mt-12 text-center"
         >
-          <h3 className="text-2xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+          <h3 className="text-xl font-bold mb-3 text-black" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
             Ready to bring your project to life?
           </h3>
-          <p className="text-sm mb-6 text-gray-600">
+          <p className="text-xs mb-5 text-gray-600">
             Let's work together to create something amazing. Get in touch and let's discuss your next project.
           </p>
-          <motion.button
-            onClick={() => {
-              playClickSound();
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-6 py-3 bg-[#C9FF00] text-gray-900 font-bold rounded-lg text-base hover:bg-[#C9FF00]/90 transition-colors"
-            style={{ fontFamily: "var(--font-absans), sans-serif" }}
-          >
-            Get In Touch
-          </motion.button>
+          <Link href="/contact">
+            <motion.button
+              onClick={playClickSound}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-5 py-2.5 bg-[#C9FF00] text-gray-900 font-bold rounded-lg text-sm hover:bg-[#C9FF00]/90 transition-colors"
+              style={{ fontFamily: "var(--font-absans), sans-serif" }}
+            >
+              Get In Touch
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
     </motion.section>

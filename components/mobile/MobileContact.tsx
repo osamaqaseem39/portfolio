@@ -68,7 +68,7 @@ export default function MobileContact() {
   };
 
   return (
-    <section ref={ref} id="contact" className="py-16 px-4 min-h-screen flex items-center">
+    <section ref={ref} id="contact" className="py-12 px-4">
       <div className="container mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -80,10 +80,10 @@ export default function MobileContact() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-center mb-12"
+            className="text-center mb-8"
           >
             <h2
-              className="text-3xl font-bold mb-4"
+              className="text-2xl font-bold mb-3"
               style={{ 
                 fontFamily: "var(--font-absans), sans-serif",
                 color: "rgb(17, 24, 39)",
@@ -92,14 +92,14 @@ export default function MobileContact() {
               Get In Touch
             </h2>
             <p
-              className="text-base text-gray-600"
+              className="text-sm text-gray-600 px-2"
               style={{ fontFamily: "var(--font-absans), sans-serif" }}
             >
               Let's work together to bring your ideas to life. Reach out and let's start a conversation.
             </p>
           </motion.div>
 
-          <div className="space-y-6">
+          <div className="space-y-5">
             {/* Contact Cards */}
             <div className="space-y-4">
               <motion.a
@@ -152,7 +152,7 @@ export default function MobileContact() {
               className="bg-white rounded-lg p-5 border-2 border-gray-200 shadow-sm"
             >
               <h3
-                className="text-xl font-bold mb-4 text-center"
+                className="text-lg font-bold mb-4 text-center"
                 style={{ 
                   fontFamily: "var(--font-absans), sans-serif",
                   color: "rgb(17, 24, 39)",
@@ -160,7 +160,7 @@ export default function MobileContact() {
               >
                 Send a Message
               </h3>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-3">
                 <div>
                   <label
                     htmlFor="name"
@@ -176,7 +176,7 @@ export default function MobileContact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:border-[#C9FF00] focus:outline-none transition-colors text-sm"
+                    className="w-full px-3 py-2.5 border-2 border-gray-300 rounded-lg focus:border-[#C9FF00] focus:outline-none transition-colors text-sm"
                     style={{ fontFamily: "var(--font-absans), sans-serif" }}
                     placeholder="Your Name"
                   />
@@ -196,7 +196,7 @@ export default function MobileContact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:border-[#C9FF00] focus:outline-none transition-colors text-sm"
+                    className="w-full px-3 py-2.5 border-2 border-gray-300 rounded-lg focus:border-[#C9FF00] focus:outline-none transition-colors text-sm"
                     style={{ fontFamily: "var(--font-absans), sans-serif" }}
                     placeholder="your.email@example.com"
                   />
@@ -216,7 +216,7 @@ export default function MobileContact() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:border-[#C9FF00] focus:outline-none transition-colors text-sm"
+                    className="w-full px-3 py-2.5 border-2 border-gray-300 rounded-lg focus:border-[#C9FF00] focus:outline-none transition-colors text-sm"
                     style={{ fontFamily: "var(--font-absans), sans-serif" }}
                     placeholder="What's this about?"
                   />
@@ -235,8 +235,8 @@ export default function MobileContact() {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={5}
-                    className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:border-[#C9FF00] focus:outline-none transition-colors resize-none text-sm"
+                    rows={4}
+                    className="w-full px-3 py-2.5 border-2 border-gray-300 rounded-lg focus:border-[#C9FF00] focus:outline-none transition-colors resize-none text-sm"
                     style={{ fontFamily: "var(--font-absans), sans-serif" }}
                     placeholder="Tell me about your project or idea..."
                   />
@@ -280,21 +280,21 @@ export default function MobileContact() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="bg-gray-900 rounded-lg p-6 text-center"
+              className="bg-gray-900 rounded-lg p-5 text-center"
             >
               <h3
-                className="text-xl font-bold mb-3 text-white"
+                className="text-lg font-bold mb-2 text-white"
                 style={{ fontFamily: "var(--font-absans), sans-serif" }}
               >
                 Let's Connect
               </h3>
               <p
-                className="text-gray-400 mb-6 text-sm"
+                className="text-gray-400 mb-4 text-xs"
                 style={{ fontFamily: "var(--font-absans), sans-serif" }}
               >
                 Follow me on social media or reach out directly
               </p>
-              <div className="flex flex-wrap items-center justify-center gap-3">
+              <div className="flex flex-wrap items-center justify-center gap-2">
                 <motion.a
                   href="https://www.linkedin.com/in/osamaqaseem39"
                   target="_blank"

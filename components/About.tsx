@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const provenImpact = [
   {
@@ -534,22 +535,26 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="flex flex-wrap justify-center gap-4"
             >
-              <motion.a
-                href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-[#C9FF00] text-black font-bold rounded-lg hover:bg-[#B8E600] transition-colors"
-              >
-                Let's Talk
-              </motion.a>
-              <motion.a
-                href="#projects"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-black transition-colors"
-              >
-                View Projects
-              </motion.a>
+              <Link href="/contact">
+                <motion.a
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-[#C9FF00] text-black font-bold rounded-lg hover:bg-[#B8E600] transition-colors inline-block cursor-pointer"
+                  style={{ fontFamily: "var(--font-absans), sans-serif" }}
+                >
+                  Let's Talk
+                </motion.a>
+              </Link>
+              <Link href="/#projects">
+                <motion.a
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-black transition-colors inline-block cursor-pointer"
+                  style={{ fontFamily: "var(--font-absans), sans-serif" }}
+                >
+                  View Projects
+                </motion.a>
+              </Link>
             </motion.div>
           </div>
         </div>

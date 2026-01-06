@@ -27,7 +27,7 @@ export default function MobileBlog() {
   }, []);
 
   return (
-    <section ref={ref} id="blog" className="py-16 px-4 bg-white">
+    <section ref={ref} id="blog" className="py-12 px-4 bg-white">
       <div className="container mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -39,10 +39,10 @@ export default function MobileBlog() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-center mb-12"
+            className="text-center mb-8"
           >
             <h2
-              className="text-3xl font-bold mb-3"
+              className="text-2xl font-bold mb-2"
               style={{ 
                 fontFamily: "var(--font-absans), sans-serif",
                 color: "rgb(17, 24, 39)",
@@ -51,7 +51,7 @@ export default function MobileBlog() {
               Latest Blog Posts
             </h2>
             <p
-              className="text-base text-gray-600"
+              className="text-sm text-gray-600 px-2"
               style={{ fontFamily: "var(--font-absans), sans-serif" }}
             >
               Read my thoughts on web development, technology, and best practices
@@ -66,7 +66,7 @@ export default function MobileBlog() {
               </p>
             </div>
           ) : (
-            <div className="space-y-6">
+            <div className="space-y-4">
               {blogPosts.map((post, index) => (
               <motion.article
                 key={post.slug}
@@ -76,7 +76,7 @@ export default function MobileBlog() {
                 className="bg-white rounded-lg border-2 border-gray-200 overflow-hidden hover:border-[#C9FF00] transition-all shadow-sm group"
               >
                 <Link href={`/blog/${post.slug}`} onClick={playClickSound}>
-                  <div className="h-40 relative overflow-hidden bg-gray-100">
+                  <div className="h-36 relative overflow-hidden bg-gray-100 rounded-t-lg">
                     {post.image ? (
                       <Image
                         src={post.image}
@@ -84,6 +84,9 @@ export default function MobileBlog() {
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
                         sizes="100vw"
+                        quality={90}
+                        priority={true}
+                        loading="eager"
                       />
                     ) : (
                       <div className={`h-full w-full bg-gradient-to-br ${
@@ -95,9 +98,9 @@ export default function MobileBlog() {
                       </div>
                     )}
                   </div>
-                  <div className="p-5">
+                  <div className="p-4">
                     <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
-                      <HiCalendar size={14} />
+                      <HiCalendar size={12} />
                       <span style={{ fontFamily: "var(--font-absans), sans-serif" }}>
                         {new Date(post.date).toLocaleDateString("en-US", {
                           year: "numeric",
@@ -107,20 +110,20 @@ export default function MobileBlog() {
                       </span>
                     </div>
                     <h4
-                      className="text-lg font-bold mb-2 text-gray-900 group-hover:text-[#C9FF00] transition-colors"
+                      className="text-base font-bold mb-2 text-gray-900 group-hover:text-[#C9FF00] transition-colors"
                       style={{ fontFamily: "var(--font-absans), sans-serif" }}
                     >
                       {post.title}
                     </h4>
                     <p
-                      className="text-gray-600 text-sm mb-3 line-clamp-2"
+                      className="text-gray-600 text-xs mb-3 line-clamp-2 leading-relaxed"
                       style={{ fontFamily: "var(--font-absans), sans-serif" }}
                     >
                       {post.description}
                     </p>
                     <div className="text-[#C9FF00] font-semibold text-xs flex items-center gap-2 group-hover:gap-3 transition-all">
                       Read More
-                      <HiExternalLink size={14} />
+                      <HiExternalLink size={12} />
                     </div>
                   </div>
                 </Link>
@@ -134,11 +137,11 @@ export default function MobileBlog() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-center mt-8"
+            className="text-center mt-6"
           >
             <Link
               href="/blog"
-              className="inline-block px-6 py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-[#C9FF00] hover:text-gray-900 transition-colors text-sm"
+              className="inline-block px-5 py-2.5 bg-gray-900 text-white rounded-lg font-semibold hover:bg-[#C9FF00] hover:text-gray-900 transition-colors text-sm"
               style={{ fontFamily: "var(--font-absans), sans-serif" }}
               onClick={playClickSound}
             >

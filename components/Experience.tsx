@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-mot
 import { useInView } from "react-intersection-observer";
 import { useRef, useState } from "react";
 import { useClickSound } from "@/hooks/useAudio";
+import Link from "next/link";
 
 interface ExperienceItem {
   title: string;
@@ -370,18 +371,17 @@ export default function Experience() {
             >
               Let's work together to create something amazing. Get in touch and let's discuss your next project.
             </motion.p>
-            <motion.button
-              onClick={() => {
-                playClickSound();
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 md:px-12 py-4 md:py-5 bg-[#C9FF00] text-gray-900 font-bold rounded-lg text-lg md:text-xl hover:bg-[#C9FF00]/90 transition-colors shadow-lg shadow-[#C9FF00]/20"
-              style={{ fontFamily: "var(--font-absans), sans-serif" }}
-            >
-              Get In Touch
-            </motion.button>
+            <Link href="/contact">
+              <motion.button
+                onClick={playClickSound}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 md:px-12 py-4 md:py-5 bg-[#C9FF00] text-gray-900 font-bold rounded-lg text-lg md:text-xl hover:bg-[#C9FF00]/90 transition-colors shadow-lg shadow-[#C9FF00]/20"
+                style={{ fontFamily: "var(--font-absans), sans-serif" }}
+              >
+                Get In Touch
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
       </div>
