@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useClickSound } from "@/hooks/useAudio";
 import Link from "next/link";
+import AnimatedLinkText from "../AnimatedLinkText";
 
 interface ExperienceItem {
   title: string;
@@ -169,7 +170,7 @@ export default function MobileExperience() {
               className="inline-block px-5 py-2.5 bg-[#C9FF00] text-gray-900 font-bold rounded-lg text-sm hover:bg-[#C9FF00]/90 transition-colors"
               style={{ fontFamily: "var(--font-absans), sans-serif" }}
             >
-              Get In Touch
+              <AnimatedLinkText>Get In Touch</AnimatedLinkText>
             </Link>
           </motion.div>
         </motion.div>

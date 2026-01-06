@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { useRef, useState } from "react";
 import { useClickSound } from "@/hooks/useAudio";
 import Link from "next/link";
+import AnimatedLinkText from "./AnimatedLinkText";
 
 interface ExperienceItem {
   title: string;
@@ -379,7 +380,7 @@ export default function Experience() {
                 className="px-8 md:px-12 py-4 md:py-5 bg-[#C9FF00] text-gray-900 font-bold rounded-lg text-lg md:text-xl hover:bg-[#C9FF00]/90 transition-colors shadow-lg shadow-[#C9FF00]/20"
                 style={{ fontFamily: "var(--font-absans), sans-serif" }}
               >
-                Get In Touch
+                <AnimatedLinkText>Get In Touch</AnimatedLinkText>
               </motion.button>
             </Link>
           </motion.div>

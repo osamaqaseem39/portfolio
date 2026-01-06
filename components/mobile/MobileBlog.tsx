@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllBlogPosts, BlogPost } from "@/lib/blogData";
 import { useState, useEffect } from "react";
+import AnimatedLinkText from "../AnimatedLinkText";
 
 export default function MobileBlog() {
   const [ref, inView] = useInView({
@@ -76,7 +77,7 @@ export default function MobileBlog() {
                 className="bg-white rounded-lg border-2 border-gray-200 overflow-hidden hover:border-[#C9FF00] transition-all shadow-sm group"
               >
                 <Link href={`/blog/${post.slug}`} onClick={playClickSound}>
-                  <div className="h-36 relative overflow-hidden bg-gray-100 rounded-t-lg">
+                  <div className="aspect-[16/9] relative overflow-hidden bg-gray-100 rounded-t-lg">
                     {post.image ? (
                       <Image
                         src={post.image}
@@ -122,7 +123,7 @@ export default function MobileBlog() {
                       {post.description}
                     </p>
                     <div className="text-[#C9FF00] font-semibold text-xs flex items-center gap-2 group-hover:gap-3 transition-all">
-                      Read More
+                      <AnimatedLinkText>Read More</AnimatedLinkText>
                       <HiExternalLink size={12} />
                     </div>
                   </div>
@@ -145,7 +146,7 @@ export default function MobileBlog() {
               style={{ fontFamily: "var(--font-absans), sans-serif" }}
               onClick={playClickSound}
             >
-              View All Posts
+              <AnimatedLinkText>View All Posts</AnimatedLinkText>
             </Link>
           </motion.div>
         </motion.div>

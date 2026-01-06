@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useRef } from "react";
 import Image from "next/image";
+import ReadingProgressText from "../ReadingProgressText";
 
 export default function MobileAbout() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -45,12 +46,14 @@ export default function MobileAbout() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="space-y-4"
             >
-              <p className="text-base text-black leading-relaxed">
-                I'm <span className="font-semibold">Muhammad Osama Qaseem</span>, a Full Stack Developer with 4+ years of experience crafting fast, scalable digital experiences. Currently working at <span className="font-semibold">Voxity</span> as a Full Stack Developer in Dubai, United Arab Emirates (Remote), where I've developed comprehensive Web3 solutions including the complete DEGN ecosystem, TOKENVERSE platform, and various blockchain-based applications.
-              </p>
-              <p className="text-base text-black leading-relaxed">
-                My focus spans Web3 development, SaaS platforms, and scalable web applications. I specialize in building decentralized applications, token exchange platforms, and blockchain integrations using technologies like Solana, Ethereum, Next.js, NestJS, and modern blockchain libraries.
-              </p>
+              <ReadingProgressText
+                highlightColor="#C9FF00"
+                defaultColor="#111827"
+                className="text-base leading-relaxed"
+                style={{ fontFamily: "var(--font-absans), sans-serif" }}
+              >
+                I'm Muhammad Osama Qaseem – a Full Stack Developer crafting enterprise-grade, scalable digital solutions. I specialize in developing enterprise ERP systems with ASP.NET Core 8, multi-tenant SaaS platforms, cross-platform mobile applications with Flutter, and Web3 solutions. I've built 15+ production applications and currently work at Voxity as a Full Stack Developer on multiple Web3 projects.
+              </ReadingProgressText>
             </motion.div>
 
             {/* Developer Image */}

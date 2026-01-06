@@ -157,44 +157,46 @@ const projects = [
   },
 ];
 
-interface ProjectItemProps {
+interface ProjectCardProps {
   project: typeof projects[0];
   index: number;
-  scrollYProgress: any;
   inView: boolean;
   playClickSound: () => void;
 }
 
-function ProjectItem({ project, index, scrollYProgress, inView, playClickSound }: ProjectItemProps) {
-  const imageScale = useTransform(
-    scrollYProgress,
-    [0, 0.1 + index * 0.05, 0.2 + index * 0.05, 1],
-    [0.5, 0.5, 1, 1]
-  );
+function ProjectCard({ project, index, inView, playClickSound }: ProjectCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "center center"]
+  });
+  const imageScale = useTransform(scrollYProgress, [0, 1], [0.5, 1], { clamp: true });
+  const cardScale = useTransform(scrollYProgress, [0, 1], [0.7, 1], { clamp: true });
+  const blurValue = useTransform(scrollYProgress, [0, 1], [20, 0], { clamp: true });
+  const blur = useTransform(blurValue, (value) => `blur(${value}px)`);
 
   return (
     <motion.div
+      ref={cardRef}
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group relative rounded-lg overflow-hidden cursor-pointer"
-      style={{ aspectRatio: "4/3" }}
+      style={{ aspectRatio: "4/3", scale: cardScale }}
+      className="group relative rounded-lg overflow-hidden cursor-pointer bg-gray-800/50 backdrop-blur-sm border border-gray-700/50"
     >
       {/* Project Image with 4:3 aspect ratio */}
-      <div className="relative w-full h-full overflow-hidden">
-        <motion.div
-          style={{ scale: imageScale }}
-          className="relative w-full h-full"
-        >
-          <Image
-            src={project.image}
-            alt={project.name}
-            fill
-            className="object-cover group-hover:scale-110 transition-transform duration-500"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        </motion.div>
-      </div>
+      <motion.div 
+        className="relative w-full h-full rounded-lg overflow-hidden"
+        style={{ scale: imageScale, filter: blur }}
+      >
+        <Image
+          src={project.image}
+          alt={project.name}
+          fill
+          className="object-cover group-hover:scale-110 transition-transform duration-500"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      </motion.div>
       
       {/* Overlay that appears on hover */}
       <div className="absolute inset-0 bg-gray-900/95 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-6 md:p-8">
@@ -238,7 +240,6 @@ function ProjectItem({ project, index, scrollYProgress, inView, playClickSound }
 }
 
 export default function Projects() {
-  const sectionRef = useRef<HTMLElement>(null);
   const [viewRef, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -246,16 +247,11 @@ export default function Projects() {
   const playClickSound = useClickSound();
   const [showAll, setShowAll] = useState(false);
   
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-  
   const displayedProjects = showAll ? projects : projects.slice(0, 6);
 
   return (
     <motion.section 
-      ref={sectionRef}
+      ref={viewRef}
       id="projects" 
       className="relative min-h-screen flex flex-col justify-center bg-gray-900 overflow-hidden"
     >
@@ -275,11 +271,10 @@ export default function Projects() {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {displayedProjects.map((project, index) => (
-            <ProjectItem
+            <ProjectCard
               key={project.name}
               project={project}
               index={index}
-              scrollYProgress={scrollYProgress}
               inView={inView}
               playClickSound={playClickSound}
             />

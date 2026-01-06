@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
 import { HiExternalLink } from "react-icons/hi";
 import { useClickSound } from "@/hooks/useAudio";
 import Image from "next/image";
@@ -52,43 +52,46 @@ const projects = [
   },
 ];
 
-interface ProjectItemProps {
+interface MobileProjectCardProps {
   project: typeof projects[0];
   index: number;
-  scrollYProgress: any;
   inView: boolean;
   playClickSound: () => void;
 }
 
-function ProjectItem({ project, index, scrollYProgress, inView, playClickSound }: ProjectItemProps) {
-  const imageScale = useTransform(
-    scrollYProgress,
-    [0, 0.2 + index * 0.1, 0.4 + index * 0.1, 1],
-    [0.5, 0.5, 1, 1]
-  );
+function MobileProjectCard({ project, index, inView, playClickSound }: MobileProjectCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "center center"]
+  });
+  const imageScale = useTransform(scrollYProgress, [0, 1], [0.5, 1], { clamp: true });
+  const cardScale = useTransform(scrollYProgress, [0, 1], [0.7, 1], { clamp: true });
+  const blurValue = useTransform(scrollYProgress, [0, 1], [20, 0], { clamp: true });
+  const blur = useTransform(blurValue, (value) => `blur(${value}px)`);
 
   return (
     <motion.div
+      ref={cardRef}
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="relative rounded-lg overflow-hidden bg-gray-800"
+      style={{ scale: cardScale }}
+      className="relative rounded-lg overflow-hidden bg-gray-800/80 backdrop-blur-sm border border-gray-700/50"
     >
       {/* Project Image */}
-      <div className="relative w-full aspect-[4/3] overflow-hidden">
-        <motion.div
-          style={{ scale: imageScale }}
-          className="relative w-full h-full"
-        >
-          <Image
-            src={project.image}
-            alt={project.name}
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-        </motion.div>
-      </div>
+      <motion.div 
+        className="relative w-full aspect-[4/3] rounded-lg overflow-hidden"
+        style={{ scale: imageScale, filter: blur }}
+      >
+        <Image
+          src={project.image}
+          alt={project.name}
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+      </motion.div>
       
       {/* Project Info */}
       <div className="p-4">
@@ -134,7 +137,6 @@ function ProjectItem({ project, index, scrollYProgress, inView, playClickSound }
 }
 
 export default function MobileProjects() {
-  const sectionRef = useRef<HTMLElement>(null);
   const [viewRef, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -142,16 +144,11 @@ export default function MobileProjects() {
   const playClickSound = useClickSound();
   const [showAll, setShowAll] = useState(false);
   
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-  
   const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
     <motion.section 
-      ref={sectionRef}
+      ref={viewRef}
       id="projects" 
       className="relative min-h-screen flex flex-col justify-center bg-gray-900 overflow-hidden py-16"
     >
@@ -171,11 +168,10 @@ export default function MobileProjects() {
         {/* Projects Grid - Single Column */}
         <div className="space-y-6">
           {displayedProjects.map((project, index) => (
-            <ProjectItem
+            <MobileProjectCard
               key={project.name}
               project={project}
               index={index}
-              scrollYProgress={scrollYProgress}
               inView={inView}
               playClickSound={playClickSound}
             />

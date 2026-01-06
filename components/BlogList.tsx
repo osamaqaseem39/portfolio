@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllBlogPosts } from "@/lib/blogData";
 import { useState, useEffect } from "react";
+import AnimatedLinkText from "./AnimatedLinkText";
 
 export default function BlogList() {
   const [ref, inView] = useInView({
@@ -73,7 +74,7 @@ export default function BlogList() {
                 whileHover={{ y: -5 }}
               >
                 <Link href={`/blog/${post.slug}`} onClick={playClickSound}>
-                  <div className="h-48 relative overflow-hidden bg-gray-100 rounded-t-lg">
+                  <div className="aspect-[16/9] relative overflow-hidden bg-gray-100 rounded-t-lg">
                     {post.image ? (
                       <Image
                         src={post.image}
@@ -115,7 +116,7 @@ export default function BlogList() {
                       {post.description}
                     </p>
                     <div className="flex items-center gap-2 text-[#C9FF00] font-semibold text-sm group-hover:gap-3 transition-all">
-                      Read More
+                      <AnimatedLinkText>Read More</AnimatedLinkText>
                       <HiExternalLink size={16} />
                     </div>
                   </div>

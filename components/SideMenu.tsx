@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { HiX } from "react-icons/hi";
 import { useClickSound } from "@/hooks/useAudio";
 import { useRouter } from "next/navigation";
+import AnimatedLinkText from "./AnimatedLinkText";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -69,7 +70,9 @@ export default function SideMenu({ isOpen, onClose, isOverlay = false }: SideMen
             transition={{ delay: index * 0.1, duration: 0.3 }}
             onClick={handleLinkClick}
           >
-            {item.name}
+            <AnimatedLinkText style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+              {item.name}
+            </AnimatedLinkText>
             <span className="text-2xl md:text-3xl">+</span>
           </motion.a>
         ))}

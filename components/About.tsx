@@ -5,6 +5,8 @@ import { useInView } from "react-intersection-observer";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import AnimatedLinkText from "./AnimatedLinkText";
+import ReadingProgressText from "./ReadingProgressText";
 
 const provenImpact = [
   {
@@ -244,14 +246,20 @@ export default function About() {
               >
                 Full Stack Developer • .NET Specialist • Mobile Developer • Web3 Expert
               </motion.p>
-              <motion.p
+              <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.5 }}
-                className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+                className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
               >
-                4+ years crafting enterprise-grade, scalable digital solutions across web, mobile, desktop, and blockchain platforms. Currently building the future at <span className="font-semibold text-black">Voxity</span> in Dubai.
-              </motion.p>
+                <ReadingProgressText
+                  highlightColor="#C9FF00"
+                  defaultColor="#4B5563"
+                  style={{ fontFamily: "var(--font-absans), sans-serif" }}
+                >
+                  I'm Muhammad Osama Qaseem – a Full Stack Developer crafting enterprise-grade, scalable digital solutions. I specialize in developing enterprise ERP systems with ASP.NET Core 8, multi-tenant SaaS platforms, cross-platform mobile applications with Flutter, and Web3 solutions. I've built 15+ production applications and currently work at Voxity as a Full Stack Developer on multiple Web3 projects.
+                </ReadingProgressText>
+              </motion.div>
             </motion.div>
 
             {/* Developer Image with Parallax */}
@@ -521,14 +529,20 @@ export default function About() {
             >
               Ready to Build Something Exceptional?
             </motion.h2>
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg md:text-xl leading-relaxed text-gray-300 mb-8"
+              className="text-lg md:text-xl leading-relaxed mb-8"
             >
-              Whether you need an <strong className="text-white">enterprise ERP system</strong> built with <strong className="text-white">ASP.NET Core 8</strong>, a <strong className="text-white">multi-tenant SaaS platform</strong>, a <strong className="text-white">cross-platform mobile app</strong> with <strong className="text-white">Flutter</strong>, a <strong className="text-white">Point of Sale system</strong>, an <strong className="text-white">e-commerce platform</strong>, a <strong className="text-white">3D gaming website</strong>, a <strong className="text-white">Web3 DApp</strong>, or <strong className="text-white">blockchain integration</strong>, I bring the technical expertise and proven experience to make it happen.
-            </motion.p>
+              <ReadingProgressText
+                highlightColor="#C9FF00"
+                defaultColor="#D1D5DB"
+                style={{ fontFamily: "var(--font-absans), sans-serif" }}
+              >
+                Whether you need an enterprise ERP system built with ASP.NET Core 8, a multi-tenant SaaS platform, a cross-platform mobile app with Flutter, a Point of Sale system, an e-commerce platform, a 3D gaming website, a Web3 DApp, or blockchain integration, I bring the technical expertise and proven experience to make it happen.
+              </ReadingProgressText>
+            </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -542,7 +556,7 @@ export default function About() {
                   className="px-8 py-4 bg-[#C9FF00] text-black font-bold rounded-lg hover:bg-[#B8E600] transition-colors inline-block cursor-pointer"
                   style={{ fontFamily: "var(--font-absans), sans-serif" }}
                 >
-                  Let's Talk
+                  <AnimatedLinkText>Let's Talk</AnimatedLinkText>
                 </motion.a>
               </Link>
               <Link href="/#projects">
@@ -552,7 +566,7 @@ export default function About() {
                   className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-black transition-colors inline-block cursor-pointer"
                   style={{ fontFamily: "var(--font-absans), sans-serif" }}
                 >
-                  View Projects
+                  <AnimatedLinkText>View Projects</AnimatedLinkText>
                 </motion.a>
               </Link>
             </motion.div>

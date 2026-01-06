@@ -6,6 +6,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa6";
 import { useClickSound } from "@/hooks/useAudio";
 import Link from "next/link";
+import AnimatedLinkText from "./AnimatedLinkText";
 
 export default function Footer() {
   const [ref, inView] = useInView({
@@ -32,7 +33,7 @@ export default function Footer() {
                 className="px-8 md:px-12 py-4 md:py-5 bg-[#C9FF00] text-gray-900 font-bold rounded-lg text-lg md:text-xl hover:bg-[#C9FF00]/90 transition-colors shadow-lg shadow-[#C9FF00]/20"
                 style={{ fontFamily: "var(--font-absans), sans-serif" }}
               >
-                Press to Ping Me
+                <AnimatedLinkText>Press to Ping Me</AnimatedLinkText>
               </motion.button>
             </Link>
           </motion.div>

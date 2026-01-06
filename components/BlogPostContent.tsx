@@ -9,6 +9,7 @@ import Image from "next/image";
 import { BlogPost } from "@/lib/blogData";
 import ReactMarkdown from "react-markdown";
 import React from "react";
+import AnimatedLinkText from "./AnimatedLinkText";
 
 interface BlogPostContentProps {
   post: BlogPost;
@@ -53,7 +54,9 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
               onClick={playClickSound}
             >
               <HiArrowLeft size={20} />
-              <span style={{ fontFamily: "var(--font-absans), sans-serif" }}>Back to Blog</span>
+              <AnimatedLinkText style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                Back to Blog
+              </AnimatedLinkText>
             </Link>
           </motion.div>
 
@@ -64,7 +67,7 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mb-8"
           >
-            <div className="h-64 md:h-96 relative rounded-lg overflow-hidden bg-gray-100">
+            <div className="aspect-[16/9] relative rounded-lg overflow-hidden bg-gray-100">
               {post.image ? (
                 <Image
                   src={post.image}
@@ -227,12 +230,13 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
                   a: ({ href, children }: any) => (
                     <a 
                       href={href} 
-                      className="text-[#C9FF00] hover:underline" 
+                      className="text-[#C9FF00] hover:underline inline-block" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      style={{ fontFamily: "var(--font-absans), sans-serif" }}
                     >
-                      {children}
+                      <AnimatedLinkText style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                        {children}
+                      </AnimatedLinkText>
                     </a>
                   ),
                   hr: () => (

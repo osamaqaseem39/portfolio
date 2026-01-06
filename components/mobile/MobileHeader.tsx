@@ -7,6 +7,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa6";
 import { useClickSound } from "@/hooks/useAudio";
 import { useRouter } from "next/navigation";
+import AnimatedLinkText from "../AnimatedLinkText";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -62,7 +63,9 @@ export default function MobileHeader() {
               whileTap={{ scale: 0.95 }}
               onClick={playClickSound}
             >
-              Osama Qaseem
+              <AnimatedLinkText style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                Osama Qaseem
+              </AnimatedLinkText>
             </motion.a>
 
             <motion.button
@@ -121,7 +124,9 @@ export default function MobileHeader() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
                     >
-                      {item.name}
+                      <AnimatedLinkText style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                        {item.name}
+                      </AnimatedLinkText>
                     </motion.button>
                   ))}
                 </div>

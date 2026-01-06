@@ -1,4 +1,7 @@
+"use client";
+
 import type { Viewport } from 'next'
+import AnimatedLinkText from "@/components/AnimatedLinkText";
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -16,7 +19,7 @@ export default function NotFound() {
           href="/" 
           className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
         >
-          Go Home
+          <AnimatedLinkText>Go Home</AnimatedLinkText>
         </a>
       </div>
     </div>
