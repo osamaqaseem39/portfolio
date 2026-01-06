@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useRef, useState } from "react";
 import { HiExternalLink } from "react-icons/hi";
@@ -157,7 +157,88 @@ const projects = [
   },
 ];
 
+interface ProjectItemProps {
+  project: typeof projects[0];
+  index: number;
+  scrollYProgress: any;
+  inView: boolean;
+  playClickSound: () => void;
+}
+
+function ProjectItem({ project, index, scrollYProgress, inView, playClickSound }: ProjectItemProps) {
+  const imageScale = useTransform(
+    scrollYProgress,
+    [0, 0.1 + index * 0.05, 0.2 + index * 0.05, 1],
+    [0.5, 0.5, 1, 1]
+  );
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="group relative rounded-lg overflow-hidden cursor-pointer"
+      style={{ aspectRatio: "4/3" }}
+    >
+      {/* Project Image with 4:3 aspect ratio */}
+      <div className="relative w-full h-full overflow-hidden">
+        <motion.div
+          style={{ scale: imageScale }}
+          className="relative w-full h-full"
+        >
+          <Image
+            src={project.image}
+            alt={project.name}
+            fill
+            className="object-cover group-hover:scale-110 transition-transform duration-500"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </motion.div>
+      </div>
+      
+      {/* Overlay that appears on hover */}
+      <div className="absolute inset-0 bg-gray-900/95 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-6 md:p-8">
+        {/* Top section with title and link */}
+        <div className="flex items-start justify-between mb-4">
+          <h3 className="text-xl md:text-2xl font-bold text-white" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+            {project.name}
+          </h3>
+          <motion.a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => playClickSound()}
+            whileHover={{ scale: 1.2, rotate: 15 }}
+            whileTap={{ scale: 0.9 }}
+            className="text-gray-400 hover:text-[#C9FF00] transition-colors flex-shrink-0 ml-4"
+          >
+            <HiExternalLink size={24} />
+          </motion.a>
+        </div>
+        
+        {/* Middle section with description */}
+        <p className="text-gray-300 mb-4 text-sm md:text-base leading-relaxed flex-grow">
+          {project.description}
+        </p>
+
+        {/* Bottom section with technologies */}
+        <div className="flex flex-wrap gap-2">
+          {project.technologies.map((tech, i) => (
+            <span
+              key={i}
+              className="px-3 py-1 bg-[#C9FF00]/10 text-[#C9FF00] rounded text-xs md:text-sm border border-[#C9FF00]/20"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Projects() {
+  const sectionRef = useRef<HTMLElement>(null);
   const [viewRef, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -165,11 +246,16 @@ export default function Projects() {
   const playClickSound = useClickSound();
   const [showAll, setShowAll] = useState(false);
   
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  
   const displayedProjects = showAll ? projects : projects.slice(0, 6);
 
   return (
     <motion.section 
-      ref={viewRef}
+      ref={sectionRef}
       id="projects" 
       className="relative min-h-screen flex flex-col justify-center bg-gray-900 overflow-hidden"
     >
@@ -189,63 +275,14 @@ export default function Projects() {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {displayedProjects.map((project, index) => (
-            <motion.div
+            <ProjectItem
               key={project.name}
-              initial={{ opacity: 0, y: 50 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative rounded-lg overflow-hidden cursor-pointer"
-              style={{ aspectRatio: "4/3" }}
-            >
-              {/* Project Image with 4:3 aspect ratio */}
-              <div className="relative w-full h-full">
-                <Image
-                  src={project.image}
-                  alt={project.name}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
-              
-              {/* Overlay that appears on hover */}
-              <div className="absolute inset-0 bg-gray-900/95 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-6 md:p-8">
-                {/* Top section with title and link */}
-                <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-xl md:text-2xl font-bold text-white" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
-                    {project.name}
-                  </h3>
-                  <motion.a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => playClickSound()}
-                    whileHover={{ scale: 1.2, rotate: 15 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="text-gray-400 hover:text-[#C9FF00] transition-colors flex-shrink-0 ml-4"
-                  >
-                    <HiExternalLink size={24} />
-                  </motion.a>
-                </div>
-                
-                {/* Middle section with description */}
-                <p className="text-gray-300 mb-4 text-sm md:text-base leading-relaxed flex-grow">
-                  {project.description}
-                </p>
-
-                {/* Bottom section with technologies */}
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 bg-[#C9FF00]/10 text-[#C9FF00] rounded text-xs md:text-sm border border-[#C9FF00]/20"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+              project={project}
+              index={index}
+              scrollYProgress={scrollYProgress}
+              inView={inView}
+              playClickSound={playClickSound}
+            />
           ))}
         </div>
 
