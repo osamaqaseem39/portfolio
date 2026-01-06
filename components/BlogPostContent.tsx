@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { HiCalendar, HiArrowLeft } from "react-icons/hi";
 import { useClickSound } from "@/hooks/useAudio";
 import Link from "next/link";
+import Image from "next/image";
 import { BlogPost } from "@/lib/blogData";
 import ReactMarkdown from "react-markdown";
 
@@ -54,10 +55,23 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mb-8"
           >
-            <div className="h-64 md:h-96 bg-gradient-to-br from-[#C9FF00] to-[#B8E600] rounded-lg flex items-center justify-center">
-              <span className="text-gray-900 text-4xl font-bold" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
-                {post.title.charAt(0)}
-              </span>
+            <div className="h-64 md:h-96 relative rounded-lg overflow-hidden bg-gray-100">
+              {post.image ? (
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 1200px"
+                  priority
+                />
+              ) : (
+                <div className="h-full w-full bg-gradient-to-br from-[#C9FF00] to-[#B8E600] flex items-center justify-center">
+                  <span className="text-gray-900 text-4xl font-bold" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                    {post.title.charAt(0)}
+                  </span>
+                </div>
+              )}
             </div>
           </motion.div>
 

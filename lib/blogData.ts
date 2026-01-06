@@ -305,7 +305,7 @@ Remember, the best code is code that works well, is easy to understand, and can 
     author: "Osama Qaseem",
     category: "Web Development",
     tags: ["Next.js", "React", "JavaScript", "TypeScript", "Web Development"],
-    image: "/blog/modern-web-apps.jpg",
+    image: "/Building Modern Web Applications with Next.js and React.png",
     seo: {
       title: "Building Modern Web Applications with Next.js and React | Web Development Guide",
       description: "Learn how to build modern, scalable web applications using Next.js and React. Discover best practices, performance optimization, and development workflows.",
@@ -812,7 +812,7 @@ Remember: Building on blockchain requires a different mindset. Think about decen
     author: "Osama Qaseem",
     category: "Web3",
     tags: ["Web3", "Solana", "Blockchain", "DApps", "DeFi", "Smart Contracts"],
-    image: "/blog/web3-guide.jpg",
+    image: "/Complete Web3 Development Guide Building DApps with Solana.png",
     seo: {
       title: "Complete Web3 Development Guide: Building DApps with Solana | Blockchain Tutorial",
       description: "Master Web3 development with Solana. Learn to build decentralized applications, integrate wallets, and deploy smart contracts. Complete guide for blockchain developers.",
@@ -1374,7 +1374,7 @@ Start optimizing today and see the difference in user engagement, SEO rankings, 
     author: "Osama Qaseem",
     category: "Performance",
     tags: ["Performance", "Optimization", "Web Development", "SEO", "Core Web Vitals"],
-    image: "/blog/performance-optimization.jpg",
+    image: "/Web Performance Optimization Tips for Faster Applications.png",
     seo: {
       title: "Web Performance Optimization Tips: Faster Applications Guide | SEO & Speed",
       description: "Master web performance optimization. Learn Core Web Vitals, image optimization, code splitting, and caching strategies to build faster web applications.",

@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { HiExternalLink, HiCalendar } from "react-icons/hi";
 import { useClickSound } from "@/hooks/useAudio";
 import Link from "next/link";
+import Image from "next/image";
 import { getAllBlogPosts, BlogPost } from "@/lib/blogData";
 import { useState, useEffect } from "react";
 
@@ -76,12 +77,24 @@ export default function Blog() {
                 whileHover={{ y: -5 }}
               >
                 <Link href={`/blog/${post.slug}`} onClick={playClickSound}>
-                  <div className={`h-48 bg-gradient-to-br ${
-                    index === 0 ? 'from-[#C9FF00] to-[#B8E600]' :
-                    index === 1 ? 'from-gray-800 to-gray-900' :
-                    'from-blue-500 to-purple-600'
-                  } flex items-center justify-center`}>
-                    <HiExternalLink className={index === 1 ? 'text-[#C9FF00]' : index === 2 ? 'text-white' : 'text-gray-900'} size={48} />
+                  <div className="h-48 relative overflow-hidden bg-gray-100">
+                    {post.image ? (
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    ) : (
+                      <div className={`h-full w-full bg-gradient-to-br ${
+                        index === 0 ? 'from-[#C9FF00] to-[#B8E600]' :
+                        index === 1 ? 'from-gray-800 to-gray-900' :
+                        'from-blue-500 to-purple-600'
+                      } flex items-center justify-center`}>
+                        <HiExternalLink className={index === 1 ? 'text-[#C9FF00]' : index === 2 ? 'text-white' : 'text-gray-900'} size={48} />
+                      </div>
+                    )}
                   </div>
                   <div className="p-6">
                     <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
