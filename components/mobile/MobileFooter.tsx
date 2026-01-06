@@ -7,7 +7,7 @@ import { FaWhatsapp } from "react-icons/fa6";
 import { useClickSound } from "@/hooks/useAudio";
 import Link from "next/link";
 
-export default function Footer() {
+export default function MobileFooter() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -15,10 +15,10 @@ export default function Footer() {
   const playClickSound = useClickSound();
 
   return (
-    <footer ref={ref} className="py-16 px-4 md:px-8 bg-white border-t border-gray-200">
+    <footer ref={ref} className="py-12 px-4 bg-white border-t border-gray-200">
       <div className="container mx-auto max-w-7xl">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Left: Ping Me Button */}
+        <div className="flex flex-col items-center justify-center gap-6">
+          {/* Ping Me Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -29,7 +29,7 @@ export default function Footer() {
                 onClick={playClickSound}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 md:px-12 py-4 md:py-5 bg-[#C9FF00] text-gray-900 font-bold rounded-lg text-lg md:text-xl hover:bg-[#C9FF00]/90 transition-colors shadow-lg shadow-[#C9FF00]/20"
+                className="px-8 py-4 bg-[#C9FF00] text-gray-900 font-bold rounded-lg text-base hover:bg-[#C9FF00]/90 transition-colors shadow-lg shadow-[#C9FF00]/20"
                 style={{ fontFamily: "var(--font-absans), sans-serif" }}
               >
                 Press to Ping Me
@@ -37,7 +37,7 @@ export default function Footer() {
             </Link>
           </motion.div>
 
-          {/* Center: Social Links */}
+          {/* Social Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -53,7 +53,7 @@ export default function Footer() {
               whileTap={{ scale: 0.9 }}
               onClick={playClickSound}
             >
-              <FaLinkedin size={28} />
+              <FaLinkedin size={24} />
             </motion.a>
             
             <motion.a
@@ -65,7 +65,7 @@ export default function Footer() {
               whileTap={{ scale: 0.9 }}
               onClick={playClickSound}
             >
-              <FaWhatsapp size={28} />
+              <FaWhatsapp size={24} />
             </motion.a>
             
             <motion.a
@@ -77,16 +77,16 @@ export default function Footer() {
               whileTap={{ scale: 0.9 }}
               onClick={playClickSound}
             >
-              <FaGithub size={28} />
+              <FaGithub size={24} />
             </motion.a>
           </motion.div>
 
-          {/* Right: Copyright */}
+          {/* Copyright */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-gray-500 text-sm md:text-base"
+            className="text-gray-500 text-xs text-center"
             style={{ fontFamily: "var(--font-absans), sans-serif" }}
           >
             © {new Date().getFullYear()} Muhammad Osama Qaseem

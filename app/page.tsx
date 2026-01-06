@@ -1,18 +1,115 @@
+"use client";
+
+import { useMobile } from "@/hooks/useMobile";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
+import AboutSection from "@/components/AboutSection";
 import Services from "@/components/Services";
 import Image from "@/components/Image";
+import Experience from "@/components/Experience";
+import Projects from "@/components/Projects";
+import Blog from "@/components/Blog";
+import Footer from "@/components/Footer";
+import Script from "next/script";
+
+// Mobile components
+import MobileHeader from "@/components/mobile/MobileHeader";
+import MobileHero from "@/components/mobile/MobileHero";
+import MobileAboutSection from "@/components/mobile/MobileAboutSection";
+import MobileImage from "@/components/mobile/MobileImage";
+import MobileServices from "@/components/mobile/MobileServices";
+import MobileProjects from "@/components/mobile/MobileProjects";
+import MobileExperience from "@/components/mobile/MobileExperience";
+import MobileBlog from "@/components/mobile/MobileBlog";
+import MobileContact from "@/components/mobile/MobileContact";
+import MobileFooter from "@/components/mobile/MobileFooter";
+import MobileAbout from "@/components/mobile/MobileAbout";
+import Contact from "@/components/Contact";
 
 export default function Home() {
+  const isMobile = useMobile();
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://osamaqaseem.online";
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Muhammad Osama Qaseem - Portfolio",
+    url: siteUrl,
+    description: "Full Stack Developer specializing in React, Next.js, Node.js, ASP.NET Core 8, Web3, and Solana blockchain technologies",
+    author: {
+      "@type": "Person",
+      name: "Muhammad Osama Qaseem",
+    },
+  };
+
+  const professionalServiceSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "Full Stack Development Services",
+    provider: {
+      "@type": "Person",
+      name: "Muhammad Osama Qaseem",
+      jobTitle: "Full Stack Developer",
+    },
+    areaServed: "Worldwide",
+    serviceType: [
+      "Web Development",
+      "Mobile App Development",
+      "Web3 Development",
+      "Blockchain Development",
+      "Enterprise Software Development",
+    ],
+  };
+
+  if (isMobile) {
+    return (
+      <main className="bg-white min-h-screen">
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <Script
+          id="professional-service-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
+        />
+        <MobileHeader />
+        <MobileHero />
+        <MobileAboutSection />
+        <MobileImage />
+        <MobileServices />
+        <MobileProjects />
+        <MobileExperience />
+        <MobileAbout />
+        <MobileBlog />
+        <MobileContact />
+        <MobileFooter />
+      </main>
+    );
+  }
+
   return (
     <main className="bg-white min-h-screen">
+      <Script
+        id="website-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <Script
+        id="professional-service-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
+      />
       <Header />
       <Hero />
-      <About />
+      <AboutSection />
       <Image/>
       <Services />
-      
+      <Projects />
+      <Experience />
+      <Blog />
+      <Footer />
     </main>
   );
 }

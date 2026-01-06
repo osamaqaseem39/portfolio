@@ -141,7 +141,7 @@ export default function Hero() {
             >
               Full Stack Developer
               <br />
-              Web3 Developer.
+              .NET & Web3 Specialist
             </motion.h1>
           </div>
 

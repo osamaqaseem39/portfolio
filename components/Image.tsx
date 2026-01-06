@@ -32,16 +32,16 @@ export default function ImageComponent() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [viewRef, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.5,
+    threshold: 0.1,
   });
   // This hook tracks the scroll progress relative to the Services section.
   // It returns a value between 0 and 1 based on how much the section has entered the viewport.
   // 'offset' defines the start and end points for the animation:
-  //   - "start 30vh": animation starts when the top of the section hits the bottom of the viewport
-  //   - "start 130vh": animation ends when the top of the section reaches the top of the viewport
+  //   - "start 540px": animation starts when the top of the section hits 540px from viewport top (50vh = 540px)
+  //   - "start -216px": animation ends when the top of the section reaches -216px from viewport top (-20vh = -216px)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 50vh", "start -20vh"]
+    offset: ["start 200px", "start -216px"]
   });
 
   // Scale up animation for content
@@ -69,7 +69,7 @@ export default function ImageComponent() {
   const imageWidth = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
-    ["100%", "40%", "95%"]
+    ["95%", "60%", "95%"]
   );
 
   // White div width/height: starts at 500px, expands to 100%
@@ -105,7 +105,7 @@ export default function ImageComponent() {
       ref={combinedRef}
       id="services" 
       style={{
-        height: "180vh",
+        height: "1344px",
        
       }}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-900 "
@@ -115,7 +115,7 @@ export default function ImageComponent() {
         className="absolute bg-gray-900 z-10 overflow-visible"
         style={{
           width: whiteDivWidth,
-          height: whiteDivHeight,
+          height: "1344px",
           left: "50%",
           top: "50%",
           x: "-50%",
@@ -127,10 +127,11 @@ export default function ImageComponent() {
         <motion.div 
           className="absolute flex flex-col bg-white overflow-visible"
           style={{
-            width: "100vw",
-            border: "1px solid red",
-            left: "calc(-50vw + 50%)",
-            top: "calc(-50vh + 50%)",
+            width: "1920px",
+            left: "50%",
+            top: "50%",
+            x: "-50%",
+            y: "-50%",
             scale: contentScale,
             borderRadius: innerDivBorderRadius,
           }}

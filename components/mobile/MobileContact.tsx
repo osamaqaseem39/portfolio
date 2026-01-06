@@ -8,7 +8,7 @@ import { FaWhatsapp } from "react-icons/fa6";
 import { useClickSound } from "@/hooks/useAudio";
 import { useState } from "react";
 
-export default function Contact() {
+export default function MobileContact() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -68,7 +68,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-32 px-4 md:px-8 min-h-screen flex items-center">
+    <section ref={ref} id="contact" className="py-16 px-4 min-h-screen flex items-center">
       <div className="container mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -80,10 +80,10 @@ export default function Contact() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <h2
-              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4"
+              className="text-3xl font-bold mb-4"
               style={{ 
                 fontFamily: "var(--font-absans), sans-serif",
                 color: "rgb(17, 24, 39)",
@@ -92,29 +92,29 @@ export default function Contact() {
               Get In Touch
             </h2>
             <p
-              className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
+              className="text-base text-gray-600"
               style={{ fontFamily: "var(--font-absans), sans-serif" }}
             >
               Let's work together to bring your ideas to life. Reach out and let's start a conversation.
             </p>
           </motion.div>
 
-          <div ref={ref} className="space-y-8">
+          <div className="space-y-6">
             {/* Contact Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="space-y-4">
               <motion.a
                 href="mailto:connect@osamaqaseem.online"
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-white rounded-lg p-6 border-2 border-gray-200 hover:border-[#C9FF00] transition-all text-center shadow-sm hover:shadow-md"
-                whileHover={{ scale: 1.05, y: -5 }}
-                whileTap={{ scale: 0.95 }}
+                className="bg-white rounded-lg p-4 border-2 border-gray-200 hover:border-[#C9FF00] transition-all text-center shadow-sm"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={playClickSound}
               >
-                <HiMail className="text-[#C9FF00] mx-auto mb-4" size={32} />
-                <p className="text-gray-900 font-semibold mb-2" style={{ fontFamily: "var(--font-absans), sans-serif" }}>Email</p>
-                <p className="text-gray-600 text-sm">connect@osamaqaseem.online</p>
+                <HiMail className="text-[#C9FF00] mx-auto mb-3" size={28} />
+                <p className="text-gray-900 font-semibold mb-1 text-sm" style={{ fontFamily: "var(--font-absans), sans-serif" }}>Email</p>
+                <p className="text-gray-600 text-xs">connect@osamaqaseem.online</p>
               </motion.a>
 
               <motion.a
@@ -122,25 +122,25 @@ export default function Contact() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-white rounded-lg p-6 border-2 border-gray-200 hover:border-[#C9FF00] transition-all text-center shadow-sm hover:shadow-md"
-                whileHover={{ scale: 1.05, y: -5 }}
-                whileTap={{ scale: 0.95 }}
+                className="bg-white rounded-lg p-4 border-2 border-gray-200 hover:border-[#C9FF00] transition-all text-center shadow-sm"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={playClickSound}
               >
-                <HiPhone className="text-[#C9FF00] mx-auto mb-4" size={32} />
-                <p className="text-gray-900 font-semibold mb-2" style={{ fontFamily: "var(--font-absans), sans-serif" }}>Phone</p>
-                <p className="text-gray-600 text-sm">+92 325 6413868</p>
+                <HiPhone className="text-[#C9FF00] mx-auto mb-3" size={28} />
+                <p className="text-gray-900 font-semibold mb-1 text-sm" style={{ fontFamily: "var(--font-absans), sans-serif" }}>Phone</p>
+                <p className="text-gray-600 text-xs">+92 325 6413868</p>
               </motion.a>
 
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="bg-white rounded-lg p-6 border-2 border-gray-200 text-center shadow-sm"
+                className="bg-white rounded-lg p-4 border-2 border-gray-200 text-center shadow-sm"
               >
-                <HiLocationMarker className="text-[#C9FF00] mx-auto mb-4" size={32} />
-                <p className="text-gray-900 font-semibold mb-2" style={{ fontFamily: "var(--font-absans), sans-serif" }}>Location</p>
-                <p className="text-gray-600 text-sm">Lahore, Pakistan</p>
+                <HiLocationMarker className="text-[#C9FF00] mx-auto mb-3" size={28} />
+                <p className="text-gray-900 font-semibold mb-1 text-sm" style={{ fontFamily: "var(--font-absans), sans-serif" }}>Location</p>
+                <p className="text-gray-600 text-xs">Lahore, Pakistan</p>
               </motion.div>
             </div>
 
@@ -149,10 +149,10 @@ export default function Contact() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="bg-white rounded-lg p-6 md:p-8 border-2 border-gray-200 shadow-sm"
+              className="bg-white rounded-lg p-5 border-2 border-gray-200 shadow-sm"
             >
               <h3
-                className="text-2xl md:text-3xl font-bold mb-6 text-center"
+                className="text-xl font-bold mb-4 text-center"
                 style={{ 
                   fontFamily: "var(--font-absans), sans-serif",
                   color: "rgb(17, 24, 39)",
@@ -160,53 +160,51 @@ export default function Contact() {
               >
                 Send a Message
               </h3>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-semibold text-gray-700 mb-2"
-                      style={{ fontFamily: "var(--font-absans), sans-serif" }}
-                    >
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#C9FF00] focus:outline-none transition-colors"
-                      style={{ fontFamily: "var(--font-absans), sans-serif" }}
-                      placeholder="Your Name"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-semibold text-gray-700 mb-2"
-                      style={{ fontFamily: "var(--font-absans), sans-serif" }}
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#C9FF00] focus:outline-none transition-colors"
-                      style={{ fontFamily: "var(--font-absans), sans-serif" }}
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-xs font-semibold text-gray-700 mb-2"
+                    style={{ fontFamily: "var(--font-absans), sans-serif" }}
+                  >
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:border-[#C9FF00] focus:outline-none transition-colors text-sm"
+                    style={{ fontFamily: "var(--font-absans), sans-serif" }}
+                    placeholder="Your Name"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-xs font-semibold text-gray-700 mb-2"
+                    style={{ fontFamily: "var(--font-absans), sans-serif" }}
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:border-[#C9FF00] focus:outline-none transition-colors text-sm"
+                    style={{ fontFamily: "var(--font-absans), sans-serif" }}
+                    placeholder="your.email@example.com"
+                  />
                 </div>
                 <div>
                   <label
                     htmlFor="subject"
-                    className="block text-sm font-semibold text-gray-700 mb-2"
+                    className="block text-xs font-semibold text-gray-700 mb-2"
                     style={{ fontFamily: "var(--font-absans), sans-serif" }}
                   >
                     Subject
@@ -218,7 +216,7 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#C9FF00] focus:outline-none transition-colors"
+                    className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:border-[#C9FF00] focus:outline-none transition-colors text-sm"
                     style={{ fontFamily: "var(--font-absans), sans-serif" }}
                     placeholder="What's this about?"
                   />
@@ -226,7 +224,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-sm font-semibold text-gray-700 mb-2"
+                    className="block text-xs font-semibold text-gray-700 mb-2"
                     style={{ fontFamily: "var(--font-absans), sans-serif" }}
                   >
                     Message
@@ -237,8 +235,8 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={6}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#C9FF00] focus:outline-none transition-colors resize-none"
+                    rows={5}
+                    className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:border-[#C9FF00] focus:outline-none transition-colors resize-none text-sm"
                     style={{ fontFamily: "var(--font-absans), sans-serif" }}
                     placeholder="Tell me about your project or idea..."
                   />
@@ -247,7 +245,7 @@ export default function Contact() {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="p-4 bg-green-50 border-2 border-green-200 rounded-lg text-green-700 text-center"
+                    className="p-3 bg-green-50 border-2 border-green-200 rounded-lg text-green-700 text-center text-sm"
                     style={{ fontFamily: "var(--font-absans), sans-serif" }}
                   >
                     Message sent successfully! I'll get back to you soon.
@@ -257,7 +255,7 @@ export default function Contact() {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="p-4 bg-red-50 border-2 border-red-200 rounded-lg text-red-700 text-center"
+                    className="p-3 bg-red-50 border-2 border-red-200 rounded-lg text-red-700 text-center text-sm"
                     style={{ fontFamily: "var(--font-absans), sans-serif" }}
                   >
                     Something went wrong. Please try again or use the email link above.
@@ -269,7 +267,7 @@ export default function Contact() {
                   onClick={playClickSound}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-[#C9FF00] text-gray-900 font-bold py-4 px-6 rounded-lg hover:bg-[#B8E600] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-[#C9FF00] text-gray-900 font-bold py-3 px-4 rounded-lg hover:bg-[#B8E600] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                   style={{ fontFamily: "var(--font-absans), sans-serif" }}
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
@@ -282,32 +280,32 @@ export default function Contact() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="bg-gray-900 rounded-lg p-8 md:p-12 text-center"
+              className="bg-gray-900 rounded-lg p-6 text-center"
             >
               <h3
-                className="text-2xl md:text-3xl font-bold mb-4 text-white"
+                className="text-xl font-bold mb-3 text-white"
                 style={{ fontFamily: "var(--font-absans), sans-serif" }}
               >
                 Let's Connect
               </h3>
               <p
-                className="text-gray-400 mb-8 text-lg"
+                className="text-gray-400 mb-6 text-sm"
                 style={{ fontFamily: "var(--font-absans), sans-serif" }}
               >
                 Follow me on social media or reach out directly
               </p>
-              <div className="flex flex-wrap items-center justify-center gap-4">
+              <div className="flex flex-wrap items-center justify-center gap-3">
                 <motion.a
                   href="https://www.linkedin.com/in/osamaqaseem39"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-white text-gray-900 rounded-lg font-semibold hover:bg-[#C9FF00] transition-colors flex items-center gap-2"
+                  className="px-4 py-2 bg-white text-gray-900 rounded-lg font-semibold hover:bg-[#C9FF00] transition-colors flex items-center gap-2 text-sm"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={playClickSound}
                   style={{ fontFamily: "var(--font-absans), sans-serif" }}
                 >
-                  <FaLinkedin size={20} />
+                  <FaLinkedin size={18} />
                   LinkedIn
                 </motion.a>
                 
@@ -315,13 +313,13 @@ export default function Contact() {
                   href="https://wa.me/923256413868"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-white text-gray-900 rounded-lg font-semibold hover:bg-[#C9FF00] transition-colors flex items-center gap-2"
+                  className="px-4 py-2 bg-white text-gray-900 rounded-lg font-semibold hover:bg-[#C9FF00] transition-colors flex items-center gap-2 text-sm"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={playClickSound}
                   style={{ fontFamily: "var(--font-absans), sans-serif" }}
                 >
-                  <FaWhatsapp size={20} />
+                  <FaWhatsapp size={18} />
                   WhatsApp
                 </motion.a>
                 
@@ -329,25 +327,25 @@ export default function Contact() {
                   href="https://github.com/osamaqaseem39"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-white text-gray-900 rounded-lg font-semibold hover:bg-[#C9FF00] transition-colors flex items-center gap-2"
+                  className="px-4 py-2 bg-white text-gray-900 rounded-lg font-semibold hover:bg-[#C9FF00] transition-colors flex items-center gap-2 text-sm"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={playClickSound}
                   style={{ fontFamily: "var(--font-absans), sans-serif" }}
                 >
-                  <FaGithub size={20} />
+                  <FaGithub size={18} />
                   GitHub
                 </motion.a>
 
                 <motion.a
                   href="mailto:connect@osamaqaseem.online"
-                  className="px-6 py-3 bg-[#C9FF00] text-gray-900 rounded-lg font-semibold hover:bg-[#B8E600] transition-colors flex items-center gap-2"
+                  className="px-4 py-2 bg-[#C9FF00] text-gray-900 rounded-lg font-semibold hover:bg-[#B8E600] transition-colors flex items-center gap-2 text-sm"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={playClickSound}
                   style={{ fontFamily: "var(--font-absans), sans-serif" }}
                 >
-                  <HiMail size={20} />
+                  <HiMail size={18} />
                   Email Me
                 </motion.a>
               </div>

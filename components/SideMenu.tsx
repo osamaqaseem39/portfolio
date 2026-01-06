@@ -3,12 +3,13 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { HiX } from "react-icons/hi";
 import { useClickSound } from "@/hooks/useAudio";
+import { useRouter } from "next/navigation";
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
   { name: "Works", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: "Contact", href: "/contact" },
 ];
 
 interface SideMenuProps {
@@ -19,16 +20,23 @@ interface SideMenuProps {
 
 export default function SideMenu({ isOpen, onClose, isOverlay = false }: SideMenuProps) {
   const playClickSound = useClickSound();
+  const router = useRouter();
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     playClickSound();
     const href = e.currentTarget.getAttribute('href');
     if (href) {
-      const targetId = href.substring(1); // Remove the '#' from href
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
+      if (href.startsWith('#')) {
+        // Handle hash links (scroll to section)
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        // Handle route links (navigate to page)
+        router.push(href);
       }
     }
     onClose();

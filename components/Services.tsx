@@ -6,8 +6,8 @@ import { useRef } from "react";
 const services = [
   {
     number: "01",
-    title: "Full Stack Development",
-    description: "Building scalable and high-performance web applications using Next.js, React, Node.js, and TypeScript, with robust backend architectures, secure RESTful APIs, and clean code practices.",
+    title: "Enterprise .NET Development",
+    description: "Building enterprise-grade applications with ASP.NET Core 8, following SOLID principles and Domain-Driven Design. Developing multi-tenant ERP systems, RESTful APIs with Entity Framework Core, JWT authentication, and SQL Server optimization.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
         <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -18,8 +18,8 @@ const services = [
   },
   {
     number: "02",
-    title: "UI/UX Design & Frontend",
-    description: "Designing modern, responsive interfaces with Figma, Tailwind CSS, and Framer Motion. Creating intuitive experiences with clean design systems and pixel-perfect implementations.",
+    title: "Full Stack Web Development",
+    description: "Building scalable web applications using Next.js, React, Vue.js, Node.js, NestJS, and TypeScript. Creating modern, responsive interfaces with Tailwind CSS, Framer Motion, and Three.js for 3D experiences.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
         <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5"/>
@@ -30,8 +30,8 @@ const services = [
   },
   {
     number: "03",
-    title: "SaaS Platform Development",
-    description: "Developing end-to-end SaaS solutions with subscription systems, Stripe billing, and multi-tenant management. Ensuring scalability and secure user management.",
+    title: "ERP & SaaS Platform Development",
+    description: "Developing comprehensive multi-tenant ERP systems and SaaS platforms with GraphQL, REST APIs, RBAC, tenant isolation, and modules for HRM, Finance, CRM, SCM, Sales, Procurement, and Manufacturing.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -40,8 +40,30 @@ const services = [
   },
   {
     number: "04",
-    title: "API & System Architecture",
-    description: "Designing maintainable APIs with Prisma, and MongoDB. Focusing on optimization, security best practices, and efficient data flow.",
+    title: "Cross-Platform Mobile Development",
+    description: "Building cross-platform mobile applications with Flutter & Dart, featuring Firebase integration, offline functionality, real-time synchronization, and native performance for both iOS and Android.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
+        <rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M12 18H12.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
+    number: "05",
+    title: "Web3 & Blockchain Development",
+    description: "Building decentralized applications (DApps), token exchange platforms, and blockchain integrations using Web3.js, Ethers.js, Solana Web3.js, MetaMask, WalletConnect, and Jupiter DEX.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M8 12h8M12 8v8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
+    number: "06",
+    title: "API & Database Architecture",
+    description: "Designing robust APIs with ASP.NET Core, GraphQL, REST, and WebSockets. Optimizing SQL Server databases with stored procedures, triggers, indexing, and Entity Framework Core for efficient data operations.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
         <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="1.5"/>
@@ -53,37 +75,13 @@ const services = [
     ),
   },
   {
-    number: "05",
-    title: "AI Operations (AIO)",
-    description: "Implementing AI infrastructure, model deployment, and MLOps pipelines. Managing AI workflows, monitoring, and optimization for production AI systems.",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
-        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="12" cy="12" r="2" fill="currentColor"/>
-      </svg>
-    ),
-  },
-  {
-    number: "06",
-    title: "AI Integration & Automation",
-    description: "Integrating AI capabilities into existing systems with OpenAI, Anthropic, and custom models. Building intelligent automation workflows and AI-powered features.",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
-        <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5"/>
-      </svg>
-    ),
-  },
-  {
     number: "07",
-    title: "AI Development & Consulting",
-    description: "Developing custom AI solutions, fine-tuning models, and providing AI strategy consulting. Building intelligent applications with machine learning and deep learning technologies.",
+    title: "E-commerce & Business Solutions",
+    description: "Developing Point of Sale (POS) systems, e-commerce platforms with payment processing, loyalty management systems, transportation platforms, and business management solutions with real-time features.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
-        <path d="M9.75 17L9 20l-1 1v-3.5L6 16l-1.5-1.5L6 13l-1-1 1-1 1.5 1.5L9 10.5V7l1-1 1 1v3.5L13 10l1.5-1.5L13 7l1-1 1 1-1.5 1.5L18 10.5V14l1 1-1 1-1.5-1.5L15 16v3.5l-1 1-1-1-.75-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="12" cy="12" r="2" fill="currentColor"/>
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M3 6h18M16 10a4 4 0 11-8 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
   },
@@ -94,7 +92,7 @@ export default function Services() {
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start start", "end end"]
+    offset: ["start 150px", "end start"]
   });
 
   // Marquee movement: moves from right to left as scroll progresses
@@ -102,14 +100,14 @@ export default function Services() {
   const marqueeX = useTransform(
     scrollYProgress,
     [0, 1],
-    ["0%", "-50%"]
+    ["0%", "-180%"]
   );
 
   return (
     <motion.section 
       ref={sectionRef}
       id="services" 
-      className="relative min-h-[200vh] flex flex-col justify-center overflow-hidden bg-[#F5F5F5]"
+      className="relative h-[1000px] flex flex-col justify-center overflow-hidden bg-[#F5F5F5]"
     >
       <div className="w-full px-6 md:px-12 lg:px-20 pt-0 pb-16 md:pb-24">
         {/* Wavy Line at Top */}
@@ -154,7 +152,7 @@ export default function Services() {
               return (
                 <div
                   key={`${service.number}-${index}`}
-                  className="flex-shrink-0 w-[90vw] md:w-[45vw] lg:w-[23vw] px-6 md:px-8 lg:px-10"
+                  className="flex-shrink-0 w-[1728px] md:w-[864px] lg:w-[442px] px-6 md:px-8 lg:px-10"
                 >
                   <div className="relative h-full pb-8">
                     {/* Number */}

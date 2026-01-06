@@ -1,484 +1,278 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useState } from "react";
-import { HiExternalLink, HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { useRef, useState } from "react";
+import { HiExternalLink } from "react-icons/hi";
 import { useClickSound } from "@/hooks/useAudio";
+import Image from "next/image";
 
 const projects = [
   {
-    name: "Softlogix",
-    url: "https://softlogixconsultancy.com/",
-    description: "Professional Tax Consultancy & General Trading Solutions",
-    features: [
-      "Professional tax consultancy platform",
-      "General trading solutions and services",
-      "Client management and consultation booking",
-      "Tax filing and compliance services",
-    ],
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    name: "DEGN DApp",
+    url: "https://degn.app",
+    description: "Solana DEX Token Trading Platform with wallet connection, DeFi features, and DEX integrations",
+    technologies: ["Next.js", "NestJS", "MongoDB", "Web3.js", "JWT", "Recharts"],
+    image: "/degn.png",
+  },
+  {
+    name: "BestVersion1",
+    url: "https://bestversion1.com",
+    description: "Football training and coaching platform featuring video analysis, training programs, and player profiles",
+    technologies: ["Next.js 14", "TypeScript", "Tailwind CSS"],
+    image: "/bestversion1.png",
+  },
+  {
+    name: "Synovo Labs",
+    url: "https://slabs-eight.vercel.app",
+    description: "Animated agency portfolio featuring scroll-triggered animations and technology showcases",
+    technologies: ["Next.js 15", "GSAP", "Framer Motion"],
+    image: "/synovolabs.png",
+  },
+  {
+    name: "HB Sub Noor",
+    url: "https://hbsubnoor.com",
+    description: "A global leader in comprehensive packaging and strap solutions",
+    technologies: ["Next.js", "React", "Tailwind CSS"],
+    image: "/strapack.png",
   },
   {
     name: "Voxity",
     url: "https://voxity.io",
     description: "Web3 Marketing Agency",
-    features: [
-      "Web3 marketing agency platform",
-      "Blockchain-based marketing solutions",
-      "Client portfolio and case studies",
-      "Services showcase and contact management",
-    ],
     technologies: ["Next.js", "Web3", "Blockchain"],
+    image: "/voxity.png",
+  },
+  {
+    name: "Softlogix",
+    url: "https://softlogixconsultancy.com",
+    description: "Professional Tax Consultancy & General Trading Solutions",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    image: "/soflogix.png",
+  },
+  {
+    name: "IBS",
+    url: "https://ibs-jade.vercel.app",
+    description: "Vegetable and Fruit Exporter",
+    technologies: ["Next.js", "React", "TypeScript"],
+    image: "/ibs.png",
   },
   {
     name: "ShesTrends",
     url: "https://shestrends.com",
     description: "Ecommerce Store",
-    features: [
-      "Complete e-commerce platform",
-      "Product catalog and shopping cart",
-      "Payment processing and order management",
-      "User accounts and order tracking",
-    ],
     technologies: ["Next.js", "E-commerce", "Stripe"],
+    image: "/shestrends.png",
   },
   {
-    name: "HB Sub Noor",
-    url: "https://hubsubnoor.com",
-    description: "A global leader in comprehensive packaging and strap solutions",
-    features: [
-      "Packaging and strap solutions showcase",
-      "Product catalog and specifications",
-      "Contact and inquiry management",
-      "Global shipping information",
-    ],
-    technologies: ["Next.js", "React", "Tailwind CSS"],
+    name: "Altitude Arena",
+    url: "https://altitudearena.ae",
+    description: "Bowling and Trampoline Arena",
+    technologies: ["Next.js", "React", "TypeScript"],
+    image: "/altitude.png",
   },
   {
     name: "Exalted",
-    url: "https://exalted-lovat.vercel.app/",
+    url: "https://exalted-lovat.vercel.app",
     description: "Coding & Packing Solutions",
-    features: [
-      "Coding and packing solutions platform",
-      "Service offerings and solutions",
-      "Client management and contact forms",
-      "Portfolio and case studies",
-    ],
-    technologies: ["Next.js", "Vercel", "Tailwind CSS"],
+    technologies: ["Next.js", "React", "TypeScript"],
+    image: "/exalted.png",
   },
   {
-    name: "BestVersion1",
-    url: "https://bestversion1.com",
-    description: "Football Training & Coaching Platform",
-    features: [
-      "Built with Next.js 14 and TypeScript",
-      "Video analysis and training programs",
-      "Coach profiles and player outcomes",
-      "Team showcase and testimonials",
-    ],
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-  },
-  {
-    name: "Wings Impex",
+    name: "Wingz Impex",
     url: "https://wingsimpex.com",
-    description: "Food Company - E-commerce & Admin Management System",
-    features: [
-      "Complete e-commerce platform with Next.js",
-      "Payment processing with Stripe API",
-      "Inventory management and analytics",
-      "Admin dashboard with order management",
-    ],
-    technologies: ["Next.js", "Stripe", "MongoDB"],
+    description: "E-commerce and admin management system for a food trading company",
+    technologies: ["Next.js", "React", "Stripe API", "MongoDB", "Tailwind CSS"],
+    image: "/wingzimpex.png",
   },
   {
     name: "Payday Website",
     url: "https://paydayexpress.ca",
-    description: "Financial Services Platform",
-    features: [
-      "Loan calculator and application forms",
-      "Multi-step application process",
-      "Interactive loan calculator with real-time updates",
-      "Professional financial services UI/UX",
-    ],
-    technologies: ["Next.js", "React", "TypeScript"],
+    description: "Financial services platform with multi-step loan applications, calculators, and email integration",
+    technologies: ["React.js", "Node.js", "Firebase", "Tailwind CSS"],
+    image: "/payday.png",
   },
   {
-    name: "Dispatching Company Website",
+    name: "Freights Logistic",
     url: "https://freightslogistic.com",
-    description: "Truck Dispatching Services Website",
-    features: [
-      "Built with Next.js 15 and TypeScript",
-      "24/7 dispatch support and load booking",
-      "Carrier setup and compliance support",
-      "Pricing page and testimonials",
-    ],
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    description: "Dispatching company website providing truck dispatch support, load booking, and compliance services",
+    technologies: ["Next.js 15", "TypeScript", "Tailwind CSS"],
+    image: "/freightlogistic.png",
   },
   {
     name: "EverXNode",
     url: "https://everxnode.com",
-    description: "Node.js Development and Deployment Platform",
-    features: [
-      "Code editor and project templates",
-      "Cloud deployment and container support",
-      "Monitoring and logging tools",
-      "CLI tools and API testing",
-    ],
-    technologies: ["Node.js", "Docker", "React"],
+    description: "Node.js development and deployment platform with NFT licensing, token staking, and cloud deployment systems",
+    technologies: ["Next.js", "Node.js", "NestJS", "Docker", "MongoDB", "Ethers.js", "Web3.js"],
+    image: "/everxnode.png",
   },
   {
     name: "Arena SOL",
     url: "https://arenastudio.fun",
-    description: "Gaming Platform Website",
-    features: [
-      "3D elements using Three.js",
-      "Tournament system and leaderboards",
-      "3D character models and gaming environments",
-      "Interactive gaming elements and power-up features",
-    ],
-    technologies: ["Next.js", "Three.js", "Solana"],
+    description: "Gaming platform with 3D visuals, token integration, and Solana blockchain support",
+    technologies: ["React.js", "Three.js", "Solana Web3.js", "Tailwind CSS"],
+    image: "/arena.jpeg",
   },
   {
     name: "Punjab AC",
     url: "https://punjabac.com",
-    description: "Content Management System",
-    features: [
-      "Admin dashboard and public website",
-      "Rich text editor and media management",
-      "SEO optimization and content scheduling",
-      "Version control and bulk operations",
-    ],
-    technologies: ["Next.js", "MongoDB", "CMS"],
+    description: "Content Management System with admin dashboard, SEO tools, and analytics tracking",
+    technologies: ["Next.js 14", "Node.js", "MongoDB"],
+    image: "/punjabac.jpeg",
   },
   {
     name: "Hypelet",
     url: "https://hypelet.pro",
-    description: "Influencer Marketing Platform",
-    features: [
-      "Animated components with Framer Motion",
-      "Dark theme design and smooth animations",
-      "QR code generation for influencer profiles",
-      "Redux Toolkit for state management",
-    ],
-    technologies: ["Next.js", "Framer Motion", "Redux"],
+    description: "Web3 influencer marketing platform with animated components and QR code generation",
+    technologies: ["React", "Redux", "Framer Motion", "Tailwind CSS"],
+    image: "/hypelet.jpeg",
   },
   {
     name: "A.K. Traders",
     url: "https://aktraders.pk",
-    description: "Freight Forwarding & Customs Clearance Platform",
-    features: [
-      "Built with Next.js 15 and PostgreSQL",
-      "Shipment tracking and quote management",
-      "Multi-role dashboard system",
-      "Real-time shipment status updates",
-    ],
-    technologies: ["Next.js", "PostgreSQL", "TypeScript"],
+    description: "Freight forwarding and customs clearance platform with multi-role dashboard and shipment tracking",
+    technologies: ["Next.js 15", "PostgreSQL", "Node.js"],
+    image: "/aktraders.jpeg",
   },
   {
     name: "DEGN Website",
     url: "https://degn.app",
     description: "Blockchain & Web3 Platform",
-    features: [
-      "Built with Next.js 15 and Web3 integration",
-      "Wallet connection and smart contract interaction",
-      "Ethereum blockchain support with MetaMask",
-      "NFT integration and cross-chain support",
-    ],
-    technologies: ["Next.js", "Web3", "Ethereum"],
+    technologies: ["Next.js", "Web3", "Blockchain"],
+    image: "/degn.png",
   },
   {
-    name: "DEGN DApp",
-    url: "#",
-    description: "Solana DEX Token Trading Platform",
-    features: [
-      "Decentralized application for buying and selling DEX tokens",
-      "NestJS backend with MongoDB and Jupiter API integration",
-      "Wallet management, trading history, and portfolio tracking",
-      "Multi-source price data integration with CoinMarketCap, CoinGecko, and Solscan",
-    ],
-    technologies: ["Next.js", "NestJS", "Solana", "MongoDB"],
-  },
-  {
-    name: "Tekvers Website",
+    name: "Tekvers",
     url: "https://tekvers.com",
-    description: "Software Company - Professional Services Website",
-    features: [
-      "E-commerce platform for stationary",
-      "Product catalog and shopping cart",
-      "Admin dashboard and order processing",
-      "Payment processing and inventory tracking",
-    ],
-    technologies: ["Next.js", "E-commerce", "Stripe"],
-  },
-  {
-    name: "Synovo Labs",
-    url: "https://slabs-eight.vercel.app",
-    description: "Web Development Agency Website",
-    features: [
-      "Built with Next.js 15, GSAP, and Framer Motion",
-      "Smooth scrolling animations",
-      "Portfolio showcase and technology stack",
-      "Advanced animations with GSAP timelines",
-    ],
-    technologies: ["Next.js", "GSAP", "Framer Motion"],
-  },
-  {
-    name: "Stationary E-commerce",
-    url: "#",
-    description: "Office Supplies E-commerce Platform",
-    features: [
-      "Comprehensive e-commerce platform for stationary and office supplies",
-      "Product catalog, shopping cart, and checkout process",
-      "Product categories, search functionality, and filtering system",
-      "Admin dashboard, order processing, and customer management",
-    ],
-    technologies: ["React", "Node.js", "MongoDB"],
-  },
-  {
-    name: "Taxi Application Platform",
-    url: "#",
-    description: "Full-Stack Transportation System",
-    features: [
-      "Comprehensive taxi booking and management platform",
-      "Real-time tracking system using Google Maps API",
-      "Secure payment processing with Stripe and PayPal",
-      "Comprehensive admin dashboard with user management",
-    ],
-    technologies: ["React", "Node.js", "Google Maps", "Stripe"],
-  },
-  {
-    name: "Car Maintenance Tracker",
-    url: "#",
-    description: "Full-Stack Mobile & Web Application",
-    features: [
-      "Comprehensive car maintenance tracking system",
-      "Flutter mobile app and React web dashboard",
-      "Offline functionality with SQLite",
-      "Real-time data synchronization and maintenance scheduling",
-    ],
-    technologies: ["Flutter", "React", "MongoDB", "SQLite"],
-  },
-  {
-    name: "Amazon Chat Assistant",
-    url: "#",
-    description: "Discord Bot",
-    features: [
-      "AI-powered Discord bot for Amazon FBA education",
-      "Conversational AI with context management",
-      "OpenAI GPT models for intelligent responses",
-      "Educational content and conversation context preservation",
-    ],
-    technologies: ["Node.js", "Discord.js", "OpenAI"],
-  },
-  {
-    name: "Discord Verify Bot",
-    url: "#",
-    description: "User Verification System",
-    features: [
-      "Sophisticated verification bot with multi-step questionnaire",
-      "Modal forms, role management, and automated verification",
-      "Multi-step questionnaire system with progressive verification",
-      "GoHighLevel webhook for lead management",
-    ],
-    technologies: ["Node.js", "Discord.js", "Webhooks"],
-  },
-  {
-    name: "PerkUP",
-    url: "#",
-    description: "Multi-Platform Loyalty & Rewards System",
-    features: [
-      "Comprehensive loyalty management system",
-      "Real-time data synchronization between web and mobile",
-      "ASP.NET Core backend with Entity Framework Core",
-      "React admin dashboard and Flutter mobile app",
-    ],
-    technologies: ["ASP.NET Core", "React", "Flutter", "Entity Framework"],
+    description: "Corporate website for a technology company offering software solutions and product management",
+    technologies: ["Next.js", "React.js", "Node.js"],
+    image: "/tekvers.png",
   },
   {
     name: "NoblePOS",
     url: "https://noblepos.com",
-    description: "Point of Sale & Business Management System",
-    features: [
-      "Comprehensive POS system for retail operations",
-      "Clean architecture with Entity Framework Core",
-      "Business logic layer for sales, inventory, purchases",
-      "Domain layer with comprehensive entity models",
-    ],
-    technologies: ["Vue.js", "ASP.NET Core", "Entity Framework"],
-  },
-  {
-    name: "WordPress Projects",
-    url: "#",
-    description: "Custom WordPress Development",
-    features: [
-      "AgentFusion.com: Custom real estate theme",
-      "TwoTrackProperties.com: Property management system",
-      "SKFramers.com: Construction company website",
-      "Evoo.pk: E-commerce platform with multi-vendor system",
-    ],
-    technologies: ["WordPress", "PHP", "WooCommerce", "MySQL"],
+    description: "Comprehensive Point of Sale system for retail operations with inventory and sales management",
+    technologies: ["Vue.js", "ASP.NET Core", "Entity Framework Core", "SQL Server"],
+    image: "/noblepos.png",
   },
 ];
 
 export default function Projects() {
-  const [ref, inView] = useInView({
+  const [viewRef, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
-  const itemsPerPage = 6;
   const playClickSound = useClickSound();
-
-  const totalPages = Math.ceil(projects.length / itemsPerPage);
-  const currentProjects = projects.slice(
-    currentIndex * itemsPerPage,
-    (currentIndex + 1) * itemsPerPage
-  );
-
-  const nextPage = () => {
-    playClickSound();
-    setCurrentIndex((prev) => (prev + 1) % totalPages);
-  };
-
-  const prevPage = () => {
-    playClickSound();
-    setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
-  };
+  const [showAll, setShowAll] = useState(false);
+  
+  const displayedProjects = showAll ? projects : projects.slice(0, 6);
 
   return (
-    <section id="projects" className="py-20 px-4">
-      <div className="container mx-auto">
+    <motion.section 
+      ref={viewRef}
+      id="projects" 
+      className="relative min-h-screen flex flex-col justify-center bg-gray-900 overflow-hidden"
+    >
+      <div className="w-full px-6 md:px-12 lg:px-20 py-16 md:py-24">
+        {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
+          className="mb-12 md:mb-16"
         >
-          <div className="relative overflow-hidden mb-12">
-            <motion.h2
-              initial={{ x: "-100%" }}
-              animate={inView ? { x: 0 } : {}}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent"
-            >
-              Projects
-            </motion.h2>
-          </div>
-
-          <div ref={ref} className="relative">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.5 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-              >
-                {currentProjects.map((project, index) => {
-                  const globalIndex = currentIndex * itemsPerPage + index;
-                  const isFlipped = flippedIndex === globalIndex;
-
-                  return (
-                    <div
-                      key={globalIndex}
-                      className="h-80 perspective-1000"
-                    >
-                      <motion.div
-                        className="relative w-full h-full preserve-3d"
-                        animate={{ rotateY: isFlipped ? 180 : 0 }}
-                        transition={{ duration: 0.6 }}
-                        onHoverStart={() => setFlippedIndex(globalIndex)}
-                        onHoverEnd={() => setFlippedIndex(null)}
-                      >
-                        <div
-                          className="absolute w-full h-full backface-hidden rounded-lg bg-gray-800/50 border border-gray-700 p-6 cursor-pointer"
-                        >
-                          <div className="flex items-start justify-between mb-4">
-                            <h3 className="text-xl font-bold text-white">{project.name}</h3>
-                            <motion.a
-                              href={project.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              whileHover={{ scale: 1.2, rotate: 15 }}
-                              whileTap={{ scale: 0.9 }}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                playClickSound();
-                              }}
-                            >
-                              <HiExternalLink className="text-purple-400" size={20} />
-                            </motion.a>
-                          </div>
-                          <p className="text-gray-400 mb-4 text-sm">{project.description}</p>
-                          <div className="flex flex-wrap gap-2 mb-4">
-                            {project.technologies.slice(0, 3).map((tech, i) => (
-                              <span
-                                key={i}
-                                className="px-2 py-1 bg-purple-500/20 text-purple-300 rounded text-xs"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-                          <p className="text-gray-500 text-xs mt-auto">Hover to see details</p>
-                        </div>
-
-                        <div
-                          className="absolute w-full h-full backface-hidden rounded-lg bg-gradient-to-br from-purple-900/50 to-blue-900/50 border border-purple-500 p-6 rotate-y-180"
-                        >
-                          <h3 className="text-xl font-bold text-white mb-4">{project.name}</h3>
-                          <ul className="list-disc list-inside text-gray-300 space-y-2 text-sm">
-                            {project.features.map((feature, i) => (
-                              <li key={i}>{feature}</li>
-                            ))}
-                          </ul>
-                          <div className="flex flex-wrap gap-2 mt-4">
-                            {project.technologies.map((tech, i) => (
-                              <span
-                                key={i}
-                                className="px-2 py-1 bg-purple-500/30 text-purple-200 rounded text-xs"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </motion.div>
-                    </div>
-                  );
-                })}
-              </motion.div>
-            </AnimatePresence>
-
-            {totalPages > 1 && (
-              <div className="flex items-center justify-center gap-4 mt-8">
-                <motion.button
-                  onClick={prevPage}
-                  className="p-2 bg-gray-800 rounded-lg text-white hover:bg-gray-700 transition-colors"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <HiChevronLeft size={24} />
-                </motion.button>
-                <span className="text-gray-400">
-                  {currentIndex + 1} / {totalPages}
-                </span>
-                <motion.button
-                  onClick={nextPage}
-                  className="p-2 bg-gray-800 rounded-lg text-white hover:bg-gray-700 transition-colors"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <HiChevronRight size={24} />
-                </motion.button>
-              </div>
-            )}
-          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+            Projects
+          </h2>
         </motion.div>
-      </div>
 
-    </section>
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {displayedProjects.map((project, index) => (
+            <motion.div
+              key={project.name}
+              initial={{ opacity: 0, y: 50 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group relative rounded-lg overflow-hidden cursor-pointer"
+              style={{ aspectRatio: "4/3" }}
+            >
+              {/* Project Image with 4:3 aspect ratio */}
+              <div className="relative w-full h-full">
+                <Image
+                  src={project.image}
+                  alt={project.name}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+              
+              {/* Overlay that appears on hover */}
+              <div className="absolute inset-0 bg-gray-900/95 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-6 md:p-8">
+                {/* Top section with title and link */}
+                <div className="flex items-start justify-between mb-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-white" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                    {project.name}
+                  </h3>
+                  <motion.a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => playClickSound()}
+                    whileHover={{ scale: 1.2, rotate: 15 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="text-gray-400 hover:text-[#C9FF00] transition-colors flex-shrink-0 ml-4"
+                  >
+                    <HiExternalLink size={24} />
+                  </motion.a>
+                </div>
+                
+                {/* Middle section with description */}
+                <p className="text-gray-300 mb-4 text-sm md:text-base leading-relaxed flex-grow">
+                  {project.description}
+                </p>
+
+                {/* Bottom section with technologies */}
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 bg-[#C9FF00]/10 text-[#C9FF00] rounded text-xs md:text-sm border border-[#C9FF00]/20"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Show More Button */}
+        {!showAll && projects.length > 6 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="flex justify-center mt-12"
+          >
+            <motion.button
+              onClick={() => {
+                playClickSound();
+                setShowAll(true);
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-[#C9FF00] text-gray-900 font-bold rounded-lg hover:bg-[#B8E600] transition-colors"
+              style={{ fontFamily: "var(--font-absans), sans-serif" }}
+            >
+              Show More ({projects.length - 6} more)
+            </motion.button>
+          </motion.div>
+        )}
+      </div>
+    </motion.section>
   );
 }
+
