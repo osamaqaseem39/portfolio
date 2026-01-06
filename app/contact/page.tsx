@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Contact from "@/components/Contact";
 import MobileHeader from "@/components/mobile/MobileHeader";
 import MobileContact from "@/components/mobile/MobileContact";
+import MobileMusicButton from "@/components/mobile/MobileMusicButton";
 
 export default function ContactPage() {
   const isMobile = useMobile();
@@ -16,6 +17,7 @@ export default function ContactPage() {
         <div className="pt-16">
           <MobileContact />
         </div>
+        <MobileMusicButton />
       </main>
     );
   }

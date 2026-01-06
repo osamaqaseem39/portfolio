@@ -1,14 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa6";
-import { useAudio, useClickSound } from "@/hooks/useAudio";
+import { useClickSound } from "@/hooks/useAudio";
 
 export default function MobileHero() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const { toggle: toggleMusic, isPlaying: isMusicPlaying } = useAudio("/bgmusic.mp3", { volume: 0.15, loop: true });
   const playClickSound = useClickSound();
 
   useEffect(() => {
@@ -114,32 +113,6 @@ export default function MobileHero() {
               <FaGithub size={24} />
             </motion.a>
           </motion.div>
-
-          {/* Music Control Button */}
-          <motion.button
-            className="w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 border border-gray-300 flex items-center justify-center transition-colors text-black"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => {
-              playClickSound();
-              toggleMusic();
-            }}
-            title={isMusicPlaying ? "Pause Music" : "Play Music"}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              {isMusicPlaying ? (
-                <>
-                  <path d="M3 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>
-                  <path d="M3 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>
-                </>
-              ) : (
-                <>
-                  <path d="M3 12h18" />
-                  <path d="M3 18h18" />
-                </>
-              )}
-            </svg>
-          </motion.button>
         </div>
 
         {/* Scroll Down Indicator */}

@@ -21,6 +21,7 @@ import MobileServices from "@/components/mobile/MobileServices";
 import MobileProjects from "@/components/mobile/MobileProjects";
 import MobileExperience from "@/components/mobile/MobileExperience";
 import MobileFooter from "@/components/mobile/MobileFooter";
+import MobileMusicButton from "@/components/mobile/MobileMusicButton";
 import Contact from "@/components/Contact";
 
 export default function Home() {
@@ -79,6 +80,7 @@ export default function Home() {
         <MobileProjects />
         <MobileExperience />
         <MobileFooter />
+        <MobileMusicButton />
       </main>
     );
   }

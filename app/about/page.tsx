@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import MobileHeader from "@/components/mobile/MobileHeader";
 import MobileAbout from "@/components/mobile/MobileAbout";
 import MobileFooter from "@/components/mobile/MobileFooter";
+import MobileMusicButton from "@/components/mobile/MobileMusicButton";
 
 export default function AboutPage() {
   const isMobile = useMobile();
@@ -17,6 +18,7 @@ export default function AboutPage() {
         <MobileHeader />
         <MobileAbout />
         <MobileFooter />
+        <MobileMusicButton />
       </main>
     );
   }
