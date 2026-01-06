@@ -92,7 +92,7 @@ export default function MobileProjects() {
               className="relative rounded-lg overflow-hidden bg-gray-800"
             >
               {/* Project Image */}
-              <div className="relative w-full h-48">
+              <div className="relative w-full aspect-[4/3]">
                 <Image
                   src={project.image}
                   alt={project.name}
