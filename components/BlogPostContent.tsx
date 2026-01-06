@@ -120,10 +120,10 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="prose prose-lg max-w-none"
-            style={{ fontFamily: "var(--font-absans), sans-serif" }}
+            className="prose prose-lg max-w-none prose-gray"
+            style={{ fontFamily: "var(--font-absans), sans-serif", color: "#374151" }}
           >
-            <div className="markdown-content text-gray-700 leading-relaxed">
+            <div className="markdown-content text-gray-700 leading-relaxed" style={{ color: "#374151" }}>
               {content ? (
                 <ReactMarkdown
                   components={{
@@ -148,22 +148,22 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
                     </h4>
                   ),
                   p: ({ children }) => (
-                    <p className="mb-4 text-gray-700 leading-relaxed" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                    <p className="mb-4 text-gray-700 leading-relaxed" style={{ fontFamily: "var(--font-absans), sans-serif", color: "#374151" }}>
                       {children}
                     </p>
                   ),
                   ul: ({ children }) => (
-                    <ul className="list-disc list-outside mb-4 ml-6 space-y-2" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                    <ul className="list-disc list-outside mb-4 ml-6 space-y-2 text-gray-700" style={{ fontFamily: "var(--font-absans), sans-serif", color: "#374151" }}>
                       {children}
                     </ul>
                   ),
                   ol: ({ children }) => (
-                    <ol className="list-decimal list-outside mb-4 ml-6 space-y-2" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                    <ol className="list-decimal list-outside mb-4 ml-6 space-y-2 text-gray-700" style={{ fontFamily: "var(--font-absans), sans-serif", color: "#374151" }}>
                       {children}
                     </ol>
                   ),
                   li: ({ children }) => (
-                    <li className="mb-1 text-gray-700" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                    <li className="mb-1 text-gray-700" style={{ fontFamily: "var(--font-absans), sans-serif", color: "#374151" }}>
                       {children}
                     </li>
                   ),

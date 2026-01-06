@@ -5,7 +5,8 @@ import { useInView } from "react-intersection-observer";
 import { HiExternalLink, HiCalendar } from "react-icons/hi";
 import { useClickSound } from "@/hooks/useAudio";
 import Link from "next/link";
-import { getAllBlogPosts } from "@/lib/blogData";
+import { getAllBlogPosts, BlogPost } from "@/lib/blogData";
+import { useState, useEffect } from "react";
 
 export default function BlogList() {
   const [ref, inView] = useInView({
@@ -13,20 +14,31 @@ export default function BlogList() {
     threshold: 0.1,
   });
   const playClickSound = useClickSound();
-  const blogPosts = getAllBlogPosts();
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  useEffect(() => {
+    try {
+      const posts = getAllBlogPosts();
+      setBlogPosts(posts);
+      setIsLoaded(true);
+    } catch (error) {
+      console.error("Error loading blog posts:", error);
+      setIsLoaded(true);
+    }
+  }, []);
+
+  // Use inView or isLoaded to trigger animations - ensure content is always visible
+  const shouldAnimate = inView || isLoaded;
 
   return (
     <section ref={ref} id="blog" className="py-20 md:py-32 px-4 md:px-8 bg-white">
       <div className="container mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
+        <div style={{ opacity: isLoaded ? 1 : 1 }}>
           {/* Heading */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-center mb-16"
           >
@@ -48,12 +60,19 @@ export default function BlogList() {
           </motion.div>
 
           {/* Blog Posts Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {blogPosts.map((post, index) => (
+          {blogPosts.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-gray-500" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                No blog posts available at the moment.
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {blogPosts.map((post, index) => (
               <motion.article
                 key={post.slug}
                 initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
+                animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                 className="bg-white rounded-lg border-2 border-gray-200 overflow-hidden hover:border-[#C9FF00] transition-all shadow-sm hover:shadow-md group"
                 whileHover={{ y: -5 }}
@@ -92,9 +111,10 @@ export default function BlogList() {
                   </div>
                 </Link>
               </motion.article>
-            ))}
-          </div>
-        </motion.div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );

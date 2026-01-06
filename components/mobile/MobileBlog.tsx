@@ -5,7 +5,8 @@ import { useInView } from "react-intersection-observer";
 import { HiExternalLink, HiCalendar } from "react-icons/hi";
 import { useClickSound } from "@/hooks/useAudio";
 import Link from "next/link";
-import { getAllBlogPosts } from "@/lib/blogData";
+import { getAllBlogPosts, BlogPost } from "@/lib/blogData";
+import { useState, useEffect } from "react";
 
 export default function MobileBlog() {
   const [ref, inView] = useInView({
@@ -13,7 +14,16 @@ export default function MobileBlog() {
     threshold: 0.1,
   });
   const playClickSound = useClickSound();
-  const blogPosts = getAllBlogPosts().slice(0, 3);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  
+  useEffect(() => {
+    try {
+      const posts = getAllBlogPosts().slice(0, 3);
+      setBlogPosts(posts);
+    } catch (error) {
+      console.error("Error loading blog posts:", error);
+    }
+  }, []);
 
   return (
     <section ref={ref} id="blog" className="py-16 px-4 bg-white">
@@ -48,8 +58,15 @@ export default function MobileBlog() {
           </motion.div>
 
           {/* Blog Posts - Single Column */}
-          <div className="space-y-6">
-            {blogPosts.map((post, index) => (
+          {blogPosts.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-gray-500 text-sm" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                No blog posts available at the moment.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-6">
+              {blogPosts.map((post, index) => (
               <motion.article
                 key={post.slug}
                 initial={{ opacity: 0, y: 30 }}
@@ -95,8 +112,9 @@ export default function MobileBlog() {
                   </div>
                 </Link>
               </motion.article>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           {/* View All Posts Button */}
           <motion.div

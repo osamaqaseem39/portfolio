@@ -20,8 +20,28 @@ export function useAudio(src: string, options?: { volume?: number; loop?: boolea
     const handleEnded = () => setIsPlaying(false);
     audio.addEventListener("ended", handleEnded);
 
+    // Attempt to play audio automatically when ready
+    const handleCanPlay = () => {
+      audio.play()
+        .then(() => setIsPlaying(true))
+        .catch((error) => {
+          // Autoplay might be blocked by browser policy
+          // This is expected and handled gracefully
+          console.log("Autoplay prevented:", error);
+        });
+    };
+
+    // Try to play when audio can play
+    if (audio.readyState >= 2) {
+      // Audio is already loaded
+      handleCanPlay();
+    } else {
+      audio.addEventListener("canplay", handleCanPlay, { once: true });
+    }
+
     return () => {
       audio.removeEventListener("ended", handleEnded);
+      audio.removeEventListener("canplay", handleCanPlay);
       audio.pause();
       audio.src = "";
     };
