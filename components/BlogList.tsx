@@ -16,65 +16,63 @@ export default function BlogList() {
   });
   const playClickSound = useClickSound();
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
     try {
       const posts = getAllBlogPosts();
+      console.log("Blog posts loaded:", posts.length);
       setBlogPosts(posts);
-      setIsLoaded(true);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error loading blog posts:", error);
-      setIsLoaded(true);
+      setIsLoading(false);
     }
   }, []);
 
-  // Use inView or isLoaded to trigger animations - ensure content is always visible
-  const shouldAnimate = inView || isLoaded;
-
   return (
-    <section ref={ref} id="blog" className="py-20 md:py-32 px-4 md:px-8 bg-white">
+    <section ref={ref} id="blog" className="py-20 md:py-32 px-4 md:px-8 bg-white min-h-screen">
       <div className="container mx-auto max-w-7xl">
-        <div style={{ opacity: isLoaded ? 1 : 1 }}>
-          {/* Heading */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-center mb-16"
+        {/* Heading */}
+        <div className="text-center mb-16">
+          <h1
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
+            style={{ 
+              fontFamily: "var(--font-absans), sans-serif",
+              color: "rgb(17, 24, 39)",
+            }}
           >
-            <h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
-              style={{ 
-                fontFamily: "var(--font-absans), sans-serif",
-                color: "rgb(17, 24, 39)",
-              }}
-            >
-              Blog
-            </h1>
-            <p
-              className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
-              style={{ fontFamily: "var(--font-absans), sans-serif" }}
-            >
-              Read my thoughts on web development, technology, and best practices
-            </p>
-          </motion.div>
+            Blog
+          </h1>
+          <p
+            className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
+            style={{ fontFamily: "var(--font-absans), sans-serif" }}
+          >
+            Read my thoughts on web development, technology, and best practices
+          </p>
+        </div>
 
-          {/* Blog Posts Grid */}
-          {blogPosts.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-gray-500" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
-                No blog posts available at the moment.
-              </p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {blogPosts.map((post, index) => (
+        {/* Blog Posts Grid */}
+        {isLoading ? (
+          <div className="text-center py-12">
+            <p className="text-gray-500" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+              Loading blog posts...
+            </p>
+          </div>
+        ) : blogPosts.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-gray-500" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+              No blog posts available at the moment.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {blogPosts.map((post, index) => (
               <motion.article
                 key={post.slug}
                 initial={{ opacity: 0, y: 30 }}
-                animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-white rounded-lg border-2 border-gray-200 overflow-hidden hover:border-[#C9FF00] transition-all shadow-sm hover:shadow-md group"
                 whileHover={{ y: -5 }}
               >
@@ -124,12 +122,10 @@ export default function BlogList() {
                   </div>
                 </Link>
               </motion.article>
-              ))}
-            </div>
-          )}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
 }
-
