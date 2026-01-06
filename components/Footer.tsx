@@ -45,7 +45,7 @@ export default function Footer() {
             className="flex items-center gap-6"
           >
             <motion.a
-              href="https://www.linkedin.com/in/osamaqaseem39"
+              href="https://www.linkedin.com/in/osamaqaseem"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-700 hover:text-[#C9FF00] transition-colors"

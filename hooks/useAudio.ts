@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 export function useAudio(src: string, options?: { volume?: number; loop?: boolean }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const wasPlayingBeforeHiddenRef = useRef(false);
 
   useEffect(() => {
     audioRef.current = new Audio(src);
@@ -39,9 +40,38 @@ export function useAudio(src: string, options?: { volume?: number; loop?: boolea
       audio.addEventListener("canplay", handleCanPlay, { once: true });
     }
 
+    // Handle tab visibility changes - pause when tab is hidden, resume when visible
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        // Tab is hidden - pause if playing
+        if (audio && !audio.paused) {
+          wasPlayingBeforeHiddenRef.current = true;
+          audio.pause();
+          setIsPlaying(false);
+        }
+      } else {
+        // Tab is visible - resume if it was playing before
+        if (audio && wasPlayingBeforeHiddenRef.current) {
+          audio.play()
+            .then(() => {
+              setIsPlaying(true);
+              wasPlayingBeforeHiddenRef.current = false;
+            })
+            .catch((error) => {
+              // If resume fails, reset the flag
+              wasPlayingBeforeHiddenRef.current = false;
+              console.log("Resume prevented:", error);
+            });
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
     return () => {
       audio.removeEventListener("ended", handleEnded);
       audio.removeEventListener("canplay", handleCanPlay);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       audio.pause();
       audio.src = "";
     };

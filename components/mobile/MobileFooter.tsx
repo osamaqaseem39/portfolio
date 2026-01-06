@@ -23,17 +23,16 @@ export default function MobileFooter() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <Link href="/contact">
-              <motion.button
-                onClick={playClickSound}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-[#C9FF00] text-gray-900 font-bold rounded-lg text-base hover:bg-[#C9FF00]/90 transition-colors shadow-lg shadow-[#C9FF00]/20"
-                style={{ fontFamily: "var(--font-absans), sans-serif" }}
-              >
-                Press to Ping Me
-              </motion.button>
+            <Link 
+              href="/contact"
+              onClick={playClickSound}
+              className="inline-block px-8 py-4 bg-[#C9FF00] text-gray-900 font-bold rounded-lg text-base hover:bg-[#C9FF00]/90 transition-colors shadow-lg shadow-[#C9FF00]/20"
+              style={{ fontFamily: "var(--font-absans), sans-serif" }}
+            >
+              Press to Ping Me
             </Link>
           </motion.div>
 
@@ -45,7 +44,7 @@ export default function MobileFooter() {
             className="flex items-center gap-6"
           >
             <motion.a
-              href="https://www.linkedin.com/in/osamaqaseem39"
+              href="https://www.linkedin.com/in/osamaqaseem"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-700 hover:text-[#C9FF00] transition-colors"

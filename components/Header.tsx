@@ -81,7 +81,7 @@ export default function Header() {
                   ))}
                   <div className="flex items-center space-x-4 ml-4 pl-4 border-l border-gray-300">
                     <motion.a
-                      href="https://www.linkedin.com/in/osamaqaseem39"
+                      href="https://www.linkedin.com/in/osamaqaseem"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-600 hover:text-black transition-colors"

@@ -298,7 +298,7 @@ export default function Contact() {
               </p>
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <motion.a
-                  href="https://www.linkedin.com/in/osamaqaseem39"
+                  href="https://www.linkedin.com/in/osamaqaseem"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 bg-white text-gray-900 rounded-lg font-semibold hover:bg-[#C9FF00] transition-colors flex items-center gap-2"

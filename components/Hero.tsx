@@ -155,7 +155,7 @@ export default function Hero() {
             
             {/* Social icons */}
             <motion.a
-              href="https://www.linkedin.com/in/osamaqaseem39"
+              href="https://www.linkedin.com/in/osamaqaseem"
               target="_blank"
               rel="noopener noreferrer"
               className="text-black hover:text-gray-600 transition-colors"

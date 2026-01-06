@@ -159,17 +159,19 @@ export default function MobileExperience() {
           <p className="text-xs mb-5 text-gray-600">
             Let's work together to create something amazing. Get in touch and let's discuss your next project.
           </p>
-          <Link href="/contact">
-            <motion.button
+          <motion.div
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link 
+              href="/contact"
               onClick={playClickSound}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-5 py-2.5 bg-[#C9FF00] text-gray-900 font-bold rounded-lg text-sm hover:bg-[#C9FF00]/90 transition-colors"
+              className="inline-block px-5 py-2.5 bg-[#C9FF00] text-gray-900 font-bold rounded-lg text-sm hover:bg-[#C9FF00]/90 transition-colors"
               style={{ fontFamily: "var(--font-absans), sans-serif" }}
             >
               Get In Touch
-            </motion.button>
-          </Link>
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </motion.section>

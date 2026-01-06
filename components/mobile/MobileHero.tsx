@@ -79,7 +79,7 @@ export default function MobileHero() {
             className="flex items-center justify-center gap-6 mb-8"
           >
             <motion.a
-              href="https://www.linkedin.com/in/osamaqaseem39"
+              href="https://www.linkedin.com/in/osamaqaseem"
               target="_blank"
               rel="noopener noreferrer"
               className="text-black hover:text-gray-600 transition-colors"

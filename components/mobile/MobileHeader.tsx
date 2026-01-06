@@ -128,7 +128,7 @@ export default function MobileHeader() {
 
                 <div className="flex items-center justify-center gap-6 pt-8 border-t border-gray-700">
                   <motion.a
-                    href="https://www.linkedin.com/in/osamaqaseem39"
+                    href="https://www.linkedin.com/in/osamaqaseem"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white hover:text-[#C9FF00] transition-colors"

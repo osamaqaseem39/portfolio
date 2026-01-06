@@ -107,14 +107,14 @@ export default function MobileContact() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-white rounded-lg p-4 border-2 border-gray-200 hover:border-[#C9FF00] transition-all text-center shadow-sm"
+                className="block bg-white rounded-lg p-5 border-2 border-gray-200 hover:border-[#C9FF00] active:border-[#C9FF00] transition-all text-center shadow-sm cursor-pointer"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={playClickSound}
               >
                 <HiMail className="text-[#C9FF00] mx-auto mb-3" size={28} />
-                <p className="text-gray-900 font-semibold mb-1 text-sm" style={{ fontFamily: "var(--font-absans), sans-serif" }}>Email</p>
-                <p className="text-gray-600 text-xs">connect@osamaqaseem.online</p>
+                <p className="text-gray-900 font-semibold mb-2 text-sm" style={{ fontFamily: "var(--font-absans), sans-serif" }}>Email</p>
+                <p className="text-gray-600 text-xs break-all px-2" style={{ fontFamily: "var(--font-absans), sans-serif" }}>connect@osamaqaseem.online</p>
               </motion.a>
 
               <motion.a
@@ -122,14 +122,14 @@ export default function MobileContact() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-white rounded-lg p-4 border-2 border-gray-200 hover:border-[#C9FF00] transition-all text-center shadow-sm"
+                className="block bg-white rounded-lg p-5 border-2 border-gray-200 hover:border-[#C9FF00] active:border-[#C9FF00] transition-all text-center shadow-sm cursor-pointer"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={playClickSound}
               >
                 <HiPhone className="text-[#C9FF00] mx-auto mb-3" size={28} />
-                <p className="text-gray-900 font-semibold mb-1 text-sm" style={{ fontFamily: "var(--font-absans), sans-serif" }}>Phone</p>
-                <p className="text-gray-600 text-xs">+92 325 6413868</p>
+                <p className="text-gray-900 font-semibold mb-2 text-sm" style={{ fontFamily: "var(--font-absans), sans-serif" }}>Phone</p>
+                <p className="text-gray-600 text-xs break-words px-2" style={{ fontFamily: "var(--font-absans), sans-serif" }}>+92 325 6413868</p>
               </motion.a>
 
               <motion.div
@@ -296,7 +296,7 @@ export default function MobileContact() {
               </p>
               <div className="flex flex-wrap items-center justify-center gap-2">
                 <motion.a
-                  href="https://www.linkedin.com/in/osamaqaseem39"
+                  href="https://www.linkedin.com/in/osamaqaseem"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2 bg-white text-gray-900 rounded-lg font-semibold hover:bg-[#C9FF00] transition-colors flex items-center gap-2 text-sm"
