@@ -63,7 +63,7 @@ export default function Home() {
   if (isMobile) {
     return (
       <main className="bg-white min-h-screen">
-        <ScrollController scrollMultiplier={0.5} enabled={true} />
+        <ScrollController scrollMultiplier={0.8} enabled={true} />
         <Script
           id="website-schema"
           type="application/ld+json"
@@ -89,7 +89,7 @@ export default function Home() {
 
   return (
     <main className="bg-white min-h-screen">
-      <ScrollController scrollMultiplier={0.5} enabled={true} />
+      <ScrollController scrollMultiplier={0.8} enabled={true} />
       <Script
         id="website-schema"
         type="application/ld+json"
