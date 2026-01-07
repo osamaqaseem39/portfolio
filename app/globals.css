@@ -25,7 +25,20 @@
 
 html {
   scroll-behavior: smooth;
+  /* Control scroll distance - adjust scroll-padding for offset */
+  scroll-padding-top: 0;
+  /* Control scroll speed with scroll-snap */
+  scroll-snap-type: none; /* Change to 'y mandatory' for snap scrolling */
 }
+
+/* Optional: Add scroll snap points for section-based scrolling */
+/* Uncomment to enable snap scrolling */
+/*
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+*/
 
 body {
   background: #ffffff;

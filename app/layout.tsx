@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import Script from "next/script";
 import "./globals.css";
+import ScrollController from "@/components/ScrollController";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://osamaqaseem.online";
 
@@ -133,6 +134,10 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
+        {/* Scroll Controller - Adjust scrollMultiplier to control scroll distance */}
+        {/* 0.5 = half speed, 1 = normal, 1.5 = 1.5x speed, 2 = double speed */}
+        <ScrollController scrollMultiplier={1} enabled={false} />
+        
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-E99YL8J5LQ"
