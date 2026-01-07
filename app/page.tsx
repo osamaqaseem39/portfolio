@@ -23,7 +23,6 @@ import MobileExperience from "@/components/mobile/MobileExperience";
 import MobileFooter from "@/components/mobile/MobileFooter";
 import MobileMusicButton from "@/components/mobile/MobileMusicButton";
 import Contact from "@/components/Contact";
-import ScrollController from "@/components/ScrollController";
 
 export default function Home() {
   const isMobile = useMobile();
@@ -63,7 +62,6 @@ export default function Home() {
   if (isMobile) {
     return (
       <main className="bg-white min-h-screen">
-        <ScrollController scrollMultiplier={0.9} enabled={true} />
         <Script
           id="website-schema"
           type="application/ld+json"
@@ -89,7 +87,6 @@ export default function Home() {
 
   return (
     <main className="bg-white min-h-screen">
-      <ScrollController scrollMultiplier={0.8} enabled={true} />
       <Script
         id="website-schema"
         type="application/ld+json"
