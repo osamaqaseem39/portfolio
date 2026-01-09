@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaExternalLinkAlt } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa6";
 import { useClickSound } from "@/hooks/useAudio";
 
@@ -75,7 +75,7 @@ export default function MobileHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex items-center justify-center gap-6 mb-8"
+            className="flex items-center justify-center gap-6 mb-6"
           >
             <motion.a
               href="https://www.linkedin.com/in/osamaqaseem"
@@ -111,6 +111,42 @@ export default function MobileHero() {
               onClick={playClickSound}
             >
               <FaGithub size={24} />
+            </motion.a>
+          </motion.div>
+
+          {/* Hire Me CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-col items-center justify-center gap-3 mb-8 px-4"
+          >
+            <motion.a
+              href="https://www.upwork.com/freelancers/~01b9eaa35da5d2f1a7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full max-w-xs px-5 py-3 bg-[#14A800] text-white rounded-lg font-semibold hover:bg-[#0F7F00] transition-colors flex items-center justify-center gap-2 shadow-lg"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={playClickSound}
+              style={{ fontFamily: "var(--font-absans), sans-serif" }}
+            >
+              <FaExternalLinkAlt size={16} />
+              Hire Me on Upwork
+            </motion.a>
+            
+            <motion.a
+              href="https://www.fiverr.com/s/NNmQdPy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full max-w-xs px-5 py-3 bg-[#1DBF73] text-white rounded-lg font-semibold hover:bg-[#19A866] transition-colors flex items-center justify-center gap-2 shadow-lg"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={playClickSound}
+              style={{ fontFamily: "var(--font-absans), sans-serif" }}
+            >
+              <FaExternalLinkAlt size={16} />
+              Hire Me on Fiverr
             </motion.a>
           </motion.div>
         </div>
