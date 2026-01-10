@@ -3,7 +3,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { FaGithub, FaLinkedin, FaExternalLinkAlt } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa6";
 import { useAudio, useClickSound } from "@/hooks/useAudio";
 
@@ -143,42 +143,6 @@ export default function Hero() {
               <br />
               .NET & Web3 Specialist
             </motion.h1>
-
-            {/* Hire Me CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex flex-wrap items-center justify-center gap-4 mt-8"
-            >
-              <motion.a
-                href="https://www.upwork.com/freelancers/~01b9eaa35da5d2f1a7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 bg-[#14A800] text-white rounded-lg font-semibold hover:bg-[#0F7F00] transition-colors flex items-center gap-2 shadow-lg"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={playClickSound}
-                style={{ fontFamily: "var(--font-absans), sans-serif" }}
-              >
-                <FaExternalLinkAlt size={16} />
-                Hire Me on Upwork
-              </motion.a>
-              
-              <motion.a
-                href="https://www.fiverr.com/s/NNmQdPy"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 bg-[#1DBF73] text-white rounded-lg font-semibold hover:bg-[#19A866] transition-colors flex items-center gap-2 shadow-lg"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={playClickSound}
-                style={{ fontFamily: "var(--font-absans), sans-serif" }}
-              >
-                <FaExternalLinkAlt size={16} />
-                Hire Me on Fiverr
-              </motion.a>
-            </motion.div>
           </div>
 
           {/* Left Sidebar - Social Icons */}
