@@ -10,6 +10,7 @@ export async function GET() {
     siteUrl,
     `${siteUrl}/about`,
     `${siteUrl}/contact`,
+    `${siteUrl}/projects`,
     `${siteUrl}/blog`,
     ...blogPosts.map((post) => `${siteUrl}/blog/${post.slug}`),
   ];

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://osamaqaseem.online";
+
 export const metadata: Metadata = {
   title: "Projects - Portfolio | Full Stack Developer & Web3 Specialist",
   description: "Explore my portfolio of projects including Web3 DApps, enterprise applications, e-commerce platforms, and mobile apps. Built with React, Next.js, ASP.NET Core, Solana blockchain, and more.",
@@ -19,6 +21,7 @@ export const metadata: Metadata = {
     title: "Projects - Portfolio | Full Stack Developer & Web3 Specialist",
     description: "Explore my portfolio of projects including Web3 DApps, enterprise applications, e-commerce platforms, and mobile apps.",
     type: "website",
+    url: `${siteUrl}/projects`,
   },
   twitter: {
     card: "summary_large_image",
@@ -26,7 +29,7 @@ export const metadata: Metadata = {
     description: "Explore my portfolio of projects including Web3 DApps, enterprise applications, e-commerce platforms, and mobile apps.",
   },
   alternates: {
-    canonical: "/projects",
+    canonical: `${siteUrl}/projects`,
   },
 };
 

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://osamaqaseem.online";
+
 export const metadata: Metadata = {
   title: "About Me - Full Stack Developer & Web3 Specialist",
   description: "Learn about Muhammad Osama Qaseem, a Full Stack Developer with 4+ years of experience in React, Next.js, ASP.NET Core 8, Web3, Solana blockchain, and mobile development. Based in Dubai, building enterprise applications and DApps.",
@@ -17,6 +19,7 @@ export const metadata: Metadata = {
     title: "About Me - Full Stack Developer & Web3 Specialist",
     description: "Learn about Muhammad Osama Qaseem, a Full Stack Developer with 4+ years of experience building enterprise applications, DApps, and mobile apps.",
     type: "profile",
+    url: `${siteUrl}/about`,
   },
   twitter: {
     card: "summary_large_image",
@@ -24,7 +27,7 @@ export const metadata: Metadata = {
     description: "Learn about Muhammad Osama Qaseem, a Full Stack Developer with 4+ years of experience.",
   },
   alternates: {
-    canonical: "/about",
+    canonical: `${siteUrl}/about`,
   },
 };
 

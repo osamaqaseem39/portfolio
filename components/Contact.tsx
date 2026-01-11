@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
-import { FaGithub, FaLinkedin, FaExternalLinkAlt } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa6";
 import { useClickSound } from "@/hooks/useAudio";
 import { useState } from "react";
@@ -365,13 +365,12 @@ export default function Contact() {
                     href="https://www.upwork.com/freelancers/~01b9eaa35da5d2f1a7"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-5 py-2.5 bg-[#14A800] text-white rounded-lg font-semibold hover:bg-[#0F7F00] transition-colors flex items-center gap-2"
+                    className="px-5 py-2.5 bg-[#14A800] text-white rounded-lg font-semibold hover:bg-[#0F7F00] transition-colors"
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={playClickSound}
                     style={{ fontFamily: "var(--font-absans), sans-serif" }}
                   >
-                    <FaExternalLinkAlt size={16} />
                     Hire on Upwork
                   </motion.a>
                   
@@ -379,13 +378,12 @@ export default function Contact() {
                     href="https://www.fiverr.com/s/NNmQdPy"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-5 py-2.5 bg-[#1DBF73] text-white rounded-lg font-semibold hover:bg-[#19A866] transition-colors flex items-center gap-2"
+                    className="px-5 py-2.5 bg-[#1DBF73] text-white rounded-lg font-semibold hover:bg-[#19A866] transition-colors"
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={playClickSound}
                     style={{ fontFamily: "var(--font-absans), sans-serif" }}
                   >
-                    <FaExternalLinkAlt size={16} />
                     Hire on Fiverr
                   </motion.a>
                 </div>

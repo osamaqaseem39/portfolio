@@ -6,7 +6,6 @@ import { useRef, useState } from "react";
 import { useClickSound } from "@/hooks/useAudio";
 import Link from "next/link";
 import AnimatedLinkText from "./AnimatedLinkText";
-import { FaExternalLinkAlt } from "react-icons/fa";
 
 interface ExperienceItem {
   title: string;
@@ -394,14 +393,10 @@ export default function Experience() {
                 onClick={playClickSound}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 md:px-8 py-4 md:py-5 bg-[#14A800] text-white font-bold rounded-lg text-lg md:text-xl hover:bg-[#0F7F00] transition-colors shadow-lg flex items-center gap-3"
+                className="px-6 md:px-8 py-4 md:py-5 bg-[#14A800] text-white font-bold rounded-lg text-lg md:text-xl hover:bg-[#0F7F00] transition-colors shadow-lg"
                 style={{ fontFamily: "var(--font-absans), sans-serif" }}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="flex-shrink-0">
-                  <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-.577-1.207-2.644-7.495 2.67 1.207 2.645 6.319-2.25c.135.222.337.445.6.663.983.865 2.307 1.359 3.893 1.359 2.966 0 5.448-2.219 5.448-5.086 0-2.867-2.482-5.086-5.448-5.086-1.586 0-2.91.494-3.893 1.359-.263.218-.465.441-.6.663l-6.319-2.25L1.729 4.9l7.495 2.67-.228.577c-.939-.76-1.972-1.227-3.074-1.227C3.683 6.92 1.2 9.14 1.2 12.006c0 2.867 2.483 5.086 5.448 5.086 1.102 0 2.135-.467 3.074-1.227l.228.577 1.207 2.644 7.495-2.67-1.207-2.645-.228-.577c.939.76 1.972 1.227 3.074 1.227 2.966 0 5.448-2.219 5.448-5.086 0-2.867-2.482-5.086-5.448-5.086z"/>
-                </svg>
-                <span>Hire on Upwork</span>
-                <FaExternalLinkAlt size={16} />
+                Hire on Upwork
               </motion.a>
 
               {/* Fiverr Button */}
@@ -412,14 +407,10 @@ export default function Experience() {
                 onClick={playClickSound}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 md:px-8 py-4 md:py-5 bg-[#1DBF73] text-white font-bold rounded-lg text-lg md:text-xl hover:bg-[#19A866] transition-colors shadow-lg flex items-center gap-3"
+                className="px-6 md:px-8 py-4 md:py-5 bg-[#1DBF73] text-white font-bold rounded-lg text-lg md:text-xl hover:bg-[#19A866] transition-colors shadow-lg"
                 style={{ fontFamily: "var(--font-absans), sans-serif" }}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="flex-shrink-0">
-                  <path d="M22.4062 6.73633C22.3047 6.43066 22.0336 6.21094 21.7109 6.16406L16.6406 5.5L13.9375 0.757812C13.7812 0.470312 13.4703 0.296875 13.1328 0.296875C12.7953 0.296875 12.4844 0.470312 12.3281 0.757812L9.625 5.5L4.55469 6.16406C4.23203 6.21094 3.96094 6.43066 3.85938 6.73633C3.75781 7.042 3.83594 7.37891 4.07031 7.61328L7.77344 11.3164L6.9375 16.375C6.89062 16.6977 6.99219 17.0234 7.21875 17.25C7.44531 17.4766 7.77109 17.5781 8.09375 17.5312L13.1328 16.6953L18.1719 17.5312C18.4945 17.5781 18.8203 17.4766 19.0469 17.25C19.2734 17.0234 19.375 16.6977 19.3281 16.375L18.4922 11.3164L22.1953 7.61328C22.4297 7.37891 22.5078 7.042 22.4062 6.73633Z"/>
-                </svg>
-                <span>Hire on Fiverr</span>
-                <FaExternalLinkAlt size={16} />
+                Hire on Fiverr
               </motion.a>
             </div>
           </motion.div>
