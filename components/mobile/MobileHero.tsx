@@ -65,7 +65,8 @@ export default function MobileHero() {
             className="text-2xl font-medium text-black leading-tight mb-8"
             style={{ fontFamily: "var(--font-absans), sans-serif" }}
           >
-            Full Stack Developer Building Scalable Web & Software Solutions
+            Full Stack Developer<br />
+            Building Scalable Web & Software Solutions
           </motion.h1>
 
           {/* Social Icons - Horizontal */}
