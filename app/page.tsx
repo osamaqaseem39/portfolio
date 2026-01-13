@@ -9,6 +9,7 @@ import Image from "@/components/Image";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Blog from "@/components/Blog";
+import MemoryGame from "@/components/MemoryGame";
 import Footer from "@/components/Footer";
 import Script from "next/script";
 
@@ -20,6 +21,7 @@ import MobileImage from "@/components/mobile/MobileImage";
 import MobileServices from "@/components/mobile/MobileServices";
 import MobileProjects from "@/components/mobile/MobileProjects";
 import MobileExperience from "@/components/mobile/MobileExperience";
+import MobileMemoryGame from "@/components/mobile/MobileMemoryGame";
 import MobileFooter from "@/components/mobile/MobileFooter";
 import MobileMusicButton from "@/components/mobile/MobileMusicButton";
 import Contact from "@/components/Contact";
@@ -79,6 +81,7 @@ export default function Home() {
         <MobileServices />
         <MobileProjects />
         <MobileExperience />
+        <MobileMemoryGame />
         <MobileFooter />
         <MobileMusicButton />
       </main>
@@ -105,6 +108,7 @@ export default function Home() {
       <Projects />
       <Experience />
       <Blog />
+      <MemoryGame />
       <Footer />
     </main>
   );
