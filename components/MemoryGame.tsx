@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useClickSound } from "@/hooks/useAudio";
 
-// Card symbols/icons - you can customize these
+// Card symbols/icons - 6 pairs for 4x3 grid
 const cardSymbols = [
   "🎯", "🎯",
   "🚀", "🚀",
@@ -13,8 +13,6 @@ const cardSymbols = [
   "⚡", "⚡",
   "🎨", "🎨",
   "🔥", "🔥",
-  "⭐", "⭐",
-  "💡", "💡",
 ];
 
 interface Card {
@@ -22,6 +20,7 @@ interface Card {
   symbol: string;
   isFlipped: boolean;
   isMatched: boolean;
+  tilt: number;
 }
 
 export default function MemoryGame() {
@@ -51,12 +50,17 @@ export default function MemoryGame() {
 
   // Initialize game
   const initializeGame = useCallback(() => {
-    const shuffled = shuffleArray(cardSymbols).map((symbol, index) => ({
-      id: index,
-      symbol,
-      isFlipped: false,
-      isMatched: false,
-    }));
+    const shuffled = shuffleArray(cardSymbols).map((symbol, index) => {
+      // Add slight random tilt to each card (-5 to +5 degrees)
+      const tilt = (Math.random() - 0.5) * 10;
+      return {
+        id: index,
+        symbol,
+        isFlipped: false,
+        isMatched: false,
+        tilt,
+      };
+    });
     setCards(shuffled);
     setFlippedCards([]);
     setMoves(0);
@@ -238,24 +242,25 @@ export default function MemoryGame() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="grid grid-cols-4 md:grid-cols-4 gap-3 md:gap-4 max-w-2xl mx-auto"
+            className="grid grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto"
           >
             <AnimatePresence>
               {cards.map((card) => (
                 <motion.div
                   key={card.id}
                   initial={{ opacity: 0, rotateY: 180 }}
-                  animate={{ opacity: 1, rotateY: 0 }}
+                  animate={{ opacity: 1, rotateY: 0, rotate: card.tilt }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
                   className="aspect-square"
+                  style={{ rotate: card.tilt }}
                 >
                   <motion.button
                     onClick={() => handleCardClick(card.id)}
                     disabled={isFlipping || card.isMatched}
                     className="w-full h-full relative perspective-1000"
-                    style={{ transformStyle: "preserve-3d" }}
-                    whileHover={!card.isFlipped && !card.isMatched ? { scale: 1.05 } : {}}
+                    style={{ transformStyle: "preserve-3d", rotate: card.tilt }}
+                    whileHover={!card.isFlipped && !card.isMatched ? { scale: 1.05, rotate: card.tilt + 2 } : {}}
                     whileTap={!card.isFlipped && !card.isMatched ? { scale: 0.95 } : {}}
                   >
                     <motion.div
@@ -267,7 +272,7 @@ export default function MemoryGame() {
                       transition={{ duration: 0.3 }}
                     >
                       <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg flex items-center justify-center border-2 border-gray-400">
-                        <span className="text-3xl md:text-4xl">?</span>
+                        <span className="text-4xl md:text-5xl lg:text-6xl">?</span>
                       </div>
                     </motion.div>
                     <motion.div
@@ -285,7 +290,7 @@ export default function MemoryGame() {
                             : "bg-gradient-to-br from-white to-gray-50 border-gray-300"
                         }`}
                       >
-                        <span className="text-3xl md:text-4xl">{card.symbol}</span>
+                        <span className="text-4xl md:text-5xl lg:text-6xl">{card.symbol}</span>
                       </div>
                     </motion.div>
                   </motion.button>
