@@ -36,7 +36,7 @@ export default function MobileAbout() {
             className="text-3xl font-bold text-black mb-6"
             style={{ fontFamily: "var(--font-absans), sans-serif" }}
           >
-            About Me
+            About Me – Full Stack Software Developer
           </motion.h2>
 
           <div className="space-y-6">
@@ -52,7 +52,7 @@ export default function MobileAbout() {
                 className="text-base leading-relaxed"
                 style={{ fontFamily: "var(--font-absans), sans-serif" }}
               >
-                I'm Muhammad Osama Qaseem – a Full Stack Developer crafting enterprise-grade, scalable digital solutions. I specialize in developing enterprise ERP systems with ASP.NET Core 8, multi-tenant SaaS platforms, cross-platform mobile applications with Flutter, and Web3 solutions. I've built 15+ production applications and currently work at Voxity as a Full Stack Developer on multiple Web3 projects.
+                I am a passionate <strong>Full Stack Developer</strong> focused on building clean, efficient, and scalable software solutions. I specialize in frontend and backend technologies that power modern web and mobile applications. I have worked with startups, agencies, and international clients to deliver high-quality products. My development approach is business-oriented, performance-driven, and user-focused.
               </ReadingProgressText>
             </motion.div>
 

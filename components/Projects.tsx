@@ -263,9 +263,12 @@ export default function Projects() {
           transition={{ duration: 0.8 }}
           className="mb-12 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
-            Projects
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+            My Portfolio – Real Projects & Solutions
           </h2>
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl">
+            Below are selected projects that demonstrate my expertise in <strong>web application development, software engineering, and blockchain solutions</strong>. Each project focuses on performance, scalability, and user experience.
+          </p>
         </motion.div>
 
         {/* Projects Grid */}

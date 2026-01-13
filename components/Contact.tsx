@@ -89,13 +89,13 @@ export default function Contact() {
                 color: "rgb(17, 24, 39)",
               }}
             >
-              Get In Touch
+              Contact Me
             </h2>
             <p
               className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
               style={{ fontFamily: "var(--font-absans), sans-serif" }}
             >
-              Let's work together to bring your ideas to life. Reach out and let's start a conversation.
+              Have a project in mind? Let's discuss your requirements and turn your idea into reality.
             </p>
           </motion.div>
 
@@ -288,14 +288,37 @@ export default function Contact() {
                 className="text-2xl md:text-3xl font-bold mb-4 text-white"
                 style={{ fontFamily: "var(--font-absans), sans-serif" }}
               >
-                Let's Connect
+                Hire a Full Stack Developer for Your Project
               </h3>
               <p
                 className="text-gray-400 mb-8 text-lg"
                 style={{ fontFamily: "var(--font-absans), sans-serif" }}
               >
-                Follow me on social media or reach out directly
+                Looking to <strong>hire a full stack developer</strong> for your startup or business? I provide reliable remote development services for global clients.
               </p>
+              <div className="mb-8 text-left max-w-2xl mx-auto">
+                <h4 className="text-xl font-semibold text-white mb-4" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                  Why Hire Me:
+                </h4>
+                <ul className="space-y-2 text-gray-300">
+                  <li className="flex items-start">
+                    <span className="text-[#C9FF00] mr-2">•</span>
+                    <span>Proven experience with startups</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#C9FF00] mr-2">•</span>
+                    <span>Clean & scalable code</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#C9FF00] mr-2">•</span>
+                    <span>On-time delivery</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#C9FF00] mr-2">•</span>
+                    <span>Long-term support</span>
+                  </li>
+                </ul>
+              </div>
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <motion.a
                   href="https://www.linkedin.com/in/osamaqaseem"

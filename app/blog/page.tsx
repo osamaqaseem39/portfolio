@@ -6,8 +6,8 @@ import BlogList from "@/components/BlogList";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://osamaqaseem.online";
 
 export const metadata: Metadata = {
-  title: "Blog | Web Development, Web3 & Performance Tips | Osama Qaseem",
-  description: "Read articles on modern web development, Next.js, React, Web3, Solana blockchain, performance optimization, and best practices from a professional software engineer.",
+  title: "Blog | Web Development, MERN Stack & Software Engineering",
+  description: "Tech blog featuring web & software development insights, MERN stack tutorials, and software engineering best practices.",
   keywords: [
     "web development blog",
     "Next.js tutorials",
@@ -25,16 +25,16 @@ export const metadata: Metadata = {
     "web performance"
   ],
   openGraph: {
-    title: "Blog | Web Development & Web3 Articles",
-    description: "Expert insights on web development, Web3, and performance optimization",
+    title: "Blog | Web Development, MERN Stack & Software Engineering",
+    description: "Tech blog featuring web & software development insights, MERN stack tutorials, and software engineering best practices.",
     type: "website",
     url: `${siteUrl}/blog`,
     images: [`${siteUrl}/myimage.png`],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog | Web Development & Web3 Articles",
-    description: "Expert insights on web development, Web3, and performance optimization",
+    title: "Blog | Web Development, MERN Stack & Software Engineering",
+    description: "Tech blog featuring web & software development insights, MERN stack tutorials, and software engineering best practices.",
     images: [`${siteUrl}/myimage.png`],
   },
   alternates: {

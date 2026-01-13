@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://osamaqaseem.online";
 
 export const metadata: Metadata = {
-  title: "Projects - Portfolio | Full Stack Developer & Web3 Specialist",
-  description: "Explore my portfolio of projects including Web3 DApps, enterprise applications, e-commerce platforms, and mobile apps. Built with React, Next.js, ASP.NET Core, Solana blockchain, and more.",
+  title: "Portfolio | Full Stack Developer Projects & Case Studies",
+  description: "Explore real-world full stack development projects including web apps, SaaS platforms, and mobile applications.",
   keywords: [
     "Full Stack Developer Projects",
     "Web3 Projects",
@@ -18,15 +18,15 @@ export const metadata: Metadata = {
     "Software Development Portfolio",
   ],
   openGraph: {
-    title: "Projects - Portfolio | Full Stack Developer & Web3 Specialist",
-    description: "Explore my portfolio of projects including Web3 DApps, enterprise applications, e-commerce platforms, and mobile apps.",
+    title: "Portfolio | Full Stack Developer Projects & Case Studies",
+    description: "Explore real-world full stack development projects including web apps, SaaS platforms, and mobile applications.",
     type: "website",
     url: `${siteUrl}/projects`,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Projects - Portfolio | Full Stack Developer & Web3 Specialist",
-    description: "Explore my portfolio of projects including Web3 DApps, enterprise applications, e-commerce platforms, and mobile apps.",
+    title: "Portfolio | Full Stack Developer Projects & Case Studies",
+    description: "Explore real-world full stack development projects including web apps, SaaS platforms, and mobile applications.",
   },
   alternates: {
     canonical: `${siteUrl}/projects`,

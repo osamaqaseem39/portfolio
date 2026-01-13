@@ -8,10 +8,10 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://osamaqaseem.online"
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Muhammad Osama Qaseem - Full Stack Developer | Web3 & .NET Specialist",
+    default: "Full Stack Developer Portfolio | Hire Remote Web & Software Developer",
     template: "%s | Osama Qaseem",
   },
-  description: "Full Stack Developer specializing in React, Next.js, Node.js, ASP.NET Core 8, Web3, and Solana blockchain technologies. 4+ years of experience building enterprise applications, DApps, and mobile apps.",
+  description: "Professional full stack developer portfolio. Hire a remote web, software, MERN stack, React, Node.js & blockchain developer for scalable applications.",
   keywords: [
     "Full Stack Developer",
     "React Developer",
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "Muhammad Osama Qaseem - Portfolio",
-    title: "Muhammad Osama Qaseem - Full Stack Developer | Web3 & .NET Specialist",
-    description: "Full Stack Developer specializing in React, Next.js, Node.js, ASP.NET Core 8, Web3, and Solana blockchain technologies. 4+ years of experience building enterprise applications.",
+    siteName: "Full Stack Developer Portfolio | Hire Remote Developer",
+    title: "Full Stack Developer Portfolio | Hire Remote Web & Software Developer",
+    description: "Professional full stack developer portfolio. Hire a remote web, software, MERN stack, React, Node.js & blockchain developer for scalable applications.",
     images: [
       {
         url: `${siteUrl}/myimage.png`,
@@ -55,8 +55,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Muhammad Osama Qaseem - Full Stack Developer | Web3 & .NET Specialist",
-    description: "Full Stack Developer specializing in React, Next.js, Node.js, ASP.NET Core 8, Web3, and Solana blockchain technologies.",
+    title: "Full Stack Developer Portfolio | Hire Remote Web & Software Developer",
+    description: "Professional full stack developer portfolio. Hire a remote web, software, MERN stack, React, Node.js & blockchain developer for scalable applications.",
     images: [`${siteUrl}/myimage.png`],
   },
   robots: {

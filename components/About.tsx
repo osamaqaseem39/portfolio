@@ -236,16 +236,8 @@ export default function About() {
                 className="text-5xl md:text-7xl lg:text-8xl font-bold text-black mb-6 leading-tight"
                 style={{ fontFamily: "var(--font-absans), sans-serif" }}
               >
-                Muhammad Osama Qaseem
+                About Me – Full Stack Software Developer
               </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-2xl md:text-3xl lg:text-4xl text-gray-700 mb-8"
-              >
-                Full Stack Developer • .NET Specialist • Mobile Developer • Web3 Expert
-              </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -257,7 +249,7 @@ export default function About() {
                   defaultColor="#4B5563"
                   style={{ fontFamily: "var(--font-absans), sans-serif" }}
                 >
-                  I'm Muhammad Osama Qaseem – a Full Stack Developer crafting enterprise-grade, scalable digital solutions. I specialize in developing enterprise ERP systems with ASP.NET Core 8, multi-tenant SaaS platforms, cross-platform mobile applications with Flutter, and Web3 solutions. I've built 15+ production applications and currently work at Voxity as a Full Stack Developer on multiple Web3 projects.
+                  I am a passionate <strong>Full Stack Developer</strong> focused on building clean, efficient, and scalable software solutions. I specialize in frontend and backend technologies that power modern web and mobile applications. I have worked with startups, agencies, and international clients to deliver high-quality products. My development approach is business-oriented, performance-driven, and user-focused.
                 </ReadingProgressText>
               </motion.div>
             </motion.div>

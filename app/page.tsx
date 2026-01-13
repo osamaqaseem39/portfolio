@@ -31,9 +31,9 @@ export default function Home() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Muhammad Osama Qaseem - Portfolio",
+    name: "Full Stack Developer Portfolio | Hire Remote Developer",
     url: siteUrl,
-    description: "Full Stack Developer specializing in React, Next.js, Node.js, ASP.NET Core 8, Web3, and Solana blockchain technologies",
+    description: "Professional full stack developer portfolio. Hire a remote web, software, MERN stack, React, Node.js & blockchain developer for scalable applications.",
     author: {
       "@type": "Person",
       name: "Muhammad Osama Qaseem",

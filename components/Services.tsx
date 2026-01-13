@@ -6,8 +6,8 @@ import { useRef } from "react";
 const services = [
   {
     number: "01",
-    title: "Enterprise .NET Development",
-    description: "Building enterprise-grade applications with ASP.NET Core 8, following SOLID principles and Domain-Driven Design. Developing multi-tenant ERP systems, RESTful APIs with Entity Framework Core, JWT authentication, and SQL Server optimization.",
+    title: "Custom Software Development",
+    description: "Tailor-made software solutions to automate and optimize business processes. Building enterprise-grade applications with ASP.NET Core 8, following SOLID principles and Domain-Driven Design.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
         <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -19,7 +19,7 @@ const services = [
   {
     number: "02",
     title: "Full Stack Web Development",
-    description: "Building scalable web applications using Next.js, React, Vue.js, Node.js, NestJS, and TypeScript. Creating modern, responsive interfaces with Tailwind CSS, Framer Motion, and Three.js for 3D experiences.",
+    description: "Custom, scalable, and secure web applications using modern frameworks. Building high-performance MERN stack applications for startups and SaaS products.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
         <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5"/>
@@ -30,8 +30,8 @@ const services = [
   },
   {
     number: "03",
-    title: "ERP & SaaS Platform Development",
-    description: "Developing comprehensive multi-tenant ERP systems and SaaS platforms with GraphQL, REST APIs, RBAC, tenant isolation, and modules for HRM, Finance, CRM, SCM, Sales, Procurement, and Manufacturing.",
+    title: "MERN Stack Development",
+    description: "High-performance MERN stack applications for startups and SaaS products. Developing comprehensive multi-tenant ERP systems and SaaS platforms with GraphQL, REST APIs, RBAC, and tenant isolation.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -40,8 +40,8 @@ const services = [
   },
   {
     number: "04",
-    title: "Cross-Platform Mobile Development",
-    description: "Building cross-platform mobile applications with Flutter & Dart, featuring Firebase integration, offline functionality, real-time synchronization, and native performance for both iOS and Android.",
+    title: "Mobile App Development",
+    description: "Cross-platform mobile applications using Flutter. Building mobile apps with Firebase integration, offline functionality, real-time synchronization, and native performance for both iOS and Android.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
         <rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" strokeWidth="1.5"/>
@@ -51,8 +51,8 @@ const services = [
   },
   {
     number: "05",
-    title: "Web3 & Blockchain Development",
-    description: "Building decentralized applications (DApps), token exchange platforms, and blockchain integrations using Web3.js, Ethers.js, Solana Web3.js, MetaMask, WalletConnect, and Jupiter DEX.",
+    title: "Blockchain Development",
+    description: "Decentralized applications, smart contracts, and Web3 integrations. Building DApps, token exchange platforms, and blockchain integrations using Web3.js, Ethers.js, Solana Web3.js, MetaMask, WalletConnect, and Jupiter DEX.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
         <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5"/>
@@ -132,9 +132,12 @@ export default function Services() {
 
         {/* Section Heading */}
         <div className="mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
-            Services
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+            Professional Web & Software Development Services
           </h2>
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl">
+            I offer <strong>custom software and web development services</strong> designed to help businesses grow digitally.
+          </p>
         </div>
 
         {/* Services Container with Marquee Effect */}

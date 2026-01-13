@@ -61,9 +61,12 @@ export default function MobileServices() {
           transition={{ duration: 0.8 }}
           className="mb-8"
         >
-          <h2 className="text-3xl font-bold text-gray-800" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
-            Services
+          <h2 className="text-3xl font-bold text-gray-800 mb-4" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+            Professional Web & Software Development Services
           </h2>
+          <p className="text-base text-gray-600">
+            I offer <strong>custom software and web development services</strong> designed to help businesses grow digitally.
+          </p>
         </motion.div>
 
         {/* Services List - Vertical Scroll */}

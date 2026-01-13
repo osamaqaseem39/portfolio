@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://osamaqaseem.online";
 
 export const metadata: Metadata = {
-  title: "Contact Me - Get in Touch | Full Stack Developer",
-  description: "Contact Muhammad Osama Qaseem for web development, mobile app development, Web3, blockchain, and enterprise software projects. Available for freelance and full-time opportunities.",
+  title: "Contact | Hire Remote Full Stack Developer",
+  description: "Get in touch to hire a full stack developer for web, software, or mobile app development projects.",
   keywords: [
     "Contact Full Stack Developer",
     "Hire Web Developer",
@@ -15,15 +15,15 @@ export const metadata: Metadata = {
     "Software Engineer Contact",
   ],
   openGraph: {
-    title: "Contact Me - Get in Touch | Full Stack Developer",
-    description: "Contact Muhammad Osama Qaseem for web development, mobile app development, Web3, blockchain, and enterprise software projects.",
+    title: "Contact | Hire Remote Full Stack Developer",
+    description: "Get in touch to hire a full stack developer for web, software, or mobile app development projects.",
     type: "website",
     url: `${siteUrl}/contact`,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Me - Get in Touch | Full Stack Developer",
-    description: "Contact Muhammad Osama Qaseem for web development, mobile app development, Web3, and blockchain projects.",
+    title: "Contact | Hire Remote Full Stack Developer",
+    description: "Get in touch to hire a full stack developer for web, software, or mobile app development projects.",
   },
   alternates: {
     canonical: `${siteUrl}/contact`,

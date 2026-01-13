@@ -45,13 +45,13 @@ export default function BlogList() {
               color: "rgb(17, 24, 39)",
             }}
           >
-            Blog
+            Tech Blog – Web & Software Development Insights
           </h1>
           <p
             className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
             style={{ fontFamily: "var(--font-absans), sans-serif" }}
           >
-            Read my thoughts on web development, technology, and best practices
+            Articles on web development, MERN stack, software engineering, and best practices for building scalable applications
           </p>
         </div>
 
