@@ -51,8 +51,8 @@ export default function MemoryGame() {
   // Initialize game
   const initializeGame = useCallback(() => {
     const shuffled = shuffleArray(cardSymbols).map((symbol, index) => {
-      // Add slight random tilt to each card (-5 to +5 degrees)
-      const tilt = (Math.random() - 0.5) * 10;
+      // Add slight random tilt to each card (-2 to +2 degrees)
+      const tilt = (Math.random() - 0.5) * 4;
       return {
         id: index,
         symbol,
@@ -260,7 +260,7 @@ export default function MemoryGame() {
                     disabled={isFlipping || card.isMatched}
                     className="w-full h-full relative perspective-1000"
                     style={{ transformStyle: "preserve-3d", rotate: card.tilt }}
-                    whileHover={!card.isFlipped && !card.isMatched ? { scale: 1.05, rotate: card.tilt + 2 } : {}}
+                    whileHover={!card.isFlipped && !card.isMatched ? { scale: 1.05, rotate: card.tilt + 1 } : {}}
                     whileTap={!card.isFlipped && !card.isMatched ? { scale: 0.95 } : {}}
                   >
                     <motion.div
