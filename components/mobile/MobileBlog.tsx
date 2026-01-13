@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useRef } from "react";
 import { HiExternalLink, HiCalendar } from "react-icons/hi";
 import { useClickSound } from "@/hooks/useAudio";
 import Link from "next/link";
@@ -11,12 +12,30 @@ import { useState, useEffect } from "react";
 import AnimatedLinkText from "../AnimatedLinkText";
 
 export default function MobileBlog() {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
   const playClickSound = useClickSound();
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+
+  // Scroll progress for section animations
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const sectionY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+  const sectionOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.5, 1, 1, 0.5]);
+
+  // Combined ref callback
+  const combinedRef = (node: HTMLElement | null) => {
+    if (node) {
+      (sectionRef as React.MutableRefObject<HTMLElement | null>).current = node;
+      ref(node);
+    }
+  };
   
   useEffect(() => {
     try {
@@ -28,12 +47,15 @@ export default function MobileBlog() {
   }, []);
 
   return (
-    <section ref={ref} id="blog" className="py-12 px-4 bg-white">
-      <div className="container mx-auto max-w-7xl">
+    <section ref={combinedRef} id="blog" className="py-12 px-4 bg-white">
+      <motion.div 
+        className="container mx-auto max-w-7xl"
+        style={{ y: sectionY, opacity: sectionOpacity }}
+      >
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* Heading */}
           <motion.div
@@ -150,7 +172,7 @@ export default function MobileBlog() {
             </Link>
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

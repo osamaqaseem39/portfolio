@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useRef } from "react";
 import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa6";
@@ -9,11 +10,29 @@ import { useClickSound } from "@/hooks/useAudio";
 import { useState } from "react";
 
 export default function MobileContact() {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
   const playClickSound = useClickSound();
+
+  // Scroll progress for section animations
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const sectionY = useTransform(scrollYProgress, [0, 1], [20, -20]);
+  const sectionOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6]);
+
+  // Combined ref callback
+  const combinedRef = (node: HTMLElement | null) => {
+    if (node) {
+      (sectionRef as React.MutableRefObject<HTMLElement | null>).current = node;
+      ref(node);
+    }
+  };
   
   const [formData, setFormData] = useState({
     name: "",
@@ -68,12 +87,15 @@ export default function MobileContact() {
   };
 
   return (
-    <section ref={ref} id="contact" className="py-12 px-4">
-      <div className="container mx-auto max-w-4xl">
+    <section ref={combinedRef} id="contact" className="py-12 px-4">
+      <motion.div 
+        className="container mx-auto max-w-4xl"
+        style={{ y: sectionY, opacity: sectionOpacity }}
+      >
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* Heading */}
           <motion.div
@@ -389,7 +411,7 @@ export default function MobileContact() {
             </motion.div>
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useRef } from "react";
 import Image from "next/image";
@@ -8,10 +8,29 @@ import ReadingProgressText from "../ReadingProgressText";
 
 export default function MobileAbout() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const imageRef = useRef<HTMLDivElement | null>(null);
   const [viewRef, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  // Scroll progress for image parallax
+  const { scrollYProgress: imageScrollProgress } = useScroll({
+    target: imageRef,
+    offset: ["start end", "end start"],
+  });
+
+  const imageY = useTransform(imageScrollProgress, [0, 1], ["0%", "10%"]);
+  const imageOpacity = useTransform(imageScrollProgress, [0, 0.3, 0.7, 1], [0.5, 1, 1, 0.5]);
+  const imageScale = useTransform(imageScrollProgress, [0, 0.5, 1], [0.9, 1, 0.9]);
+
+  // Section scroll progress
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const sectionY = useTransform(scrollYProgress, [0, 1], [30, -30]);
 
   const combinedRef = (node: HTMLElement | null) => {
     if (node) {
@@ -26,7 +45,10 @@ export default function MobileAbout() {
       id="about" 
       className="relative bg-[#F5F5F5] py-16"
     >
-      <div className="w-full px-4">
+      <motion.div 
+        className="w-full px-4"
+        style={{ y: sectionY }}
+      >
         {/* About Me Section */}
         <div className="mb-12">
           <motion.h2
@@ -58,12 +80,16 @@ export default function MobileAbout() {
 
             {/* Developer Image */}
             <motion.div
+              ref={imageRef}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="space-y-4"
             >
-              <div className="relative h-64 overflow-hidden max-w-sm mx-auto">
+              <motion.div 
+                className="relative h-64 overflow-hidden max-w-sm mx-auto"
+                style={{ y: imageY, opacity: imageOpacity, scale: imageScale }}
+              >
                 <div className="absolute inset-0 bg-black rounded-lg">
                   <Image
                     src="/myimage.png"
@@ -74,7 +100,7 @@ export default function MobileAbout() {
                     style={{ objectPosition: "center top" }}
                   />
                 </div>
-              </div>
+              </motion.div>
               
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -112,7 +138,7 @@ export default function MobileAbout() {
             </motion.div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </motion.section>
   );
 }

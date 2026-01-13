@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useRef } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa6";
 import { useClickSound } from "@/hooks/useAudio";
@@ -9,15 +10,36 @@ import Link from "next/link";
 import AnimatedLinkText from "../AnimatedLinkText";
 
 export default function MobileFooter() {
+  const footerRef = useRef<HTMLElement | null>(null);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
   const playClickSound = useClickSound();
 
+  // Scroll progress for footer animations
+  const { scrollYProgress } = useScroll({
+    target: footerRef,
+    offset: ["start end", "end end"]
+  });
+
+  const footerY = useTransform(scrollYProgress, [0, 1], [30, 0]);
+  const footerOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1, 1]);
+
+  // Combined ref callback
+  const combinedRef = (node: HTMLElement | null) => {
+    if (node) {
+      (footerRef as React.MutableRefObject<HTMLElement | null>).current = node;
+      ref(node);
+    }
+  };
+
   return (
-    <footer ref={ref} className="py-12 px-4 bg-white border-t border-gray-200">
-      <div className="container mx-auto max-w-7xl">
+    <footer ref={combinedRef} className="py-12 px-4 bg-white border-t border-gray-200">
+      <motion.div 
+        className="container mx-auto max-w-7xl"
+        style={{ y: footerY, opacity: footerOpacity }}
+      >
         <div className="flex flex-col items-center justify-center gap-6">
           {/* Ping Me Button */}
           <motion.div
@@ -92,7 +114,7 @@ export default function MobileFooter() {
             © {new Date().getFullYear()} Muhammad Osama Qaseem
           </motion.p>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 }

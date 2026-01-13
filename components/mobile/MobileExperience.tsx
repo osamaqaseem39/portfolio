@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useRef } from "react";
 import { useClickSound } from "@/hooks/useAudio";
 import Link from "next/link";
 import AnimatedLinkText from "../AnimatedLinkText";
@@ -39,19 +40,49 @@ const experiences: ExperienceItem[] = [
 ];
 
 export default function MobileExperience() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const timelineRef = useRef<HTMLDivElement | null>(null);
   const [viewRef, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
   const playClickSound = useClickSound();
 
+  // Scroll progress for timeline animation
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start end", "end start"]
+  });
+
+  const timelineProgress = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const timelineOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.3, 1, 1, 0.3]);
+
+  // Section scroll progress
+  const { scrollYProgress: sectionScrollProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const sectionY = useTransform(sectionScrollProgress, [0, 1], [20, -20]);
+
+  // Combined ref callback
+  const combinedRef = (node: HTMLElement | null) => {
+    if (node) {
+      (sectionRef as React.MutableRefObject<HTMLElement | null>).current = node;
+      viewRef(node);
+    }
+  };
+
   return (
     <motion.section 
-      ref={viewRef}
+      ref={combinedRef}
       id="experience" 
       className="relative flex items-center justify-center overflow-hidden py-16 min-h-screen bg-white"
     >
-      <div className="w-full px-4">
+      <motion.div 
+        className="w-full px-4"
+        style={{ y: sectionY }}
+      >
         {/* Stats Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -108,9 +139,16 @@ export default function MobileExperience() {
         </motion.div>
 
         {/* Timeline - Vertical */}
-        <div className="relative">
-          {/* Vertical Line */}
+        <div ref={timelineRef} className="relative">
+          {/* Vertical Line with progress animation */}
           <div className="absolute left-[14px] top-0 bottom-0 w-0.5 bg-gray-300" />
+          <motion.div
+            className="absolute left-[14px] top-0 w-0.5 bg-[#C9FF00]"
+            style={{ 
+              height: timelineProgress,
+              opacity: timelineOpacity
+            }}
+          />
 
           {/* Timeline Items */}
           <div className="space-y-6">
@@ -162,13 +200,14 @@ export default function MobileExperience() {
           </p>
           <div className="flex flex-col items-center justify-center gap-3">
             <motion.div
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full max-w-xs"
             >
               <Link 
                 href="/contact"
                 onClick={playClickSound}
-                className="inline-block px-5 py-2.5 bg-[#C9FF00] text-gray-900 font-bold rounded-lg text-sm hover:bg-[#C9FF00]/90 transition-colors"
+                className="block w-full px-5 py-2.5 bg-[#C9FF00] text-gray-900 font-bold rounded-lg text-sm hover:bg-[#C9FF00]/90 transition-colors text-center"
                 style={{ fontFamily: "var(--font-absans), sans-serif" }}
               >
                 <AnimatedLinkText>Get In Touch</AnimatedLinkText>
@@ -204,7 +243,7 @@ export default function MobileExperience() {
             </motion.a>
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </motion.section>
   );
 }

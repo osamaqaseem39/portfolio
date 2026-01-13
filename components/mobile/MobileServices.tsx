@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useRef } from "react";
 
 const services = [
   {
@@ -42,23 +43,44 @@ const services = [
 ];
 
 export default function MobileServices() {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const [viewRef, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
+  // Scroll progress for section animations
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const sectionY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+  const sectionOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.5, 1, 1, 0.5]);
+
+  // Combined ref callback
+  const combinedRef = (node: HTMLElement | null) => {
+    if (node) {
+      (sectionRef as React.MutableRefObject<HTMLElement | null>).current = node;
+      viewRef(node);
+    }
+  };
+
   return (
     <motion.section 
-      ref={viewRef}
+      ref={combinedRef}
       id="services" 
       className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#F5F5F5] py-16"
     >
-      <div className="w-full px-4">
+      <motion.div 
+        className="w-full px-4"
+        style={{ y: sectionY, opacity: sectionOpacity }}
+      >
         {/* Section Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 30, scale: 0.95 }}
+          animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-8"
         >
           <h2 className="text-3xl font-bold text-gray-800 mb-4" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
@@ -93,7 +115,7 @@ export default function MobileServices() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </motion.section>
   );
 }

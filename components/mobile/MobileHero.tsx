@@ -52,7 +52,7 @@ export default function MobileHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-xl text-black mb-4"
+            className="text-lg text-black mb-4"
           >
             Hi! I'm Muhammad Osama Qaseem
           </motion.p>
@@ -62,7 +62,7 @@ export default function MobileHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-3xl font-medium text-black leading-tight mb-8"
+            className="text-2xl font-medium text-black leading-tight mb-8"
             style={{ fontFamily: "var(--font-absans), sans-serif" }}
           >
             Full Stack Developer Building Scalable Web & Software Solutions
@@ -112,19 +112,6 @@ export default function MobileHero() {
             </motion.a>
           </motion.div>
         </div>
-
-        {/* Scroll Down Indicator */}
-        <motion.p
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-sm text-black font-medium"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: [0.5, 1, 0.5], y: 0 }}
-          transition={{ 
-            opacity: { duration: 2, repeat: Infinity },
-            y: { duration: 0.8, delay: 1 }
-          }}
-        >
-          Scroll Down
-        </motion.p>
       </div>
     </section>
   );

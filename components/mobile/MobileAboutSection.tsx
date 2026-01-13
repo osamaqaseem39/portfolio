@@ -1,18 +1,38 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useRef } from "react";
 import { useClickSound } from "@/hooks/useAudio";
 import { HiArrowUpRight } from "react-icons/hi2";
 import { useRouter } from "next/navigation";
 
 export default function MobileAboutSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const [viewRef, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
   const playClickSound = useClickSound();
   const router = useRouter();
+
+  // Scroll progress for parallax effects
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.3, 1, 1, 0.3]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
+
+  // Combined ref callback
+  const combinedRef = (node: HTMLElement | null) => {
+    if (node) {
+      (sectionRef as React.MutableRefObject<HTMLElement | null>).current = node;
+      viewRef(node);
+    }
+  };
 
   const handleScrollToExperience = () => {
     playClickSound();
@@ -29,16 +49,19 @@ export default function MobileAboutSection() {
 
   return (
     <motion.section 
-      ref={viewRef}
+      ref={combinedRef}
       id="about" 
       className="relative min-h-screen flex items-center justify-center bg-gray-900 py-20"
     >
-      <div className="w-full relative z-10 px-4 py-12">
+      <motion.div 
+        className="w-full relative z-10 px-4 py-12"
+        style={{ y, opacity, scale }}
+      >
         <div className="max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center"
           >
             <motion.h2
@@ -86,7 +109,7 @@ export default function MobileAboutSection() {
             </motion.div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </motion.section>
   );
 }
