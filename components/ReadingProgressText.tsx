@@ -1,14 +1,31 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, ReactNode } from "react";
 
 interface ReadingProgressTextProps {
-  children: string;
+  children: ReactNode;
   className?: string;
   style?: React.CSSProperties;
   highlightColor?: string;
   defaultColor?: string;
+}
+
+// Helper function to extract text content from ReactNode
+function extractText(node: ReactNode): string {
+  if (typeof node === "string") {
+    return node;
+  }
+  if (typeof node === "number") {
+    return String(node);
+  }
+  if (Array.isArray(node)) {
+    return node.map(extractText).join("");
+  }
+  if (node && typeof node === "object" && "props" in node) {
+    return extractText((node as any).props?.children || "");
+  }
+  return "";
 }
 
 function Word({ 
@@ -66,7 +83,8 @@ export default function ReadingProgressText({
   defaultColor = "#374151",
 }: ReadingProgressTextProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const words = useMemo(() => children.split(/\s+/), [children]);
+  const textContent = useMemo(() => extractText(children), [children]);
+  const words = useMemo(() => textContent.split(/\s+/).filter(word => word.length > 0), [textContent]);
 
   // Track scroll progress through this element
   // Adjust offset to trigger animation as text enters viewport

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 export function useAudio(src: string, options?: { volume?: number; loop?: boolean }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const wasPlayingBeforeHiddenRef = useRef(false);
 
   useEffect(() => {
@@ -29,6 +29,7 @@ export function useAudio(src: string, options?: { volume?: number; loop?: boolea
           // Autoplay might be blocked by browser policy
           // This is expected and handled gracefully
           console.log("Autoplay prevented:", error);
+          setIsPlaying(false);
         });
     };
 
