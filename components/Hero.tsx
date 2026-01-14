@@ -137,11 +137,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-medium text-black leading-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-black leading-tight"
               style={{ fontFamily: "var(--font-absans), sans-serif" }}
             >
-              Full Stack Developer<br />
-              Building Scalable Web & Software Solutions
+              Full Stack Developer Building<br />Scalable Web & Software Solutions
             </motion.h1>
           </div>
 
