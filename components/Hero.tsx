@@ -10,9 +10,10 @@ import { useAudio, useClickSound } from "@/hooks/useAudio";
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  const { toggle: toggleMusic, isPlaying: isMusicPlaying } = useAudio("/bgmusic.mp3", { volume: 0.15, loop: true });
+  const { toggle: toggleMusic, isPlaying: isMusicPlaying, play: playMusic } = useAudio("/bgmusic.mp3", { volume: 0.15, loop: true });
   const playClickSound = useClickSound();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const hasStartedMusicRef = useRef(false);
 
   // Parallax scroll effects
   const { scrollYProgress } = useScroll({
@@ -59,6 +60,33 @@ export default function Hero() {
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
+
+  // Start music on first user interaction if not already playing
+  useEffect(() => {
+    const startMusicOnInteraction = () => {
+      if (!hasStartedMusicRef.current && !isMusicPlaying) {
+        hasStartedMusicRef.current = true;
+        playMusic();
+      }
+    };
+
+    // Try to start on various user interactions
+    const events = ['click', 'touchstart', 'scroll', 'keydown'];
+    events.forEach(event => {
+      window.addEventListener(event, startMusicOnInteraction, { once: true });
+    });
+
+    // Also try to start immediately if already playing
+    if (isMusicPlaying) {
+      hasStartedMusicRef.current = true;
+    }
+
+    return () => {
+      events.forEach(event => {
+        window.removeEventListener(event, startMusicOnInteraction);
+      });
+    };
+  }, [isMusicPlaying, playMusic]);
 
   return (
     <section ref={sectionRef} id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-white">
