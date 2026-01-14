@@ -127,7 +127,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-2xl md:text-3xl lg:text-4xl text-black mb-4"
+              className="text-xl md:text-2xl lg:text-3xl text-black mb-4"
             >
               Hi! I'm Muhammad Osama Qaseem
             </motion.p>
@@ -137,9 +137,11 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-medium text-black leading-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-medium text-black leading-tight"
+              style={{ fontFamily: "var(--font-absans), sans-serif" }}
             >
-              Full Stack Developer Building Scalable Web & Software Solutions
+              Full Stack Developer<br />
+              Building Scalable Web & Software Solutions
             </motion.h1>
           </div>
 
