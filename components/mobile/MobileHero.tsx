@@ -62,7 +62,7 @@ export default function MobileHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-2xl font-medium text-black leading-tight mb-8"
+            className="text-2xl font-bold text-black leading-tight mb-8"
             style={{ fontFamily: "var(--font-absans), sans-serif" }}
           >
             Full Stack Developer Building<br />Scalable Web & Software Solutions
