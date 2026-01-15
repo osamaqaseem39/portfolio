@@ -236,7 +236,7 @@ export default function About() {
                 className="text-5xl md:text-7xl lg:text-8xl font-bold text-black mb-6 leading-tight"
                 style={{ fontFamily: "var(--font-absans), sans-serif" }}
               >
-                About Me – Full Stack Software Developer
+                About Me – Full Stack Web Development Services Expert
               </motion.h1>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -249,7 +249,7 @@ export default function About() {
                   defaultColor="#4B5563"
                   style={{ fontFamily: "var(--font-absans), sans-serif" }}
                 >
-                  I am a passionate <strong>Full Stack Developer</strong> focused on building clean, efficient, and scalable software solutions. I specialize in frontend and backend technologies that power modern web and mobile applications. I have worked with startups, agencies, and international clients to deliver high-quality products. My development approach is business-oriented, performance-driven, and user-focused.
+                  I am a passionate <strong>Full Stack Developer</strong> specializing in <Link href="/#services" className="text-[#C9FF00] hover:underline"><strong>full stack web development services</strong></Link>, <Link href="/#services" className="text-[#C9FF00] hover:underline"><strong>MERN stack development services</strong></Link>, <Link href="/blog/how-to-build-saas-product-from-scratch" className="text-[#C9FF00] hover:underline"><strong>SaaS product development services</strong></Link>, and <Link href="/blog/how-generative-ai-used-in-software-development" className="text-[#C9FF00] hover:underline"><strong>AI software development</strong></Link>. I focus on building clean, efficient, and scalable software solutions for startups and businesses. With expertise in <strong>startup web development services, fintech app development services, custom SaaS development, and web app development for startups</strong>, I deliver high-quality products that drive business growth. My development approach is business-oriented, performance-driven, and user-focused, with a deep understanding of <Link href="/blog/backend-architecture-scalable-apps" className="text-[#C9FF00] hover:underline"><strong>scalable web application architecture</strong></Link> and <strong>backend architecture for scalable apps</strong>.
                 </ReadingProgressText>
               </motion.div>
             </motion.div>
@@ -532,7 +532,7 @@ export default function About() {
                 defaultColor="#D1D5DB"
                 style={{ fontFamily: "var(--font-absans), sans-serif" }}
               >
-                Whether you need an enterprise ERP system built with ASP.NET Core 8, a multi-tenant SaaS platform, a cross-platform mobile app with Flutter, a Point of Sale system, an e-commerce platform, a 3D gaming website, a Web3 DApp, or blockchain integration, I bring the technical expertise and proven experience to make it happen.
+                Whether you need <Link href="/#services" className="text-[#C9FF00] hover:underline"><strong>full stack web development services</strong></Link> for your startup, <Link href="/#services" className="text-[#C9FF00] hover:underline"><strong>MERN stack development services</strong></Link> for scalable applications, <Link href="/blog/how-to-build-saas-product-from-scratch" className="text-[#C9FF00] hover:underline"><strong>SaaS product development services</strong></Link> from MVP to production, <Link href="/blog/how-generative-ai-used-in-software-development" className="text-[#C9FF00] hover:underline"><strong>AI software development</strong></Link> with intelligent features, <Link href="/#services" className="text-[#C9FF00] hover:underline"><strong>fintech app development services</strong></Link> with security compliance, <strong>custom SaaS development</strong> with multi-tenant architecture, <strong>web app development for startups</strong>, <Link href="/blog/backend-architecture-scalable-apps" className="text-[#C9FF00] hover:underline"><strong>custom backend development services</strong></Link>, or <strong>AI-powered web applications</strong>, I bring the technical expertise and proven experience to make it happen. Specializing in <strong>startup software development company</strong> solutions and <strong>small business web development services</strong>. <Link href="/contact" className="text-[#C9FF00] hover:underline font-semibold">Contact me</Link> to discuss your project.
               </ReadingProgressText>
             </motion.div>
             <motion.div

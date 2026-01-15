@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 
 const services = [
   {
@@ -18,8 +19,8 @@ const services = [
   },
   {
     number: "02",
-    title: "Full Stack Web Development",
-    description: "Custom, scalable, and secure web applications using modern frameworks. Building high-performance MERN stack applications for startups and SaaS products.",
+    title: "Full Stack Web Development Services",
+    description: "Comprehensive full stack web development services for startups and businesses. Custom, scalable, and secure web applications using modern frameworks. Specializing in startup web development services, web app development for startups, and small business web development services.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
         <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5"/>
@@ -30,8 +31,8 @@ const services = [
   },
   {
     number: "03",
-    title: "MERN Stack Development",
-    description: "High-performance MERN stack applications for startups and SaaS products. Developing comprehensive multi-tenant ERP systems and SaaS platforms with GraphQL, REST APIs, RBAC, and tenant isolation.",
+    title: "MERN Stack Development Services",
+    description: "Expert MERN stack development services for startups and SaaS products. Building high-performance, scalable web applications with MongoDB, Express, React, and Node.js. Specializing in custom web app development USA and scalable web application architecture.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -85,6 +86,52 @@ const services = [
       </svg>
     ),
   },
+  {
+    number: "08",
+    title: "SaaS Product Development Services",
+    description: "End-to-end SaaS product development services from MVP to full-scale platforms. Custom SaaS development with multi-tenant architecture, subscription management, and scalable backend infrastructure. Perfect for SaaS MVP development and startup software development.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
+        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M9 9h6M9 15h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
+    number: "09",
+    title: "AI Software Development & Web Applications",
+    description: "AI software development company specializing in AI-powered web applications and AI web development services. Building intelligent solutions using generative AI, machine learning integration, and automated workflows for modern businesses.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
+    number: "10",
+    title: "Fintech App Development Services",
+    description: "Secure and compliant fintech app development services for financial institutions and fintech startups. Building payment processing systems, banking applications, and financial management platforms with advanced security features.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
+        <path d="M21 4H3a2 2 0 00-2 2v12a2 2 0 002 2h18a2 2 0 002-2V6a2 2 0 00-2-2z" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M7 8h10M7 12h10M7 16h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
+    number: "11",
+    title: "Custom Backend Development Services",
+    description: "Robust custom backend development services with scalable architecture. Building RESTful APIs, GraphQL endpoints, microservices, and database optimization for high-performance applications. Specializing in backend architecture for scalable apps.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
+        <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="1.5"/>
+        <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="1.5"/>
+        <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="1.5"/>
+        <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="1.5"/>
+      </svg>
+    ),
+  },
 ];
 
 export default function Services() {
@@ -96,11 +143,11 @@ export default function Services() {
   });
 
   // Marquee movement: moves from right to left as scroll progresses
-  // Scroll through all 7 services (50% of the duplicated set)
+  // Scroll through all 11 services (50% of the duplicated set)
   const marqueeX = useTransform(
     scrollYProgress,
     [0, 1],
-    ["0%", "-180%"]
+    ["0%", "-280%"]
   );
 
   return (
@@ -133,10 +180,10 @@ export default function Services() {
         {/* Section Heading */}
         <div className="mb-12 md:mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
-            Professional Web & Software Development Services
+            Full Stack Web Development Services for Startups & Businesses
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl">
-            I offer <strong>custom software and web development services</strong> designed to help businesses grow digitally.
+            I offer comprehensive <strong>full stack web development services, MERN stack development services, SaaS product development services, AI software development, fintech app development services, and custom web app development USA</strong> designed to help startups and businesses grow digitally. <Link href="/contact" className="text-[#C9FF00] hover:underline font-semibold">Contact me</Link> to discuss your project or <Link href="/blog" className="text-[#C9FF00] hover:underline font-semibold">read my blog</Link> for development insights.
           </p>
         </div>
 
@@ -177,9 +224,36 @@ export default function Services() {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed pr-4">
+                  <p className="text-sm md:text-base text-gray-600 leading-relaxed pr-4 mb-4">
                     {service.description}
                   </p>
+                  
+                  {/* Internal Links to Related Blog Posts */}
+                  {service.number === "08" && (
+                    <Link href="/blog/how-to-build-saas-product-from-scratch" className="text-sm text-[#C9FF00] hover:underline inline-block">
+                      Learn how to build SaaS products →
+                    </Link>
+                  )}
+                  {service.number === "03" && (
+                    <Link href="/blog/mern-stack-vs-mean-stack-complete-comparison" className="text-sm text-[#C9FF00] hover:underline inline-block">
+                      MERN vs MEAN Stack comparison →
+                    </Link>
+                  )}
+                  {service.number === "09" && (
+                    <Link href="/blog/how-generative-ai-used-in-software-development" className="text-sm text-[#C9FF00] hover:underline inline-block">
+                      How AI is used in development →
+                    </Link>
+                  )}
+                  {service.number === "11" && (
+                    <Link href="/blog/backend-architecture-scalable-apps" className="text-sm text-[#C9FF00] hover:underline inline-block">
+                      Scalable backend architecture →
+                    </Link>
+                  )}
+                  {service.number === "02" && (
+                    <Link href="/blog/frontend-development-best-practices-2025" className="text-sm text-[#C9FF00] hover:underline inline-block">
+                      Frontend best practices →
+                    </Link>
+                  )}
                 </div>
               </div>
               );

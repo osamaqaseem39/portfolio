@@ -33,9 +33,9 @@ export default function Home() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Full Stack Developer Portfolio | Hire Remote Developer",
+    name: "Full Stack Web Development Services | MERN Stack Developer",
     url: siteUrl,
-    description: "Professional full stack developer portfolio. Hire a remote web, software, MERN stack, React, Node.js & blockchain developer for scalable applications.",
+    description: "Professional full stack web development services for startups and businesses. Expert MERN stack developer offering SaaS product development, AI software development, fintech app development, and custom web application solutions.",
     author: {
       "@type": "Person",
       name: "Muhammad Osama Qaseem",
@@ -45,7 +45,7 @@ export default function Home() {
   const professionalServiceSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    name: "Full Stack Development Services",
+    name: "Full Stack Web Development Services",
     provider: {
       "@type": "Person",
       name: "Muhammad Osama Qaseem",
@@ -53,7 +53,16 @@ export default function Home() {
     },
     areaServed: "Worldwide",
     serviceType: [
-      "Web Development",
+      "Full Stack Web Development Services",
+      "Startup Web Development Services",
+      "MERN Stack Development Services",
+      "SaaS Product Development Services",
+      "AI Software Development",
+      "Fintech App Development Services",
+      "Custom SaaS Development",
+      "Web App Development for Startups",
+      "Custom Backend Development Services",
+      "AI Web Development Services",
       "Mobile App Development",
       "Web3 Development",
       "Blockchain Development",

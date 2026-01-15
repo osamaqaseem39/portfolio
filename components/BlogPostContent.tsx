@@ -6,7 +6,7 @@ import { HiCalendar, HiArrowLeft } from "react-icons/hi";
 import { useClickSound } from "@/hooks/useAudio";
 import Link from "next/link";
 import Image from "next/image";
-import { BlogPost } from "@/lib/blogData";
+import { BlogPost, getAllBlogPosts } from "@/lib/blogData";
 import ReactMarkdown from "react-markdown";
 import React from "react";
 import AnimatedLinkText from "./AnimatedLinkText";
@@ -273,6 +273,77 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
                   Software Engineer & Web Developer
                 </p>
               </div>
+            </div>
+          </motion.div>
+
+          {/* Related Posts */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="mt-12 pt-8 border-t border-gray-200"
+          >
+            <h3 className="text-2xl font-bold mb-6 text-gray-900" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+              Related Articles
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {getAllBlogPosts()
+                .filter((relatedPost) => relatedPost.slug !== post.slug)
+                .slice(0, 2)
+                .map((relatedPost) => (
+                  <Link
+                    key={relatedPost.slug}
+                    href={`/blog/${relatedPost.slug}`}
+                    className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200 hover:border-[#C9FF00]"
+                    onClick={playClickSound}
+                  >
+                    <h4 className="font-bold text-gray-900 mb-2 hover:text-[#C9FF00] transition-colors" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                      {relatedPost.title}
+                    </h4>
+                    <p className="text-sm text-gray-600 line-clamp-2" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                      {relatedPost.description}
+                    </p>
+                  </Link>
+                ))}
+            </div>
+            <div className="mt-6 text-center">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 text-[#C9FF00] hover:underline font-semibold"
+                onClick={playClickSound}
+              >
+                <AnimatedLinkText style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                  View All Blog Posts →
+                </AnimatedLinkText>
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* CTA Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="mt-12 pt-8 border-t border-gray-200"
+          >
+            <div className="bg-gray-900 rounded-lg p-8 text-center">
+              <h3 className="text-2xl font-bold mb-4 text-white" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                Need Help with Your Project?
+              </h3>
+              <p className="text-gray-300 mb-6" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                I offer <Link href="/#services" className="text-[#C9FF00] hover:underline">full stack web development services</Link>, <Link href="/#services" className="text-[#C9FF00] hover:underline">MERN stack development</Link>, and <Link href="/blog/how-to-build-saas-product-from-scratch" className="text-[#C9FF00] hover:underline">SaaS product development</Link> for startups and businesses.
+              </p>
+              <Link href="/contact">
+                <motion.button
+                  onClick={playClickSound}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-[#C9FF00] text-gray-900 font-bold rounded-lg hover:bg-[#B8E600] transition-colors"
+                  style={{ fontFamily: "var(--font-absans), sans-serif" }}
+                >
+                  <AnimatedLinkText>Get in Touch</AnimatedLinkText>
+                </motion.button>
+              </Link>
             </div>
           </motion.div>
         </motion.div>

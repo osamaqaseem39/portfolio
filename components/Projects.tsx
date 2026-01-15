@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { HiExternalLink } from "react-icons/hi";
 import { useClickSound } from "@/hooks/useAudio";
 import Image from "next/image";
+import Link from "next/link";
 
 const projects = [
   {
@@ -267,7 +268,7 @@ export default function Projects() {
             My Portfolio – Real Projects & Solutions
           </h2>
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl">
-            Below are selected projects that demonstrate my expertise in <strong>web application development, software engineering, and blockchain solutions</strong>. Each project focuses on performance, scalability, and user experience.
+            Below are selected projects that demonstrate my expertise in <strong>web application development, software engineering, and blockchain solutions</strong>. Each project focuses on performance, scalability, and user experience. Need similar solutions? <Link href="/#services" className="text-[#C9FF00] hover:underline font-semibold">View my services</Link> or <Link href="/contact" className="text-[#C9FF00] hover:underline font-semibold">contact me</Link> to discuss your project.
           </p>
         </motion.div>
 
