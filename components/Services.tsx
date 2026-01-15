@@ -19,8 +19,8 @@ const services = [
   },
   {
     number: "02",
-    title: "Full Stack Web Development Services",
-    description: "Comprehensive full stack web development services for startups and businesses. Custom, scalable, and secure web applications using modern frameworks. Specializing in startup web development services, web app development for startups, and small business web development services.",
+    title: "Full Stack Web Development",
+    description: "Building complete web applications from frontend to backend. I create custom, scalable, and secure solutions using modern frameworks that grow with your business needs.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
         <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5"/>
@@ -31,8 +31,8 @@ const services = [
   },
   {
     number: "03",
-    title: "MERN Stack Development Services",
-    description: "Expert MERN stack development services for startups and SaaS products. Building high-performance, scalable web applications with MongoDB, Express, React, and Node.js. Specializing in custom web app development USA and scalable web application architecture.",
+    title: "MERN Stack Development",
+    description: "Creating high-performance web applications using MongoDB, Express, React, and Node.js. Perfect for building scalable SaaS products and modern web platforms with a robust tech stack.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -88,8 +88,8 @@ const services = [
   },
   {
     number: "08",
-    title: "SaaS Product Development Services",
-    description: "End-to-end SaaS product development services from MVP to full-scale platforms. Custom SaaS development with multi-tenant architecture, subscription management, and scalable backend infrastructure. Perfect for SaaS MVP development and startup software development.",
+    title: "SaaS Product Development",
+    description: "Building SaaS products from MVP to full-scale platforms. I design multi-tenant architectures, implement subscription management, and create scalable backend infrastructure that supports growth.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
         <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5"/>
@@ -99,8 +99,8 @@ const services = [
   },
   {
     number: "09",
-    title: "AI Software Development & Web Applications",
-    description: "AI software development company specializing in AI-powered web applications and AI web development services. Building intelligent solutions using generative AI, machine learning integration, and automated workflows for modern businesses.",
+    title: "AI-Powered Applications",
+    description: "Building intelligent web applications that leverage generative AI and machine learning. I integrate AI capabilities into workflows to automate processes and create smarter business solutions.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
         <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5"/>
@@ -110,8 +110,8 @@ const services = [
   },
   {
     number: "10",
-    title: "Fintech App Development Services",
-    description: "Secure and compliant fintech app development services for financial institutions and fintech startups. Building payment processing systems, banking applications, and financial management platforms with advanced security features.",
+    title: "Fintech Applications",
+    description: "Building secure and compliant financial applications. I create payment processing systems, banking platforms, and financial management tools with advanced security features and regulatory compliance.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
         <path d="M21 4H3a2 2 0 00-2 2v12a2 2 0 002 2h18a2 2 0 002-2V6a2 2 0 00-2-2z" stroke="currentColor" strokeWidth="1.5"/>
@@ -121,8 +121,8 @@ const services = [
   },
   {
     number: "11",
-    title: "Custom Backend Development Services",
-    description: "Robust custom backend development services with scalable architecture. Building RESTful APIs, GraphQL endpoints, microservices, and database optimization for high-performance applications. Specializing in backend architecture for scalable apps.",
+    title: "Backend Development",
+    description: "Designing robust backend systems with scalable architecture. I build RESTful APIs, GraphQL endpoints, microservices, and optimize databases to support high-performance applications.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
         <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="1.5"/>
@@ -147,7 +147,7 @@ export default function Services() {
   const marqueeX = useTransform(
     scrollYProgress,
     [0, 1],
-    ["0%", "-280%"]
+    ["0%", "-500%"]
   );
 
   return (
@@ -180,10 +180,10 @@ export default function Services() {
         {/* Section Heading */}
         <div className="mb-12 md:mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
-            Full Stack Web Development Services for Startups & Businesses
+            What I Build
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl">
-            I offer comprehensive <strong>full stack web development services, MERN stack development services, SaaS product development services, AI software development, fintech app development services, and custom web app development USA</strong> designed to help startups and businesses grow digitally. <Link href="/contact" className="text-[#C9FF00] hover:underline font-semibold">Contact me</Link> to discuss your project or <Link href="/blog" className="text-[#C9FF00] hover:underline font-semibold">read my blog</Link> for development insights.
+            I create custom software solutions that help businesses and startups grow. From web applications to mobile apps, AI-powered tools to blockchain platforms—I work with modern technologies to build products that solve real problems. <Link href="/contact" className="text-[#C9FF00] hover:underline font-semibold">Contact me</Link> to discuss your project or <Link href="/blog" className="text-[#C9FF00] hover:underline font-semibold">read my blog</Link> for development insights.
           </p>
         </div>
 
