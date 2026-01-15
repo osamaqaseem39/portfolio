@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 
 const services = [
@@ -136,25 +136,97 @@ const services = [
 
 export default function Services() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start 150px", "end start"]
-  });
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [currentCardIndex, setCurrentCardIndex] = useState(0);
+  const [cardWidth, setCardWidth] = useState(442); // Default for lg breakpoint
+  const lastScrollTime = useRef(0);
+  const scrollCooldown = 100; // ms between scroll events
 
-  // Marquee movement: moves from right to left as scroll progresses
-  // Scroll through all 11 services (50% of the duplicated set)
-  const marqueeX = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["0%", "-280%"]
-  );
+  // Calculate card width based on viewport
+  useEffect(() => {
+    const updateCardWidth = () => {
+      if (typeof window !== 'undefined') {
+        const width = window.innerWidth;
+        if (width < 768) {
+          setCardWidth(1728); // Mobile
+        } else if (width < 1024) {
+          setCardWidth(864); // Tablet
+        } else {
+          setCardWidth(442); // Desktop
+        }
+      }
+    };
+
+    updateCardWidth();
+    window.addEventListener('resize', updateCardWidth);
+    return () => window.removeEventListener('resize', updateCardWidth);
+  }, []);
+
+
+  // Handle wheel events for scroll hijacking
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (!sectionRef.current || !containerRef.current) return;
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const isInViewport = rect.top < windowHeight * 0.8 && rect.bottom > windowHeight * 0.2;
+
+      if (!isInViewport) return;
+
+      // Check if we're at the boundaries
+      const isAtStart = currentCardIndex === 0 && e.deltaY < 0;
+      const isAtEnd = currentCardIndex === services.length - 1 && e.deltaY > 0;
+
+      if (isAtStart) {
+        // Allow normal scroll up if at first card
+        return;
+      }
+
+      if (isAtEnd) {
+        // Allow normal scroll down if at last card
+        return;
+      }
+
+      // Prevent default scroll and navigate cards
+      e.preventDefault();
+      e.stopPropagation();
+
+      const now = Date.now();
+      if (now - lastScrollTime.current < scrollCooldown) return;
+      lastScrollTime.current = now;
+
+      if (e.deltaY > 0) {
+        // Scroll down - move to next card
+        setCurrentCardIndex((prev) => {
+          const next = Math.min(prev + 1, services.length - 1);
+          return next;
+        });
+      } else {
+        // Scroll up - move to previous card
+        setCurrentCardIndex((prev) => {
+          const prevIndex = Math.max(prev - 1, 0);
+          return prevIndex;
+        });
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+    };
+  }, [currentCardIndex]);
+
+  // Calculate horizontal position based on current card index
+  const translateX = -(currentCardIndex * cardWidth);
 
   return (
     <motion.section 
       ref={sectionRef}
       id="services" 
-      className="relative h-[1000px] flex flex-col justify-center overflow-hidden bg-[#F5F5F5]"
+      className="relative flex flex-col justify-center overflow-hidden bg-[#F5F5F5]"
+      style={{ height: `${Math.max(100, services.length * 50)}vh`, minHeight: '100vh' }}
     >
       <div className="w-full px-6 md:px-12 lg:px-20 pt-0 pb-16 md:pb-24">
         {/* Wavy Line at Top */}
@@ -187,18 +259,16 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Services Container with Marquee Effect */}
-        <div className="overflow-hidden">
+        {/* Services Container with Scroll Hijacking */}
+        <div className="overflow-hidden" ref={containerRef}>
           <motion.div
-            className="flex"
+            className="flex transition-transform duration-500 ease-out"
             style={{
-              x: marqueeX,
+              transform: `translateX(${translateX}px)`,
             }}
           >
-            {/* Render services twice for seamless loop */}
-            {[...services, ...services].map((service, index) => {
-              const isLastInGroup = (index + 1) % services.length === 0;
-              const isFirstInGroup = index % services.length === 0;
+            {/* Render services */}
+            {services.map((service, index) => {
               return (
                 <div
                   key={`${service.number}-${index}`}
