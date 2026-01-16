@@ -250,9 +250,14 @@ export default function Services() {
                     </Link>
                   )}
                   {service.number === "02" && (
-                    <Link href="/blog/frontend-development-best-practices-2025" className="text-sm text-[#C9FF00] hover:underline inline-block">
-                      Frontend best practices →
-                    </Link>
+                    <div className="flex flex-col gap-2">
+                      <Link href="/blog/frontend-development-best-practices-2025" className="text-sm text-[#C9FF00] hover:underline inline-block">
+                        Frontend best practices →
+                      </Link>
+                      <Link href="/blog/web-development-in-2026-jobs-salaries-ai-standard" className="text-sm text-[#C9FF00] hover:underline inline-block">
+                        Web Dev in 2026: Jobs & Salaries →
+                      </Link>
+                    </div>
                   )}
                 </div>
               </div>

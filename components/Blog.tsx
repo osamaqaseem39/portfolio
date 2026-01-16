@@ -55,7 +55,7 @@ export default function Blog() {
               className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
               style={{ fontFamily: "var(--font-absans), sans-serif" }}
             >
-              Read my thoughts on web development, technology, and best practices. Learn about <Link href="/blog/how-to-build-saas-product-from-scratch" className="text-[#C9FF00] hover:underline">SaaS development</Link>, <Link href="/blog/mern-stack-vs-mean-stack-complete-comparison" className="text-[#C9FF00] hover:underline">MERN stack</Link>, <Link href="/blog/how-generative-ai-used-in-software-development" className="text-[#C9FF00] hover:underline">AI in development</Link>, and more.
+              Read my thoughts on web development, technology, and career growth. Learn about <Link href="/blog/web-development-in-2026-jobs-salaries-ai-standard" className="text-[#C9FF00] hover:underline">2026 career trends</Link>, <Link href="/blog/how-to-build-saas-product-from-scratch" className="text-[#C9FF00] hover:underline">SaaS development</Link>, <Link href="/blog/how-generative-ai-used-in-software-development" className="text-[#C9FF00] hover:underline">AI in development</Link>, and more.
             </p>
           </motion.div>
 
