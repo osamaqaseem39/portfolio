@@ -8,10 +8,10 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://osamaqaseem.online"
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Full Stack Web Development Services | MERN Stack Developer | SaaS Development",
+    default: "Muhammad Osama Qaseem - Full Stack Developer | MERN Stack, Web3, AI Expert",
     template: "%s | Osama Qaseem",
   },
-  description: "Professional full stack web development services for startups and businesses. Expert MERN stack developer offering SaaS product development, AI software development, fintech app development, and custom web application solutions. Hire a freelance full stack developer USA.",
+  description: "Expert full stack developer specializing in MERN stack, Web3, and AI-powered applications. Built 15+ production apps for startups and enterprises. Transform your ideas into scalable SaaS products, fintech solutions, and Web3 platforms with cutting-edge technology.",
   keywords: [
     "full stack web development services",
     "startup web development services",
@@ -59,9 +59,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "Full Stack Web Development Services | MERN Stack Developer",
-    title: "Full Stack Web Development Services | MERN Stack Developer | SaaS Development",
-    description: "Professional full stack web development services for startups and businesses. Expert MERN stack developer offering SaaS product development, AI software development, fintech app development, and custom web application solutions.",
+    siteName: "Muhammad Osama Qaseem - Full Stack Developer",
+    title: "Muhammad Osama Qaseem - Full Stack Developer | MERN Stack, Web3, AI Expert",
+    description: "Expert full stack developer specializing in MERN stack, Web3, and AI-powered applications. Built 15+ production apps for startups and enterprises. Transform your ideas into scalable SaaS products, fintech solutions, and Web3 platforms with cutting-edge technology.",
     images: [
       {
         url: `${siteUrl}/myimage.png`,
@@ -73,8 +73,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Full Stack Web Development Services | MERN Stack Developer | SaaS Development",
-    description: "Professional full stack web development services for startups and businesses. Expert MERN stack developer offering SaaS product development, AI software development, fintech app development, and custom web application solutions.",
+    title: "Muhammad Osama Qaseem - Full Stack Developer | MERN Stack, Web3, AI Expert",
+    description: "Expert full stack developer specializing in MERN stack, Web3, and AI-powered applications. Built 15+ production apps for startups and enterprises. Transform your ideas into scalable SaaS products, fintech solutions, and Web3 platforms with cutting-edge technology.",
     images: [`${siteUrl}/myimage.png`],
   },
   robots: {
@@ -92,6 +92,11 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   category: "Technology",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
