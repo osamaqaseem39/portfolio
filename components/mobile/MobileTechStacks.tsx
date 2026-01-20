@@ -3,42 +3,30 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-const techStacks = [
+const technologyCategories = [
   {
-    name: "MERN Stack",
-    icon: "🚀",
-    technologies: ["MongoDB", "Express.js", "React", "Node.js"],
-    color: "from-green-500 to-emerald-600",
+    title: "Frontend Technologies",
+    technologies: ["React.js", "Next.js", "Vue.js", "TypeScript", "JavaScript", "Tailwind CSS", "Framer Motion", "Three.js", "Redux", "Flutter", "Material UI", "Responsive Design"],
   },
   {
-    name: "Next.js Full Stack",
-    icon: "⚡",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma"],
-    color: "from-blue-500 to-cyan-600",
+    title: "Backend Technologies",
+    technologies: ["ASP.NET Core 8", "C#", ".NET", "SOLID Principles", "DDD", "Node.js", "NestJS", "Express.js", "REST APIs", "GraphQL", "WebSockets", "JWT", "RBAC"],
   },
   {
-    name: "AI & ML Stack",
-    icon: "🤖",
-    technologies: ["Python", "TensorFlow", "OpenAI API", "LangChain"],
-    color: "from-purple-500 to-pink-600",
+    title: "Web3 & Blockchain",
+    technologies: ["Web3.js", "Ethers.js", "Solana Web3.js", "MetaMask", "WalletConnect", "Jupiter DEX", "Turnkey", "Hyperliquid", "SPL Tokens"],
   },
   {
-    name: "DevOps & Cloud",
-    icon: "☁️",
-    technologies: ["Docker", "AWS", "Vercel", "CI/CD"],
-    color: "from-orange-500 to-red-600",
+    title: "Databases",
+    technologies: ["SQL Server", "Stored Procedures", "Triggers", "Entity Framework Core", "Database Optimization", "Data Migration", "MongoDB", "PostgreSQL", "Firebase", "Mongoose", "Redis"],
   },
   {
-    name: ".NET Stack",
-    icon: "🔷",
-    technologies: ["ASP.NET Core", "C#", "SQL Server", "Entity Framework"],
-    color: "from-indigo-500 to-purple-600",
+    title: "DevOps & Cloud",
+    technologies: ["Docker", "Docker Compose", "Git", "GitHub", "Vercel", "AWS", "AWS S3", "CI/CD"],
   },
   {
-    name: "Mobile Development",
-    icon: "📱",
-    technologies: ["React Native", "Expo", "Firebase", "Native APIs"],
-    color: "from-teal-500 to-green-600",
+    title: "Tools & Libraries",
+    technologies: ["Chart.js", "Recharts", "Axios", "JWT", "Passport.js", "SendGrid", "MoonPay API", "CoinGecko API", "Swagger"],
   },
 ];
 
@@ -49,7 +37,7 @@ export default function MobileTechStacks() {
   });
 
   return (
-    <section id="tech-stacks" className="py-12 px-4 bg-gradient-to-br from-gray-50 to-white">
+    <section id="tech-stacks" className="py-12 px-4 bg-white">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -61,49 +49,60 @@ export default function MobileTechStacks() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-3xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-3"
+              className="text-3xl font-bold text-black mb-3"
+              style={{ fontFamily: "var(--font-absans), sans-serif" }}
             >
-              Tech Stacks
+              Technology Arsenal
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-gray-600 text-sm px-4"
+              className="text-gray-700 text-sm px-4"
             >
-              Technology combinations for building modern applications
+              A comprehensive toolkit for building modern applications
             </motion.p>
           </div>
 
-          <div ref={ref} className="grid grid-cols-1 gap-4">
-            {techStacks.map((stack, index) => (
+          <div ref={ref} className="space-y-6">
+            {technologyCategories.map((category, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -20 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.3 + index * 0.1,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 20
+                }}
+                className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl border border-gray-200"
               >
-                <div className="flex items-start gap-4">
-                  <div className="text-3xl">{stack.icon}</div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-gray-800 mb-2">
-                      {stack.name}
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {stack.technologies.map((tech, techIndex) => (
-                        <motion.span
-                          key={techIndex}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={inView ? { opacity: 1, scale: 1 } : {}}
-                          transition={{ duration: 0.3, delay: (index * 0.1) + (techIndex * 0.05) }}
-                          className={`px-2 py-1 bg-gradient-to-r ${stack.color} text-white rounded-full text-xs font-medium`}
-                        >
-                          {tech}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </div>
+                <h3 className="text-lg font-bold text-black mb-4" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                  {category.title}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {category.technologies.map((tech, techIndex) => (
+                    <motion.span
+                      key={techIndex}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={inView ? { opacity: 1, scale: 1 } : {}}
+                      transition={{
+                        duration: 0.3,
+                        delay: 0.5 + index * 0.1 + techIndex * 0.02
+                      }}
+                      whileHover={{
+                        scale: 1.15,
+                        y: -3,
+                        rotate: [0, -5, 5, -5, 0],
+                        transition: { duration: 0.3 }
+                      }}
+                      className="px-3 py-1.5 bg-gray-100 hover:bg-black hover:text-white text-black rounded-lg text-xs font-medium transition-all duration-200 cursor-default"
+                    >
+                      {tech}
+                    </motion.span>
+                  ))}
                 </div>
               </motion.div>
             ))}

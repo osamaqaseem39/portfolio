@@ -3,54 +3,30 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-const techStacks = [
+const technologyCategories = [
   {
-    name: "MERN Stack",
-    icon: "🚀",
-    description: "Full-stack JavaScript development",
-    technologies: ["MongoDB", "Express.js", "React", "Node.js"],
-    color: "from-green-500 to-emerald-600",
-    bgColor: "from-green-500/10 to-emerald-600/10",
+    title: "Frontend Technologies",
+    technologies: ["React.js", "Next.js", "Vue.js", "TypeScript", "JavaScript", "Tailwind CSS", "Framer Motion", "Three.js", "Redux", "Flutter", "Material UI", "Responsive Design"],
   },
   {
-    name: "Next.js Full Stack",
-    icon: "⚡",
-    description: "Modern React framework with SSR",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma"],
-    color: "from-blue-500 to-cyan-600",
-    bgColor: "from-blue-500/10 to-cyan-600/10",
+    title: "Backend Technologies",
+    technologies: ["ASP.NET Core 8", "C#", ".NET", "SOLID Principles", "DDD", "Node.js", "NestJS", "Express.js", "REST APIs", "GraphQL", "WebSockets", "JWT", "RBAC"],
   },
   {
-    name: "AI & ML Stack",
-    icon: "🤖",
-    description: "Artificial Intelligence integration",
-    technologies: ["Python", "TensorFlow", "OpenAI API", "LangChain"],
-    color: "from-purple-500 to-pink-600",
-    bgColor: "from-purple-500/10 to-pink-600/10",
+    title: "Web3 & Blockchain",
+    technologies: ["Web3.js", "Ethers.js", "Solana Web3.js", "MetaMask", "WalletConnect", "Jupiter DEX", "Turnkey", "Hyperliquid", "SPL Tokens"],
   },
   {
-    name: "DevOps & Cloud",
-    icon: "☁️",
-    description: "Scalable deployment solutions",
-    technologies: ["Docker", "AWS", "Vercel", "CI/CD"],
-    color: "from-orange-500 to-red-600",
-    bgColor: "from-orange-500/10 to-red-600/10",
+    title: "Databases",
+    technologies: ["SQL Server", "Stored Procedures", "Triggers", "Entity Framework Core", "Database Optimization", "Data Migration", "MongoDB", "PostgreSQL", "Firebase", "Mongoose", "Redis"],
   },
   {
-    name: ".NET Stack",
-    icon: "🔷",
-    description: "Enterprise-grade C# development",
-    technologies: ["ASP.NET Core", "C#", "SQL Server", "Entity Framework"],
-    color: "from-indigo-500 to-purple-600",
-    bgColor: "from-indigo-500/10 to-purple-600/10",
+    title: "DevOps & Cloud",
+    technologies: ["Docker", "Docker Compose", "Git", "GitHub", "Vercel", "AWS", "AWS S3", "CI/CD"],
   },
   {
-    name: "Mobile Development",
-    icon: "📱",
-    description: "Cross-platform mobile apps",
-    technologies: ["React Native", "Expo", "Firebase", "Native APIs"],
-    color: "from-teal-500 to-green-600",
-    bgColor: "from-teal-500/10 to-green-600/10",
+    title: "Tools & Libraries",
+    technologies: ["Chart.js", "Recharts", "Axios", "JWT", "Passport.js", "SendGrid", "MoonPay API", "CoinGecko API", "Swagger"],
   },
 ];
 
@@ -61,7 +37,7 @@ export default function TechStacks() {
   });
 
   return (
-    <section id="tech-stacks" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-white">
+    <section id="tech-stacks" className="py-20 px-4 bg-white">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -73,86 +49,69 @@ export default function TechStacks() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-4"
+              className="text-4xl md:text-5xl font-bold text-black mb-4"
+              style={{ fontFamily: "var(--font-absans), sans-serif" }}
             >
-              Tech Stacks
+              Technology Arsenal
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl text-gray-600 max-w-2xl mx-auto"
+              className="text-xl text-gray-700 max-w-2xl mx-auto"
             >
-              Specialized technology combinations I use to build robust, scalable, and modern applications
+              A comprehensive toolkit for building modern, scalable applications
             </motion.p>
           </div>
 
-          <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {techStacks.map((stack, index) => (
+          <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {technologyCategories.map((category, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`group relative overflow-hidden rounded-2xl bg-gradient-to-br ${stack.bgColor} border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-xl hover:-translate-y-1`}
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.3 + index * 0.1,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 20
+                }}
+                whileHover={{
+                  y: -5,
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+                className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl border border-gray-200 hover:border-black transition-all duration-300"
               >
-                <div className="p-8">
-                  <div className="flex items-center mb-4">
-                    <div className="text-4xl mr-4">{stack.icon}</div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-gray-800 group-hover:text-gray-900 transition-colors">
-                        {stack.name}
-                      </h3>
-                      <p className="text-gray-600 text-sm">{stack.description}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {stack.technologies.map((tech, techIndex) => (
-                      <motion.span
-                        key={techIndex}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={inView ? { opacity: 1, scale: 1 } : {}}
-                        transition={{ duration: 0.4, delay: (index * 0.1) + (techIndex * 0.05) }}
-                        className={`px-3 py-1 bg-gradient-to-r ${stack.color} text-white rounded-full text-sm font-medium shadow-sm`}
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </div>
-
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                <h3 className="text-xl font-bold text-black mb-4" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
+                  {category.title}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {category.technologies.map((tech, techIndex) => (
+                    <motion.span
+                      key={techIndex}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={inView ? { opacity: 1, scale: 1 } : {}}
+                      transition={{
+                        duration: 0.3,
+                        delay: 0.5 + index * 0.1 + techIndex * 0.02
+                      }}
+                      whileHover={{
+                        scale: 1.15,
+                        y: -3,
+                        rotate: [0, -5, 5, -5, 0],
+                        transition: { duration: 0.3 }
+                      }}
+                      className="px-3 py-1.5 bg-gray-100 hover:bg-black hover:text-white text-black rounded-lg text-xs font-medium transition-all duration-200 cursor-default"
+                    >
+                      {tech}
+                    </motion.span>
+                  ))}
                 </div>
-
-                <div className={`h-1 bg-gradient-to-r ${stack.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`} />
               </motion.div>
             ))}
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-center mt-12"
-          >
-            <p className="text-gray-600 mb-6">
-              Each stack is carefully chosen to optimize performance, maintainability, and scalability for different project requirements.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
-              <span className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                Production Ready
-              </span>
-              <span className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                Scalable Architecture
-              </span>
-              <span className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                Modern Best Practices
-              </span>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>
