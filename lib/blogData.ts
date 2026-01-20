@@ -3371,129 +3371,6 @@ Start simple, scale as needed, and always measure performance.
     },
   },
   {
-    slug: "ai-search-trends-2026-google-gemini-decline-chatgpt-growth",
-    title: "AI Search Trends 2026: Google Gemini's Decline and the Winners Emerging",
-    description: "Analyzing the latest search interest data for AI tools reveals shocking declines in Google Gemini searches while ChatGPT, Claude, and emerging tools show growth. What does this mean for the AI landscape?",
-    content: `
-# AI Search Trends 2026: Google Gemini's Decline and the Winners Emerging
-
-The AI landscape is constantly evolving, and search interest data provides fascinating insights into user behavior and market dynamics. Recent search trend analysis reveals some surprising shifts in how people are engaging with different AI tools.
-
-## The Gemini AI Phenomenon: A Sharp Decline
-
-Google's Gemini AI, once the darling of the AI world, is experiencing significant declines across multiple search variations:
-
-| Search Term | Search Volume | Change |
-|-------------|---------------|--------|
-| "ai google gemini" | 100 | -10% |
-| "gemini ai google" | 99 | -10% |
-| "ai gemini google" | 99 | -10% |
-| "google gemini ai" | 99 | -8% |
-| "gemini google ai" | 98 | -6% |
-| "google gemini" | 97 | -10% |
-| "google ai" | 97 | -9% |
-| "gemini google" | 95 | -20% |
-| "google ai gemini" | 91 | -20% |
-
-**Key Observation:** Nearly all Gemini-related searches are declining, with some variations dropping as much as 20%. This suggests users are either moving away from Gemini or have already explored it and moved on to other tools.
-
-## ChatGPT: Mixed Signals But Still Dominant
-
-OpenAI's ChatGPT shows interesting patterns in the data:
-
-| Search Term | Search Volume | Change |
-|-------------|---------------|--------|
-| "chatgpt ai" | 49 | -9% |
-| "ai chat" | 22 | +8% |
-| "chat gemini ai" | 22 | +3% |
-| "chat gpt ai" | 14 | +10% |
-
-**Analysis:** While direct "chatgpt ai" searches are declining, more generic terms like "ai chat" and "chat gpt ai" are growing. This indicates users are becoming more comfortable with AI chat interfaces in general, but specific brand loyalty to ChatGPT may be waning.
-
-## The Claude AI Effect: Steady Growth
-
-Anthropic's Claude AI presents an interesting contrast:
-
-| Search Term | Search Volume | Change |
-|-------------|---------------|--------|
-| "claude" | 7 | +1% |
-| "claude ai" | 6 | -5% |
-
-**Insight:** Claude shows modest but positive growth in brand searches, suggesting it's building a dedicated user base despite lower overall search volume.
-
-## Emerging Winners: Canva AI and Perplexity
-
-Two tools stand out with significant growth:
-
-| Search Term | Search Volume | Change |
-|-------------|---------------|--------|
-| "canva ai" | 7 | +30% |
-| "perplexity" | 5 | +6% |
-| "perplexity ai" | 5 | +7% |
-
-**Canva AI's Surge:** A massive 30% increase suggests users are increasingly interested in AI-powered design tools, indicating a shift toward practical, productivity-focused AI applications.
-
-**Perplexity's Growth:** This AI search engine is gaining traction, appealing to users who want more reliable, research-oriented AI responses.
-
-## Grok AI: xAI's Gamble
-
-Elon Musk's Grok AI shows mixed results:
-
-| Search Term | Search Volume | Change |
-|-------------|---------------|--------|
-| "grok ai" | 10 | +4% |
-| "grok" | 9 | -10% |
-
-**Observation:** While "grok ai" searches are up slightly, general "grok" searches are declining, suggesting the AI-specific searches are driving interest.
-
-## What This Means for the AI Industry
-
-### 1. **Market Saturation and User Fatigue**
-The widespread decline in Gemini searches suggests the initial hype around Google's AI has subsided. Users may have tried it, found limitations, or moved to competitors.
-
-### 2. **The Rise of Specialized AI Tools**
-Canva AI's explosive growth indicates users want AI that's deeply integrated into specific workflows (design, in this case) rather than general-purpose chatbots.
-
-### 3. **Trust and Reliability Matter**
-Perplexity's growth suggests users are seeking more trustworthy AI sources, especially for research and information gathering.
-
-### 4. **The Chat Interface is Commoditized**
-Generic terms like "ai chat" growing while specific brand searches decline shows users are becoming more platform-agnostic.
-
-## Predictions for 2026
-
-Based on these trends, I predict:
-
-1. **Continued Gemini Decline:** Unless Google makes significant improvements, search interest will continue to drop.
-
-2. **Specialized AI Tools Will Dominate:** Tools that solve specific problems (like Canva for design, Perplexity for research) will gain market share.
-
-3. **Open-Source and Alternative Models Rise:** As users become disillusioned with major platforms, open-source alternatives may gain traction.
-
-4. **Integration Over Innovation:** The next wave of AI adoption will focus on seamless integration into existing workflows rather than standalone chat interfaces.
-
-## The Path Forward for AI Companies
-
-**For Google:** Gemini needs a compelling reason to stand out. Better performance, unique features, or superior integration might reverse the trend.
-
-**For OpenAI:** Maintain dominance through consistent innovation and reliability.
-
-**For Startups:** Focus on niche applications where you can provide clear value propositions over the established players.
-
-The AI market is maturing, and users are becoming more discerning. The days of hype-driven adoption are giving way to value-driven selection. Companies that understand this shift will be the ones shaping the future of AI.
-`,
-    date: "2026-01-19",
-    author: "Osama Asif",
-    category: "AI & Technology",
-    tags: ["AI", "Google Gemini", "ChatGPT", "Search Trends", "Technology", "2026"],
-    image: "/images/blog/ai-search-trends-2026.jpg",
-    seo: {
-      title: "AI Search Trends 2026: Google Gemini Decline & Emerging Winners",
-      description: "Latest search interest data shows Google Gemini searches declining while ChatGPT, Claude, and specialized AI tools like Canva AI show growth. Analysis of AI market trends.",
-      keywords: ["AI search trends", "Google Gemini", "ChatGPT", "Claude AI", "Canva AI", "Perplexity", "AI market analysis"],
-    },
-  },
-  {
     slug: "google-gemini-ai-complete-guide-2026",
     title: "Google Gemini AI: The Complete Guide to Google's Multimodal AI Assistant",
     description: "Everything you need to know about Google Gemini AI - from its powerful multimodal capabilities to practical applications, limitations, and how to get started in 2026.",
@@ -3780,10 +3657,10 @@ While it has some limitations, particularly around customization and occasional 
 Whether you're a developer looking to integrate AI into your applications, a business seeking productivity tools, or an individual exploring AI capabilities, Gemini AI offers a powerful and accessible platform to explore the future of artificial intelligence.
 `,
     date: "2026-01-19",
-    author: "Osama Asif",
+    author: "Osama Qaseem",
     category: "AI & Technology",
     tags: ["AI", "Google Gemini", "Machine Learning", "Artificial Intelligence", "Multimodal AI", "Google AI"],
-    image: "/images/blog/google-gemini-ai-guide.jpg",
+    image: "/images/blog/googlegeminiblog.png",
     seo: {
       title: "Google Gemini AI Complete Guide 2026 - Features, Capabilities & Usage",
       description: "Comprehensive guide to Google Gemini AI - multimodal capabilities, practical applications, API integration, and comparison with competitors. Everything you need to know about Gemini AI.",
