@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
 
+
   // Performance optimizations for Core Web Vitals
   poweredByHeader: false,
   compress: true,
@@ -17,26 +18,6 @@ const nextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
-  // Bundle optimization
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // Optimize bundle splitting
-    config.optimization.splitChunks.cacheGroups = {
-      ...config.optimization.splitChunks.cacheGroups,
-      vendor: {
-        test: /[\\/]node_modules[\\/]/,
-        name: 'vendors',
-        chunks: 'all',
-        priority: 10,
-      },
-    };
-
-    // Add compression
-    if (!dev && !isServer) {
-      config.optimization.minimize = true;
-    }
-
-    return config;
-  },
 
   // Headers for caching and security
   async headers() {
