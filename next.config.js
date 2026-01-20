@@ -82,6 +82,62 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
+    optimizePackageImports: ['lucide-react', '@heroicons/react', 'framer-motion'],
+  },
+
+  // Reduce unused JavaScript with better tree shaking
+  modularizeImports: {
+    'lucide-react': {
+      transform: 'lucide-react/{{member}}',
+    },
+    '@heroicons/react': {
+      transform: '@heroicons/react/{{member}}',
+    },
+  },
+
+  // Additional performance optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+
+  // Optimize bundle splitting to reduce unused JavaScript
+  webpack: (config, { dev, isServer }) => {
+    if (!dev && !isServer) {
+      // Split chunks more aggressively
+      config.optimization.splitChunks = {
+        ...config.optimization.splitChunks,
+        chunks: 'all',
+        cacheGroups: {
+          ...config.optimization.splitChunks.cacheGroups,
+          // Separate vendor chunks
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+            priority: 10,
+            enforce: true,
+          },
+          // Separate React-related code
+          react: {
+            test: /[\\/]node_modules[\\/]react/,
+            name: 'react',
+            chunks: 'all',
+            priority: 20,
+            enforce: true,
+          },
+          // Separate animation libraries
+          animations: {
+            test: /[\\/]node_modules[\\/](framer-motion|@heroicons)/,
+            name: 'animations',
+            chunks: 'all',
+            priority: 15,
+            enforce: true,
+          },
+        },
+      };
+    }
+
+    return config;
   },
 }
 
