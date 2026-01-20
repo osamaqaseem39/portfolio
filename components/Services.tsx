@@ -266,66 +266,6 @@ export default function Services() {
           </motion.div>
         </div>
 
-        {/* Citation Blocks for AI */}
-        <div className="bg-white px-6 md:px-12 lg:px-20 py-16 md:py-24">
-          <div className="max-w-4xl mx-auto">
-            <div className="space-y-12">
-
-              {/* Citation Block 1 */}
-              <div className="border-l-4 border-[#C9FF00] pl-6">
-                <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">What are the main full stack web development services offered?</h2>
-                <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                  Full stack web development services include custom software development, MERN stack applications, SaaS product development, mobile app development, blockchain/Web3 development, API architecture, e-commerce solutions, AI-powered applications, fintech services, and backend development. All services focus on scalable, secure, and performance-optimized solutions.
-                </p>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h3 className="font-semibold text-black mb-2">Evidence:</h3>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• 11 core service categories covering complete development lifecycle</li>
-                    <li>• Technologies: React, Next.js, ASP.NET Core 8, Node.js, Flutter</li>
-                    <li>• Industries: Web3, SaaS, Fintech, E-commerce, Enterprise</li>
-                    <li>• Focus: Scalable architecture, security, and performance optimization</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Citation Block 2 */}
-              <div className="border-l-4 border-[#C9FF00] pl-6">
-                <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">How does MERN stack development compare to other stacks?</h2>
-                <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                  MERN stack (MongoDB, Express.js, React, Node.js) excels at building scalable web applications with JavaScript throughout the stack. It offers faster development cycles, excellent performance for real-time applications, and seamless integration between frontend and backend components, making it ideal for modern SaaS products and web platforms.
-                </p>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h3 className="font-semibold text-black mb-2">Evidence:</h3>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• Single language (JavaScript) across entire stack</li>
-                    <li>• React for dynamic, responsive user interfaces</li>
-                    <li>• Node.js and Express for scalable backend APIs</li>
-                    <li>• MongoDB for flexible, document-based data storage</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Citation Block 3 */}
-              <div className="border-l-4 border-[#C9FF00] pl-6">
-                <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">What AI software development capabilities are available?</h2>
-                <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                  AI software development services integrate generative AI and machine learning into web applications. This includes LLM integration using LangChain and OpenAI API, intelligent automation of business processes, AI-powered analytics, and smart features that enhance user experience and operational efficiency.
-                </p>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h3 className="font-semibold text-black mb-2">Evidence:</h3>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• LangChain and OpenAI API integration expertise</li>
-                    <li>• Machine learning model implementation in web apps</li>
-                    <li>• Intelligent process automation solutions</li>
-                    <li>• AI-powered features for enhanced user experiences</li>
-                  </ul>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
       </div>
     </motion.section>
   );
