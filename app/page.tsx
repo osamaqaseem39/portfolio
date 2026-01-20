@@ -72,6 +72,53 @@ export default function Home() {
     ],
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What full stack web development services do you offer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I offer complete full stack web development services including custom software development, MERN stack applications, SaaS product development, AI-powered applications, fintech solutions, mobile app development, Web3 and blockchain development, and enterprise software solutions. I specialize in ASP.NET Core 8, React, Next.js, and scalable architecture."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much experience do you have in web development?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I have over 4 years of professional web development experience, having successfully delivered 15+ production applications and completed 30+ projects across various industries including Web3, SaaS, fintech, e-commerce, and enterprise solutions. I maintain a 100% client satisfaction rate."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What technologies and frameworks do you specialize in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I specialize in modern web technologies including React.js, Next.js, Vue.js, TypeScript, ASP.NET Core 8, C#, Node.js, NestJS, MongoDB, SQL Server, and Web3 technologies like Solana Web3.js, Ethers.js, and Jupiter DEX. I also work with Flutter for mobile development and various DevOps tools for deployment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide SaaS product development and AI software development services?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, I specialize in SaaS product development from MVP to full-scale platforms, including multi-tenant architecture and subscription management. For AI software development, I integrate generative AI and machine learning capabilities using tools like LangChain and OpenAI API to create intelligent, automated business solutions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What industries and project types have you worked on?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I've successfully delivered projects across diverse industries including Web3 platforms, SaaS applications, fintech solutions, e-commerce systems, transportation platforms, loyalty management systems, point-of-sale applications, gaming applications, and enterprise ERP systems. My portfolio includes blockchain DApps, AI-powered applications, and cross-platform mobile solutions."
+        }
+      }
+    ]
+  };
+
   if (isMobile) {
     return (
       <main className="bg-white min-h-screen">
@@ -81,9 +128,24 @@ export default function Home() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <Script
+          id="website-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <Script
           id="professional-service-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
+        />
+        <Script
+          id="faq-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+        <Script
+          id="faq-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
         <MobileHeader />
         <MobileHero />
