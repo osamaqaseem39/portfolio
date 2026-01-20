@@ -16,33 +16,39 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: siteUrl,
-      lastModified: new Date(),
+      lastModified: new Date("2026-01-20"), // Updated for 2026 AI-ready content
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${siteUrl}/about`,
-      lastModified: new Date(),
+      lastModified: new Date("2026-01-20"), // Updated with citation blocks
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${siteUrl}/contact`,
-      lastModified: new Date(),
+      lastModified: new Date("2026-01-01"),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${siteUrl}/projects`,
-      lastModified: new Date(),
+      lastModified: new Date("2026-01-01"),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${siteUrl}/blog`,
-      lastModified: new Date(),
+      lastModified: new Date("2026-01-20"), // Updated blog content
       changeFrequency: "weekly",
       priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/sitemap.txt`,
+      lastModified: new Date("2026-01-20"),
+      changeFrequency: "monthly",
+      priority: 0.3,
     },
     ...blogUrls,
   ];

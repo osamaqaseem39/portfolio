@@ -12,6 +12,7 @@ export async function GET() {
     `${siteUrl}/contact`,
     `${siteUrl}/projects`,
     `${siteUrl}/blog`,
+    `${siteUrl}/sitemap.txt`,
     ...blogPosts.map((post) => `${siteUrl}/blog/${post.slug}`),
   ];
 
