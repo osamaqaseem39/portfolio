@@ -3660,7 +3660,7 @@ Whether you're a developer looking to integrate AI into your applications, a bus
     author: "Osama Qaseem",
     category: "AI & Technology",
     tags: ["AI", "Google Gemini", "Machine Learning", "Artificial Intelligence", "Multimodal AI", "Google AI"],
-    image: "/images/blog/googlegeminiblog.png",
+    image: "/googlegeminiblog.png",
     seo: {
       title: "Google Gemini AI Complete Guide 2026 - Features, Capabilities & Usage",
       description: "Comprehensive guide to Google Gemini AI - multimodal capabilities, practical applications, API integration, and comparison with competitors. Everything you need to know about Gemini AI.",

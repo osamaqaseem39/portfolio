@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import AboutSection from "@/components/AboutSection";
 import Services from "@/components/Services";
+import TechStacks from "@/components/TechStacks";
 import Image from "@/components/Image";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
@@ -24,6 +25,7 @@ import MobileExperience from "@/components/mobile/MobileExperience";
 import MobileMemoryGame from "@/components/mobile/MobileMemoryGame";
 import MobileFooter from "@/components/mobile/MobileFooter";
 import MobileMusicButton from "@/components/mobile/MobileMusicButton";
+import MobileTechStacks from "@/components/mobile/MobileTechStacks";
 import Contact from "@/components/Contact";
 
 export default function Home() {
@@ -88,6 +90,7 @@ export default function Home() {
         <MobileAboutSection />
         <MobileImage />
         <MobileServices />
+        <MobileTechStacks />
         <MobileProjects />
         <MobileExperience />
         <MobileMemoryGame />
@@ -114,6 +117,7 @@ export default function Home() {
       <AboutSection />
       <Image/>
       <Services />
+      <TechStacks />
       <Projects />
       <Experience />
       <Blog />
