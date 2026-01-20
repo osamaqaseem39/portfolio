@@ -325,69 +325,7 @@ export default function Home() {
       <Image/>
       <Services />
       <TechStacks />
-      <Projects />
-
-      {/* Project Highlights - Interactive Grid */}
-      <div ref={projectsRef} className="bg-white px-6 md:px-12 lg:px-20 py-16 md:py-24">
-        <motion.div
-          className="max-w-7xl mx-auto"
-          style={{ opacity: projectsOpacity }}
-        >
-          <motion.h2
-            initial={{ opacity: 0, x: -50 }}
-            animate={projectsInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4"
-            style={{ fontFamily: "var(--font-absans), sans-serif" }}
-          >
-            Featured Projects
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, x: -50 }}
-            animate={projectsInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
-            className="text-xl text-gray-700 mb-12"
-          >
-            A selection of production applications I've built
-          </motion.p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projectHighlights.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50, rotateX: -15 }}
-                animate={projectsInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-                transition={{
-                  duration: 0.8,
-                  delay: index * 0.1,
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 20
-                }}
-                whileHover={{
-                  y: -10,
-                  scale: 1.02,
-                  transition: { duration: 0.3 }
-                }}
-                onMouseEnter={() => setHoveredProject(index)}
-                onMouseLeave={() => setHoveredProject(null)}
-                className="relative group cursor-pointer"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-2xl blur-md -z-10`} />
-                <div className="relative bg-white p-6 rounded-2xl border-2 border-gray-200 group-hover:border-black transition-all duration-300 h-full flex flex-col">
-                  <h3 className="text-2xl font-bold text-black mb-2" style={{ fontFamily: "var(--font-absans), sans-serif" }}>
-                    {project.name}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-3 font-medium">{project.tech}</p>
-                  <p className="text-sm text-gray-700 leading-relaxed flex-grow">{project.description}</p>
-                  <div className="mt-4 pt-4 border-t border-gray-200">
-                    <span className="text-xs text-gray-500 group-hover:text-black transition-colors">View Details →</span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
+  
 
       {/* Specializations Section */}
       <div className="bg-[#F5F5F5] px-6 md:px-12 lg:px-20 py-16 md:py-24">
@@ -511,7 +449,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-
+      <Projects />
       <Experience />
       <Blog />
       <MemoryGame />
